@@ -1,12 +1,37 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Header } from "@/components/Header";
+import { HeroSection } from "@/components/HeroSection";
+import { CompanyLogos } from "@/components/CompanyLogos";
+import { BenefitsSection } from "@/components/BenefitsSection";
+import { CaseStudiesSection } from "@/components/CaseStudiesSection";
+import { VideoSection } from "@/components/VideoSection";
+import { ImpactSection } from "@/components/ImpactSection";
+import { WhySEOSection } from "@/components/WhySEOSection";
+import { FeaturesSection } from "@/components/FeaturesSection";
+import { HowItWorksSection } from "@/components/HowItWorksSection";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { PricingSection } from "@/components/PricingSection";
+import { FAQSection } from "@/components/FAQSection";
+import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <Header />
+      <main>
+        <HeroSection />
+        <CompanyLogos />
+        <BenefitsSection />
+        <CaseStudiesSection />
+        <VideoSection />
+        <ImpactSection />
+        <WhySEOSection />
+        <FeaturesSection />
+        <HowItWorksSection />
+        <TestimonialsSection />
+        <PricingSection />
+        <FAQSection />
+      </main>
+      <Footer />
     </div>
   );
 };
