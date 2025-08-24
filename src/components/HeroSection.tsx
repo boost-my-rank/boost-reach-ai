@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, TrendingUp, Users, Award } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroBackground from "@/assets/hero-bg.jpg";
 
 const testimonialLogos = [
@@ -64,8 +65,8 @@ export function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button variant="cta" size="lg" className="min-w-[200px]">
-              Start free trial
+            <Button variant="cta" size="lg" className="min-w-[200px]" asChild>
+              <Link to="/signup">Start free trial</Link>
             </Button>
             <Button variant="outline" size="lg" className="min-w-[200px]">
               See case studies

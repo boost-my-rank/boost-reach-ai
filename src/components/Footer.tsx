@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Twitter, Linkedin, Youtube, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const footerLinks = {
   product: [
@@ -147,8 +148,8 @@ export function Footer() {
               Join hundreds of businesses already growing their organic traffic with our proven backlink service.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="cta" size="lg">
-                Start free trial
+              <Button variant="cta" size="lg" asChild>
+                <Link to="/signup">Start free trial</Link>
               </Button>
               <Button variant="outline" size="lg">
                 Book a demo

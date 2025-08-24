@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 // Removed logo import since we're using a text-based logo
 
 interface NavItem {
@@ -108,8 +109,8 @@ export function Header() {
           <Button variant="ghost" size="sm">
             Sign in
           </Button>
-          <Button variant="cta" size="sm">
-            Start free trial
+          <Button variant="cta" size="sm" asChild>
+            <Link to="/signup">Start free trial</Link>
           </Button>
         </div>
 
@@ -157,8 +158,8 @@ export function Header() {
               <Button variant="ghost" size="sm" className="justify-start">
                 Sign in
               </Button>
-              <Button variant="cta" size="sm">
-                Start free trial
+              <Button variant="cta" size="sm" asChild>
+                <Link to="/signup">Start free trial</Link>
               </Button>
             </div>
           </div>

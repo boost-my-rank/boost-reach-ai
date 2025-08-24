@@ -1,10 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Check, Calendar, Link, FileText, Target, Plus } from "lucide-react";
+import { Check, Calendar, Link as LinkIcon, FileText, Target, Plus } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const features = [
-  { icon: Link, text: "3 editorial backlinks (DA > 30)" },
+  { icon: LinkIcon, text: "3 editorial backlinks (DA > 30)" },
   { icon: Target, text: "Opportunity sourcing & drafting included" },
   { icon: FileText, text: "Submission, follow-ups, and monthly reporting" },
 ];
@@ -82,8 +83,8 @@ export function PricingSection() {
 
                 {/* CTA Buttons */}
                 <div className="space-y-4 pt-6">
-                  <Button variant="cta" size="lg" className="w-full">
-                    Start free trial
+                  <Button variant="cta" size="lg" className="w-full" asChild>
+                    <Link to="/signup">Start free trial</Link>
                   </Button>
                   <Button variant="outline" size="lg" className="w-full">
                     Book a demo
