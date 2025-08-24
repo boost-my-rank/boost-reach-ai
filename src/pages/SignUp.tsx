@@ -59,10 +59,10 @@ const SignUp = () => {
       </header>
 
       {/* Main Content */}
-      <div className="flex items-center justify-center min-h-[calc(100vh-80px)] px-6">
-        <div className="flex flex-col lg:flex-row gap-8 max-w-6xl w-full">
+      <div className="flex items-center justify-center min-h-[calc(100vh-80px)] px-4 py-8">
+        <div className="flex flex-col lg:flex-row gap-4 max-w-4xl w-full">
           {/* Left Side - Benefits */}
-          <div className="lg:w-1/2 bg-card border border-border rounded-lg p-8 shadow-sm">
+          <div className="lg:w-1/2 bg-card border border-border rounded-xl p-8 shadow-lg">
             <h1 className="text-3xl font-bold text-foreground mb-6">
               Start building authority with premium backlinks
             </h1>
@@ -88,7 +88,7 @@ const SignUp = () => {
           </div>
 
           {/* Right Side - Sign Up */}
-          <div className="lg:w-1/2 bg-card border border-border rounded-lg p-8 shadow-sm">
+          <div className="lg:w-1/2 bg-card border border-border rounded-xl p-8 shadow-lg">
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-foreground mb-2">
                 Start a free trial
