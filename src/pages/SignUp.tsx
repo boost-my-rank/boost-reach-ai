@@ -59,10 +59,10 @@ const SignUp = () => {
       </header>
 
       {/* Main Content */}
-      <div className="flex min-h-[calc(100vh-80px)]">
-        {/* Left Side - Benefits */}
-        <div className="hidden lg:flex lg:w-1/2 bg-muted/30 flex-col justify-center px-12">
-          <div className="max-w-md">
+      <div className="flex items-center justify-center min-h-[calc(100vh-80px)] px-6">
+        <div className="flex flex-col lg:flex-row gap-8 max-w-6xl w-full">
+          {/* Left Side - Benefits */}
+          <div className="lg:w-1/2 bg-card border border-border rounded-lg p-8 shadow-sm">
             <h1 className="text-3xl font-bold text-foreground mb-6">
               Start building authority with premium backlinks
             </h1>
@@ -86,11 +86,9 @@ const SignUp = () => {
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Right Side - Sign Up */}
-        <div className="w-full lg:w-1/2 flex flex-col justify-center px-6 lg:px-12">
-          <div className="max-w-md mx-auto w-full">
+          {/* Right Side - Sign Up */}
+          <div className="lg:w-1/2 bg-card border border-border rounded-lg p-8 shadow-sm">
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-foreground mb-2">
                 Start a free trial
@@ -98,18 +96,6 @@ const SignUp = () => {
               <p className="text-muted-foreground">
                 Get your first backlink free and see the BoostMyRank difference
               </p>
-            </div>
-
-            {/* Mobile Benefits */}
-            <div className="lg:hidden mb-8">
-              <div className="space-y-3">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <CheckCircle className="h-4 w-4 text-warning mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">{benefit}</span>
-                  </div>
-                ))}
-              </div>
             </div>
 
             <div className="space-y-4">
