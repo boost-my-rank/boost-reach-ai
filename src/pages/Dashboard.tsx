@@ -5,6 +5,7 @@ import { DashboardSidebar } from "@/components/dashboard/DashboardSidebar";
 import { HowItWorksModal } from "@/components/dashboard/HowItWorksModal";
 import { PersonaConfiguration } from "@/components/dashboard/PersonaConfiguration";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import { Button } from "@/components/ui/button";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -61,22 +62,72 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-app-canvas">
       <SidebarProvider>
         <div className="flex min-h-screen w-full">
           <DashboardSidebar />
           
           <main className="flex-1 p-6 lg:p-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="mb-8">
-                <h1 className="text-3xl font-semibold text-slate-900 mb-2">
-                  Welcome to BoostMyRank
-                </h1>
-                <p className="text-slate-600">
-                  Configure your outreach settings to start building authority with premium backlinks.
-                </p>
+            <div className="max-w-6xl mx-auto space-y-6">
+              {/* This Month Stats */}
+              <div className="bg-card border border-card-border rounded-xl shadow-sm overflow-hidden">
+                <div className="h-1 bg-warning"></div>
+                <div className="p-6">
+                  <h2 className="text-lg font-semibold text-card-foreground mb-4">This month</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                      <div className="text-2xl font-semibold text-card-foreground">3</div>
+                      <div className="text-sm text-muted-foreground">Backlinks earned</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-semibold text-card-foreground">$300</div>
+                      <div className="text-sm text-muted-foreground">Investment</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-semibold text-card-foreground">2</div>
+                      <div className="text-sm text-muted-foreground">New opportunities</div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
+              {/* Recent Activity */}
+              <div className="bg-card border border-card-border rounded-xl shadow-sm overflow-hidden">
+                <div className="h-1 bg-warning"></div>
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <h2 className="text-lg font-semibold text-card-foreground">Recent activity</h2>
+                    <div className="text-sm text-muted-foreground">3 items</div>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between py-3 border-b border-gray-100 last:border-0">
+                      <div>
+                        <div className="font-medium text-card-foreground">Tech startup featured in Forbes</div>
+                        <div className="text-sm text-muted-foreground">Created on 12/07</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between py-3 border-b border-gray-100 last:border-0">
+                      <div>
+                        <div className="font-medium text-card-foreground">Expert quote in Industry Report</div>
+                        <div className="text-sm text-muted-foreground">Created on 10/07</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between py-3">
+                      <div>
+                        <div className="font-medium text-card-foreground">CEO interview on Tech Podcast</div>
+                        <div className="text-sm text-muted-foreground">Created on 07/07</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-6">
+                    <Button className="bg-warning hover:bg-warning/90 text-warning-foreground">
+                      View all activity
+                    </Button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Configuration Section */}
               <div id="persona-config">
                 <PersonaConfiguration />
               </div>

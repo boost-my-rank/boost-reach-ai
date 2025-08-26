@@ -141,10 +141,11 @@ export function PersonaConfiguration() {
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <CardTitle>Configure your outreach settings</CardTitle>
+    <div className="bg-card border border-card-border rounded-xl shadow-sm overflow-hidden">
+      <div className="h-1 bg-warning"></div>
+      <div className="p-6">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg font-semibold text-card-foreground">Configure your outreach settings</h2>
           <div className="flex gap-3">
             <Button 
               variant="outline" 
@@ -156,102 +157,103 @@ export function PersonaConfiguration() {
             <Button 
               onClick={handleSave}
               disabled={!hasChanges || isLoading}
+              className="bg-warning hover:bg-warning/90 text-warning-foreground"
             >
               {isLoading ? "Saving..." : "Save all changes"}
             </Button>
           </div>
         </div>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        {/* LinkedIn */}
-        <div className="space-y-2">
-          <Label htmlFor="linkedin">LinkedIn</Label>
-          <Input
-            id="linkedin"
-            type="url"
-            placeholder="https://linkedin.com/in/username"
-            value={data.linkedin}
-            onChange={(e) => handleInputChange('linkedin', e.target.value)}
-            className={errors.linkedin ? "border-destructive" : ""}
-          />
-          {errors.linkedin ? (
-            <p className="text-sm text-destructive">{errors.linkedin}</p>
-          ) : (
-            <p className="text-xs text-slate-500">Will be applied immediately after we review.</p>
-          )}
-        </div>
+        <div className="space-y-6">
+          {/* LinkedIn */}
+          <div className="space-y-2">
+            <Label htmlFor="linkedin" className="text-card-foreground font-medium">LinkedIn</Label>
+            <Input
+              id="linkedin"
+              type="url"
+              placeholder="https://linkedin.com/in/username"
+              value={data.linkedin}
+              onChange={(e) => handleInputChange('linkedin', e.target.value)}
+              className={errors.linkedin ? "border-destructive" : "border-card-border"}
+            />
+            {errors.linkedin ? (
+              <p className="text-sm text-destructive">{errors.linkedin}</p>
+            ) : (
+              <p className="text-xs text-muted-foreground">Will be applied immediately after we review.</p>
+            )}
+          </div>
 
-        {/* Company Name */}
-        <div className="space-y-2">
-          <Label htmlFor="companyName">Company Name</Label>
-          <Input
-            id="companyName"
-            placeholder="Enter your company name"
-            value={data.companyName}
-            onChange={(e) => handleInputChange('companyName', e.target.value)}
-            className={errors.companyName ? "border-destructive" : ""}
-          />
-          {errors.companyName ? (
-            <p className="text-sm text-destructive">{errors.companyName}</p>
-          ) : (
-            <p className="text-xs text-slate-500">Will be applied immediately after we review.</p>
-          )}
-        </div>
+          {/* Company Name */}
+          <div className="space-y-2">
+            <Label htmlFor="companyName" className="text-card-foreground font-medium">Company Name</Label>
+            <Input
+              id="companyName"
+              placeholder="Enter your company name"
+              value={data.companyName}
+              onChange={(e) => handleInputChange('companyName', e.target.value)}
+              className={errors.companyName ? "border-destructive" : "border-card-border"}
+            />
+            {errors.companyName ? (
+              <p className="text-sm text-destructive">{errors.companyName}</p>
+            ) : (
+              <p className="text-xs text-muted-foreground">Will be applied immediately after we review.</p>
+            )}
+          </div>
 
-        {/* Job Title */}
-        <div className="space-y-2">
-          <Label htmlFor="jobTitle">Job Title</Label>
-          <Input
-            id="jobTitle"
-            placeholder="Enter your job title (e.g., CEO, Marketing Director)"
-            value={data.jobTitle}
-            onChange={(e) => handleInputChange('jobTitle', e.target.value)}
-            className={errors.jobTitle ? "border-destructive" : ""}
-          />
-          {errors.jobTitle ? (
-            <p className="text-sm text-destructive">{errors.jobTitle}</p>
-          ) : (
-            <p className="text-xs text-slate-500">Will be applied immediately after we review.</p>
-          )}
-        </div>
+          {/* Job Title */}
+          <div className="space-y-2">
+            <Label htmlFor="jobTitle" className="text-card-foreground font-medium">Job Title</Label>
+            <Input
+              id="jobTitle"
+              placeholder="Enter your job title (e.g., CEO, Marketing Director)"
+              value={data.jobTitle}
+              onChange={(e) => handleInputChange('jobTitle', e.target.value)}
+              className={errors.jobTitle ? "border-destructive" : "border-card-border"}
+            />
+            {errors.jobTitle ? (
+              <p className="text-sm text-destructive">{errors.jobTitle}</p>
+            ) : (
+              <p className="text-xs text-muted-foreground">Will be applied immediately after we review.</p>
+            )}
+          </div>
 
-        {/* Company Website */}
-        <div className="space-y-2">
-          <Label htmlFor="companyWebsite">Company Website</Label>
-          <Input
-            id="companyWebsite"
-            type="url"
-            placeholder="https://yourcompany.com"
-            value={data.companyWebsite}
-            onChange={(e) => handleInputChange('companyWebsite', e.target.value)}
-            className={errors.companyWebsite ? "border-destructive" : ""}
-          />
-          {errors.companyWebsite ? (
-            <p className="text-sm text-destructive">{errors.companyWebsite}</p>
-          ) : (
-            <p className="text-xs text-slate-500">Will be applied immediately after we review.</p>
-          )}
-        </div>
+          {/* Company Website */}
+          <div className="space-y-2">
+            <Label htmlFor="companyWebsite" className="text-card-foreground font-medium">Company Website</Label>
+            <Input
+              id="companyWebsite"
+              type="url"
+              placeholder="https://yourcompany.com"
+              value={data.companyWebsite}
+              onChange={(e) => handleInputChange('companyWebsite', e.target.value)}
+              className={errors.companyWebsite ? "border-destructive" : "border-card-border"}
+            />
+            {errors.companyWebsite ? (
+              <p className="text-sm text-destructive">{errors.companyWebsite}</p>
+            ) : (
+              <p className="text-xs text-muted-foreground">Will be applied immediately after we review.</p>
+            )}
+          </div>
 
-        {/* Professional Biography */}
-        <div className="space-y-2">
-          <Label htmlFor="biography">Professional Biography</Label>
-          <Textarea
-            id="biography"
-            placeholder="Write a professional biography that journalists can use to credit you in their articles..."
-            value={data.biography}
-            onChange={(e) => handleInputChange('biography', e.target.value)}
-            className={`min-h-32 ${errors.biography ? "border-destructive" : ""}`}
-          />
-          {errors.biography ? (
-            <p className="text-sm text-destructive">{errors.biography}</p>
-          ) : (
-            <p className="text-xs text-slate-500">
-              {getBiographyWordCount()}/1000 words
-            </p>
-          )}
+          {/* Professional Biography */}
+          <div className="space-y-2">
+            <Label htmlFor="biography" className="text-card-foreground font-medium">Professional Biography</Label>
+            <Textarea
+              id="biography"
+              placeholder="Write a professional biography that journalists can use to credit you in their articles..."
+              value={data.biography}
+              onChange={(e) => handleInputChange('biography', e.target.value)}
+              className={`min-h-32 ${errors.biography ? "border-destructive" : "border-card-border"}`}
+            />
+            {errors.biography ? (
+              <p className="text-sm text-destructive">{errors.biography}</p>
+            ) : (
+              <p className="text-xs text-muted-foreground">
+                {getBiographyWordCount()}/1000 words
+              </p>
+            )}
+          </div>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

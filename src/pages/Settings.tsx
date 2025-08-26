@@ -73,78 +73,68 @@ const Settings = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-app-canvas">
       <SidebarProvider>
         <div className="flex min-h-screen w-full">
           <DashboardSidebar />
           
           <main className="flex-1 p-6 lg:p-8">
-            <div className="max-w-2xl mx-auto">
-              <div className="mb-8">
-                <h1 className="text-3xl font-semibold text-slate-900 mb-2">
-                  Account Settings
-                </h1>
-                <p className="text-slate-600">
-                  Manage your account information and billing preferences.
-                </p>
-              </div>
-
-              <div className="space-y-6">
-                {/* Account Information */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Account Information</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
+            <div className="max-w-4xl mx-auto space-y-6">
+              {/* Account Information */}
+              <div className="bg-card border border-card-border rounded-xl shadow-sm overflow-hidden">
+                <div className="h-1 bg-warning"></div>
+                <div className="p-6">
+                  <h2 className="text-lg font-semibold text-card-foreground mb-4">Account Information</h2>
+                  <div className="space-y-4">
                     <div className="space-y-2">
-                      <Label htmlFor="name">Name</Label>
+                      <Label htmlFor="name" className="text-card-foreground font-medium">Name</Label>
                       <Input
                         id="name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Enter your name"
+                        className="border-card-border"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
+                      <Label htmlFor="email" className="text-card-foreground font-medium">Email</Label>
                       <Input
                         id="email"
                         type="email"
                         value={email}
                         readOnly
-                        className="bg-slate-50 text-slate-500"
+                        className="bg-muted text-muted-foreground border-card-border"
                         placeholder="your@email.com"
                       />
-                      <p className="text-xs text-slate-500">
+                      <p className="text-xs text-muted-foreground">
                         Email cannot be changed. Contact support if needed.
                       </p>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
+              </div>
 
-                {/* Billing */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Billing & Subscription</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <p className="text-slate-600">
-                        Manage your subscription, payment methods, and billing history through our secure billing portal.
-                      </p>
-                      <Button 
-                        onClick={handleManageBilling}
-                        disabled={isLoading}
-                        className="w-full sm:w-auto"
-                      >
-                        {isLoading ? "Loading..." : "Manage billing"}
-                      </Button>
-                      <p className="text-xs text-slate-500">
-                        Use the Stripe portal to cancel or update your subscription.
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
+              {/* Billing */}
+              <div className="bg-card border border-card-border rounded-xl shadow-sm overflow-hidden">
+                <div className="h-1 bg-warning"></div>
+                <div className="p-6">
+                  <h2 className="text-lg font-semibold text-card-foreground mb-4">Billing & Subscription</h2>
+                  <div className="space-y-4">
+                    <p className="text-muted-foreground">
+                      Manage your subscription, payment methods, and billing history through our secure billing portal.
+                    </p>
+                    <Button 
+                      onClick={handleManageBilling}
+                      disabled={isLoading}
+                      className="bg-warning hover:bg-warning/90 text-warning-foreground w-full sm:w-auto"
+                    >
+                      {isLoading ? "Loading..." : "Manage billing"}
+                    </Button>
+                    <p className="text-xs text-muted-foreground">
+                      Use the Stripe portal to cancel or update your subscription.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </main>

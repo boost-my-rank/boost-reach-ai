@@ -7,6 +7,7 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -46,30 +47,42 @@ export function DashboardSidebar() {
   };
 
   return (
-    <Sidebar className="border-r border-slate-200">
-      <SidebarHeader className="p-6">
+    <Sidebar className="w-60 bg-sidebar border-r border-sidebar-border">
+      <SidebarHeader className="p-6 border-b border-sidebar-border">
         <div 
-          className="text-xl font-bold text-slate-900 cursor-pointer hover:text-slate-700 transition-colors"
+          className="text-lg font-semibold text-sidebar-foreground cursor-pointer hover:text-primary transition-colors"
           onClick={() => navigate('/dashboard')}
         >
           BoostMyRank
         </div>
       </SidebarHeader>
 
-      <SidebarContent>
+      <SidebarContent className="p-4">
         <SidebarGroup>
+          <SidebarGroupLabel className="text-xs uppercase text-sidebar-muted font-medium mb-2 px-3">
+            My board
+          </SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
+            <SidebarMenu className="space-y-1">
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton 
                     asChild
-                    className={isActive(item.url) ? "bg-slate-100 text-slate-900 font-medium" : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"}
+                    className={`
+                      relative w-full justify-start gap-3 px-3 py-2 text-sm font-medium transition-colors
+                      ${isActive(item.url) 
+                        ? "bg-sidebar-accent text-sidebar-foreground" 
+                        : "text-sidebar-muted hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                      }
+                    `}
                   >
                     <button
                       onClick={() => navigate(item.url)}
-                      className="w-full flex items-center gap-3 px-3 py-2 text-left"
+                      className="w-full flex items-center gap-3 text-left"
                     >
+                      {isActive(item.url) && (
+                        <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary" />
+                      )}
                       <item.icon className="h-4 w-4" />
                       <span>{item.title}</span>
                     </button>
@@ -81,11 +94,11 @@ export function DashboardSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="p-6">
+      <SidebarFooter className="p-4 border-t border-sidebar-border">
         <Button 
-          variant="outline" 
+          variant="ghost" 
           onClick={handleSignOut}
-          className="w-full justify-start gap-3 text-slate-600 hover:text-slate-900"
+          className="w-full justify-start gap-3 text-sidebar-muted hover:text-sidebar-foreground hover:bg-sidebar-accent/50"
         >
           <LogOut className="h-4 w-4" />
           Sign out
