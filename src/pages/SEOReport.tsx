@@ -5,6 +5,9 @@ import { Label } from "@/components/ui/label";
 import { Check } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import reportMockup from "@/assets/seo-report-mockup.jpg";
 
 const SEOReport = () => {
   const [formData, setFormData] = useState({
@@ -82,49 +85,69 @@ const SEOReport = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-app-canvas">
-      <div className="container mx-auto px-4 py-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            {/* Left Column - Content */}
-            <div className="space-y-8">
-              <div className="space-y-6">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight">
-                  SEO in 2025: Advice to grow your organic traffic using proven link-building strategies
-                </h1>
-                
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  A complete report to help you grow your organic SEO traffic using link-building strategies that responsibly increase your domain reputation.
-                </p>
-              </div>
+    <div className="min-h-screen bg-[#F7F8FA]">
+      <Header />
+      <main className="pt-20">
+        <div className="max-w-[1120px] mx-auto px-4 md:px-6 lg:px-8 py-16">
+          {/* Four-quadrant grid layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-[auto_auto] lg:grid-rows-2 gap-8 lg:gap-12">
+            
+            {/* Top-left: Hero title + subhead */}
+            <div className="order-1 space-y-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
+                SEO in 2025: Advice to grow your organic traffic using proven link-building strategies
+              </h1>
+              
+              <p className="text-lg text-gray-600 leading-relaxed">
+                A complete report to help you grow your organic SEO traffic using link-building strategies that responsibly increase your domain reputation.
+              </p>
+            </div>
 
-              <div className="space-y-6">
-                <h2 className="text-2xl md:text-3xl font-extrabold text-foreground">
-                  How can this report help you stand out from the competition?
-                </h2>
-                
-                <div className="space-y-4">
-                  {benefitItems.map((item, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <div className="flex-shrink-0 mt-1">
-                        <div className="w-5 h-5 bg-warning rounded-full flex items-center justify-center">
-                          <Check className="w-3 h-3 text-warning-foreground" />
-                        </div>
-                      </div>
-                      <p className="text-foreground leading-relaxed">{item}</p>
-                    </div>
-                  ))}
+            {/* Top-right: Report image/visual */}
+            <div className="order-2 flex items-center justify-center">
+              <div className="relative">
+                <div className="bg-gradient-to-br from-[#F6C343]/30 to-[#F59E0B]/10 rounded-2xl shadow-md overflow-hidden p-8">
+                  <img 
+                    src={reportMockup}
+                    alt="Free 2025 SEO Backlink Report preview showing charts and insights for organic traffic growth"
+                    className="w-full h-auto rounded-lg shadow-sm"
+                  />
+                  <div className="absolute top-4 right-4">
+                    <span className="bg-gray-900 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                      FREE REPORT
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Right Column - Form */}
-            <div className="lg:sticky lg:top-24">
-              <div className="bg-card border border-card-border rounded-xl shadow-sm p-6 md:p-8">
+            {/* Bottom-left: Benefits list */}
+            <div className="order-3 space-y-6">
+              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">
+                How can this report help you stand out from the competition?
+              </h2>
+              
+              <div className="space-y-4">
+                {benefitItems.map((item, index) => (
+                  <div key={index} className="flex items-start space-x-3">
+                    <div className="flex-shrink-0 mt-1">
+                      <div className="w-5 h-5 bg-[#F6C343] rounded-full flex items-center justify-center">
+                        <Check className="w-3 h-3 text-gray-900" />
+                      </div>
+                    </div>
+                    <p className="text-gray-900 leading-relaxed">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Bottom-right: Form card */}
+            <div className="order-4 lg:self-start">
+              <div className="bg-white border border-[#E6E8EE] rounded-xl shadow-sm p-6 md:p-8">
                 {!isSubmitted ? (
                   <>
                     <div className="mb-6">
-                      <h3 className="text-xl font-semibold text-card-foreground mb-2">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
                         Fill out this form to get the 2025 SEO guide
                       </h3>
                     </div>
@@ -132,7 +155,7 @@ const SEOReport = () => {
                     <form onSubmit={handleSubmit} className="space-y-4">
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <Label htmlFor="firstName" className="text-sm font-medium text-card-foreground">
+                          <Label htmlFor="firstName" className="text-sm font-medium text-gray-900">
                             First name*
                           </Label>
                           <Input
@@ -146,7 +169,7 @@ const SEOReport = () => {
                           />
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="lastName" className="text-sm font-medium text-card-foreground">
+                          <Label htmlFor="lastName" className="text-sm font-medium text-gray-900">
                             Last name*
                           </Label>
                           <Input
@@ -162,7 +185,7 @@ const SEOReport = () => {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="email" className="text-sm font-medium text-card-foreground">
+                        <Label htmlFor="email" className="text-sm font-medium text-gray-900">
                           Email*
                         </Label>
                         <Input
@@ -177,7 +200,7 @@ const SEOReport = () => {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="company" className="text-sm font-medium text-card-foreground">
+                        <Label htmlFor="company" className="text-sm font-medium text-gray-900">
                           Company
                         </Label>
                         <Input
@@ -193,25 +216,25 @@ const SEOReport = () => {
                       <Button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full bg-warning text-warning-foreground hover:bg-warning/90 font-semibold py-3"
+                        className="w-full bg-[#F6C343] hover:bg-[#E0AE2E] text-gray-900 font-semibold py-3 rounded-md"
                       >
                         {isSubmitting ? "Sending..." : "Download now"}
                       </Button>
 
-                      <p className="text-xs text-muted-foreground leading-relaxed">
+                      <p className="text-xs text-gray-600 leading-relaxed">
                         By submitting, you agree to receive the report and occasional product updates. You can unsubscribe at any time.
                       </p>
                     </form>
                   </>
                 ) : (
                   <div className="text-center space-y-4">
-                    <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto">
-                      <Check className="w-8 h-8 text-accent-foreground" />
+                    <div className="w-16 h-16 bg-[#F6C343] rounded-full flex items-center justify-center mx-auto">
+                      <Check className="w-8 h-8 text-gray-900" />
                     </div>
-                    <h3 className="text-xl font-semibold text-card-foreground">
+                    <h3 className="text-xl font-semibold text-gray-900">
                       Thanks! Your report is on its way.
                     </h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-600">
                       Check your inbox for the SEO 2025 report. A copy should arrive within the next few minutes.
                     </p>
                     <Button
@@ -227,7 +250,8 @@ const SEOReport = () => {
             </div>
           </div>
         </div>
-      </div>
+      </main>
+      <Footer />
     </div>
   );
 };

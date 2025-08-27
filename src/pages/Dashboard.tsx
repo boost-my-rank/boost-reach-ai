@@ -6,6 +6,7 @@ import { HowItWorksModal } from "@/components/dashboard/HowItWorksModal";
 import { PersonaConfiguration } from "@/components/dashboard/PersonaConfiguration";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
+import { Header } from "@/components/Header";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -63,9 +64,11 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-app-canvas">
-      <SidebarProvider>
-        <div className="flex min-h-screen w-full">
-          <DashboardSidebar />
+      <Header />
+      <main className="pt-20">
+        <SidebarProvider>
+          <div className="flex min-h-screen w-full">
+            <DashboardSidebar />
           
           <main className="flex-1 p-6 lg:p-8">
             <div className="max-w-6xl mx-auto space-y-6">
@@ -132,9 +135,10 @@ const Dashboard = () => {
                 <PersonaConfiguration />
               </div>
             </div>
-          </main>
-        </div>
-      </SidebarProvider>
+            </main>
+          </div>
+        </SidebarProvider>
+      </main>
 
       {showHowItWorks && (
         <HowItWorksModal 

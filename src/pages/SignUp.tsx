@@ -3,7 +3,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { CheckCircle } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { Header } from "@/components/Header";
 
 const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -46,20 +47,11 @@ const SignUp = () => {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Header */}
-      <header className="border-b border-slate-200 px-6 py-4 bg-white">
-        <div className="flex items-center">
-          <button 
-            onClick={() => navigate('/')}
-            className="text-lg font-bold text-slate-900 hover:text-slate-700 transition-colors"
-          >
-            BoostMyRank
-          </button>
-        </div>
-      </header>
+      <Header />
 
       {/* Main Content */}
-      <div className="flex items-center justify-center min-h-[calc(100vh-80px)] px-6 py-12">
+      <main className="pt-20">
+        <div className="flex items-center justify-center min-h-[calc(100vh-80px)] px-6 py-12">
         <div className="flex flex-col lg:flex-row gap-8 max-w-5xl w-full">
           {/* Left Side - Benefits */}
           <div className="lg:w-1/2 lg:pr-4">
@@ -184,7 +176,8 @@ const SignUp = () => {
             </div>
           </div>
         </div>
-      </div>
+        </div>
+      </main>
     </div>
   );
 };
