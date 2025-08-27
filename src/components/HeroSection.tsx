@@ -54,19 +54,15 @@ export function HeroSection() {
               on Autopilot
             </h1>
             
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              For <span className="font-semibold text-primary">$249/month</span>, we deliver 3+ backlinks from vetted online publications 
-              (Forbes, Newsweek, CNN) that mention your product or service. If we miss, we offer a guaranteed refund. 
-              Try it for free today to benefit from the{" "}
-              <span className="font-semibold text-accent">~75% average traffic growth</span>{" "}
-              that our clients report on average.
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Receive 3+ backlinks every month from vetted online publications (Forbes, Newsweek, CNN) that mention your product or service. If we miss, we offer a guaranteed refund.
             </p>
           </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button variant="cta" size="lg" className="min-w-[200px]" asChild>
-              <Link to="/signup">Start free trial</Link>
+              <Link to="/signup">Try it now</Link>
             </Button>
             <Button variant="outline" size="lg" className="min-w-[200px]">
               See case studies
@@ -77,7 +73,7 @@ export function HeroSection() {
           <div className="flex flex-wrap justify-center items-center gap-6 pt-8 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-accent rounded-full" />
-              <span>No setup fees</span>
+              <span>Money-back guarantee</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-accent rounded-full" />
@@ -85,7 +81,7 @@ export function HeroSection() {
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-accent rounded-full" />
-              <span>Results in 7-30 days</span>
+              <span>Results in 7–30 days</span>
             </div>
           </div>
         </div>

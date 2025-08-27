@@ -25,9 +25,9 @@ export function CompanyLogos() {
       <div className="container px-4">
         {/* Client Logos Section */}
         <div className="text-center mb-12">
-          <p className="text-lg font-medium text-muted-foreground mb-8">
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 tracking-tight">
             Boosting SEO rankings of dozens of leading companies:
-          </p>
+          </h3>
           
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
             {clientLogos.map((company, index) => (
@@ -48,9 +48,9 @@ export function CompanyLogos() {
 
         {/* Publications Section */}
         <div className="text-center">
-          <p className="text-lg font-medium text-muted-foreground mb-8">
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 tracking-tight">
             Seen in / Opportunities from
-          </p>
+          </h3>
           
           <div className="flex flex-wrap justify-center items-center gap-8">
             {publicationLogos.map((publication) => (
