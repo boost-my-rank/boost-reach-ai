@@ -48,16 +48,31 @@ const Settings = () => {
   const handleManageBilling = async () => {
     setIsLoading(true);
     try {
-      // Placeholder for Stripe portal integration
-      // In real implementation: POST to /api/stripe/create-portal
-      toast({
-        title: "Coming Soon",
-        description: "Billing management will be available soon.",
+      const { data: session } = await supabase.auth.getSession();
+      if (!session.session) {
+        throw new Error("Not authenticated");
+      }
+
+      const { data, error } = await supabase.functions.invoke('customer-portal', {
+        headers: {
+          Authorization: `Bearer ${session.session.access_token}`,
+        },
       });
+
+      if (error) {
+        throw error;
+      }
+
+      if (data?.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error("No portal URL received");
+      }
     } catch (error) {
+      console.error("Billing portal error:", error);
       toast({
         title: "Error",
-        description: "Failed to open billing portal.",
+        description: "We couldn't open the billing portal. Please try again or contact support.",
         variant: "destructive",
       });
     } finally {
@@ -131,7 +146,7 @@ const Settings = () => {
                       disabled={isLoading}
                       className="bg-warning hover:bg-warning/90 text-warning-foreground w-full sm:w-auto"
                     >
-                      {isLoading ? "Loading..." : "Manage billing"}
+                      {isLoading ? "Opening Stripe..." : "Manage billing"}
                     </Button>
                     <p className="text-xs text-muted-foreground">
                       Use the Stripe portal to cancel or update your subscription.
