@@ -22,12 +22,7 @@ const navigation: NavItem[] = [
   },
   {
     label: "Case Studies",
-    href: "#case-studies",
-    submenu: [
-      { label: "B2B SaaS", href: "#saas-cases" },
-      { label: "E-commerce", href: "#ecommerce-cases" },
-      { label: "Professional Services", href: "#services-cases" },
-    ],
+    href: "/case-studies",
   },
   {
     label: "Pricing",
