@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { Check, ChevronDown } from "lucide-react";
+import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Link } from "react-router-dom";
+import { PricingStyleFAQ } from "@/components/shared/PricingStyleFAQ";
+import { pricingFaqItems } from "@/data/faqData";
 
 const plans = {
   standard: {
@@ -34,32 +35,6 @@ const plans = {
   }
 };
 
-const faqItems = [
-  {
-    question: "How does it work?",
-    answer: "We research and pitch journalists who cover your industry, securing editorial backlinks from high-authority publications. Our team handles everything from opportunity sourcing to follow-ups."
-  },
-  {
-    question: "How long will it take to see results?",
-    answer: "Most clients see their first backlinks within 7-30 days. We guarantee 3 backlinks per month or provide a full refund."
-  },
-  {
-    question: "What if you don't hit the guaranteed number of backlinks?",
-    answer: "We offer a 100% money-back guarantee. If we don't deliver the promised number of backlinks in any given month, you get a full refund for that month."
-  },
-  {
-    question: "Can you work with any industry?",
-    answer: "Yes, we work across all industries. Our team has experience pitching journalists in tech, healthcare, finance, e-commerce, and many other sectors."
-  },
-  {
-    question: "Do you only target high-authority websites?",
-    answer: "Yes, we only pitch websites with a Domain Authority (DA) of 30 or higher to ensure your backlinks provide real SEO value."
-  },
-  {
-    question: "How do you measure success?",
-    answer: "Success is measured by the number and quality of backlinks secured. We provide detailed monthly reports showing all submissions, responses, and secured placements."
-  }
-];
 
 export default function Pricing() {
   const [billingCycle, setBillingCycle] = useState<'annual' | 'monthly'>('annual');
@@ -227,39 +202,7 @@ export default function Pricing() {
         </div>
 
         {/* FAQ Section */}
-        <div className="container px-4 py-16">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <p className="text-xs font-semibold tracking-wider text-muted-foreground uppercase mb-4">
-                Q&A
-              </p>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">
-                Frequently asked questions
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                Got questions? We've got answers.
-              </p>
-            </div>
-
-            <Accordion type="single" collapsible className="space-y-0">
-              {faqItems.map((item, index) => (
-                <AccordionItem key={index} value={`item-${index}`} className="border-b border-gray-200">
-                  <AccordionTrigger className="py-6 text-left hover:no-underline group">
-                    <div className="flex items-center gap-4 w-full">
-                      <div className="p-1 rounded-full bg-yellow-400 flex-shrink-0">
-                        <ChevronDown className="h-4 w-4 text-black transition-transform duration-200 group-data-[state=open]:rotate-180" />
-                      </div>
-                      <span className="text-lg font-semibold text-foreground">{item.question}</span>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="pb-6 pl-12">
-                    <p className="text-muted-foreground leading-relaxed">{item.answer}</p>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </div>
+        <PricingStyleFAQ items={pricingFaqItems} />
       </main>
       <Footer />
     </div>

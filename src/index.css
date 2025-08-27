@@ -127,8 +127,12 @@ All colors MUST be HSL.
     @apply bg-background text-foreground font-sans antialiased;
   }
   
-  /* Smooth animations */
+  /* Smooth animations and scroll behavior */
   * {
     @apply transition-colors duration-200;
+  }
+  
+  html {
+    scroll-behavior: smooth;
   }
 }
