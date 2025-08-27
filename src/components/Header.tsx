@@ -26,12 +26,7 @@ const navigation: NavItem[] = [
   },
   {
     label: "Pricing",
-    href: "#pricing",
-    submenu: [
-      { label: "Standard Plan", href: "#standard" },
-      { label: "Enterprise", href: "#enterprise" },
-      { label: "ROI Calculator", href: "#calculator" },
-    ],
+    href: "/pricing",
   },
   {
     label: "Resources",
