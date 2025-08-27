@@ -85,7 +85,7 @@ const SEOReport = () => {
       <main className="pt-8">
         <div className="max-w-[1344px] mx-auto px-4 md:px-6 lg:px-8 py-8">
           {/* Four-quadrant grid layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-[auto_auto] lg:grid-rows-2 gap-6 lg:gap-y-6 lg:gap-x-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-[auto_auto] lg:grid-rows-2 gap-6 lg:gap-x-10 gap-y-10 md:gap-y-12 lg:gap-y-16">
             
             {/* Top-left: Hero title + subhead */}
             <div className="order-1 space-y-3">
@@ -99,7 +99,7 @@ const SEOReport = () => {
             </div>
 
             {/* Top-right: Report image/visual */}
-            <div className="order-2 flex items-center justify-center">
+            <div className="order-2 flex items-center justify-center mb-4 md:mb-6 lg:mb-8">
               <div className="relative max-h-[320px] md:max-h-[360px]">
                 <div className="bg-gradient-to-br from-[#F6C343]/30 to-[#F59E0B]/10 rounded-2xl shadow-md overflow-hidden p-8">
                   <img 
@@ -118,11 +118,11 @@ const SEOReport = () => {
 
             {/* Separator line */}
             <div className="order-2.5 lg:col-span-2">
-              <div className="border-t border-gray-200 my-6 lg:my-8"></div>
+              <div className="border-t border-gray-200 my-6 md:my-8 lg:my-10"></div>
             </div>
 
             {/* Bottom-left: Benefits list */}
-            <div className="order-3 space-y-6 mt-0">
+            <div className="order-3 space-y-6 mt-6 md:mt-8 lg:mt-10">
               <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">
                 How can this report help you stand out from the competition?
               </h2>
@@ -142,7 +142,7 @@ const SEOReport = () => {
             </div>
 
             {/* Bottom-right: Form card */}
-            <div className="order-4 lg:self-start">
+            <div className="order-4 lg:self-start mt-6 md:mt-8 lg:mt-10">
               <div className="bg-white border border-[#E6E8EE] rounded-xl shadow-sm p-6 md:p-8">
                 {!isSubmitted ? (
                   <>
