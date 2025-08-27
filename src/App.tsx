@@ -10,6 +10,7 @@ import Settings from "./pages/Settings";
 import CaseStudies from "./pages/CaseStudies";
 import CaseStudyDetail from "./pages/CaseStudyDetail";
 import Pricing from "./pages/Pricing";
+import SEOReport from "./pages/SEOReport";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,8 @@ const App = () => (
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/resources/seo-2025-backlink-report" element={<SEOReport />} />
+          <Route path="/report/seo-2025" element={<SEOReport />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

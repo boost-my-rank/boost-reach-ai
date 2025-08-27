@@ -29,14 +29,8 @@ const navigation: NavItem[] = [
     href: "/pricing",
   },
   {
-    label: "Resources",
-    href: "#resources",
-    submenu: [
-      { label: "SEO Guide", href: "#seo-guide" },
-      { label: "Blog", href: "#blog" },
-      { label: "Templates", href: "#templates" },
-      { label: "FAQ", href: "#faq" },
-    ],
+    label: "Free SEO Report",
+    href: "/resources/seo-2025-backlink-report",
   },
 ];
 

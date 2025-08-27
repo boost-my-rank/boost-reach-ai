@@ -68,6 +68,84 @@ export type Database = {
         }
         Relationships: []
       }
+      leads: {
+        Row: {
+          company: string | null
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+          last_name: string
+          source: string | null
+          utm_campaign: string | null
+          utm_source: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          email: string
+          first_name: string
+          id?: string
+          last_name: string
+          source?: string | null
+          utm_campaign?: string | null
+          utm_source?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          email?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          source?: string | null
+          utm_campaign?: string | null
+          utm_source?: string | null
+        }
+        Relationships: []
+      }
+      user_info: {
+        Row: {
+          company_name: string | null
+          company_website: string | null
+          created_at: string
+          id: string
+          is_under_review: boolean
+          job_title: string | null
+          linkedin_url: string | null
+          professional_bio: string | null
+          reviewed_at: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          company_name?: string | null
+          company_website?: string | null
+          created_at?: string
+          id?: string
+          is_under_review?: boolean
+          job_title?: string | null
+          linkedin_url?: string | null
+          professional_bio?: string | null
+          reviewed_at?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          company_name?: string | null
+          company_website?: string | null
+          created_at?: string
+          id?: string
+          is_under_review?: boolean
+          job_title?: string | null
+          linkedin_url?: string | null
+          professional_bio?: string | null
+          reviewed_at?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
