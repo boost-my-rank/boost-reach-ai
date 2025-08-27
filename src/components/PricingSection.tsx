@@ -23,7 +23,7 @@ export function PricingSection() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Simple, Transparent Pricing
+              Simple Joint Plan Pricing
             </h2>
             <p className="text-xl text-muted-foreground">
               One plan that delivers everything you need to boost your SEO
@@ -42,7 +42,7 @@ export function PricingSection() {
                   </Badge>
                   <CardTitle className="text-2xl">Standard Plan</CardTitle>
                   <div className="text-5xl font-bold text-foreground">
-                    $300
+                    $249
                     <span className="text-xl text-muted-foreground font-normal"> / month</span>
                   </div>
                   <p className="text-muted-foreground">
@@ -84,7 +84,7 @@ export function PricingSection() {
                 {/* CTA Buttons */}
                 <div className="space-y-4 pt-6">
                   <Button variant="cta" size="lg" className="w-full" asChild>
-                    <Link to="/signup">Start free trial</Link>
+                    <Link to="/signup">Try it now</Link>
                   </Button>
                   <Button variant="outline" size="lg" className="w-full">
                     Book a demo
@@ -110,15 +110,15 @@ export function PricingSection() {
             <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <Check className="h-4 w-4 text-accent" />
-                <span>No long-term contracts</span>
+                <span>Money-back guarantee</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="h-4 w-4 text-accent" />
-                <span>Cancel anytime</span>
+                <span>Cancel any time</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="h-4 w-4 text-accent" />
-                <span>Results in 7-30 days</span>
+                <span>Results in 7–30 days</span>
               </div>
             </div>
           </div>

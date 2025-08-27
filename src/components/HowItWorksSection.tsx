@@ -36,7 +36,7 @@ export function HowItWorksSection() {
               How It Works
             </h2>
             <p className="text-xl text-muted-foreground">
-              A simple, scannable flow that delivers results on autopilot
+              Our proven AI system consistently delivers 100+ targeted pitches monthly to high-authority publications, resulting in guaranteed 3+ high-authority backlinks per month.
             </p>
           </div>
 
@@ -91,17 +91,39 @@ export function HowItWorksSection() {
             ))}
           </div>
 
-          {/* Process Summary */}
-          <div className="mt-16 text-center">
+          {/* Expected Impact Timeline */}
+          <div className="mt-16">
             <Card className="bg-gradient-to-r from-primary/5 to-accent/5 border-border/50">
               <CardContent className="p-8">
-                <h3 className="text-lg font-bold mb-4">
-                  The entire process is hands-off for you
+                <h3 className="text-xl font-bold mb-6 text-center">
+                  Expected Impact Timeline
                 </h3>
-                <p className="text-muted-foreground max-w-2xl mx-auto">
-                  Once onboarded, our team handles everything from opportunity identification to content creation 
-                  and submission. You'll receive regular reports showing your new backlinks and their impact.
-                </p>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  <div className="text-center">
+                    <Badge variant="outline" className="mb-3">Week 1-2</Badge>
+                    <p className="text-sm text-muted-foreground">
+                      Onboarding & initial research phase
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <Badge variant="outline" className="mb-3">Week 3-4</Badge>
+                    <p className="text-sm text-muted-foreground">
+                      First pitches sent & initial responses
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <Badge variant="outline" className="mb-3">Week 5-6</Badge>
+                    <p className="text-sm text-muted-foreground">
+                      First backlinks secured & live
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <Badge variant="outline" className="mb-3">Week 7-8</Badge>
+                    <p className="text-sm text-muted-foreground">
+                      Full momentum & consistent results
+                    </p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>

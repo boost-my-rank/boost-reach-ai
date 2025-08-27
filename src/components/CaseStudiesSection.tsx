@@ -1,135 +1,95 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Calendar, Link, TrendingUp } from "lucide-react";
-
-const caseStudies = [
-  {
-    category: "B2B SaaS",
-    vertical: "Cybersecurity",
-    timeframe: "60 days",
-    links: "6 (DA 40–60)",
-    impact: "+18% organic sessions QoQ",
-    quote: "Press mentions gave us instant credibility with prospects.",
-    metrics: {
-      organicTraffic: "+18%",
-      domainAuthority: "+12 points",
-      backlinks: "6 high-quality"
-    }
-  },
-  {
-    category: "E-commerce",
-    vertical: "Fashion Tech",
-    timeframe: "90 days",
-    links: "9 (DA 35–55)",
-    impact: "+32% organic revenue",
-    quote: "The ROI was clear within the first quarter—we're scaling up.",
-    metrics: {
-      organicTraffic: "+45%",
-      domainAuthority: "+8 points",
-      backlinks: "9 high-quality"
-    }
-  },
-  {
-    category: "Professional Services",
-    vertical: "Marketing Agency",
-    timeframe: "45 days",
-    links: "4 (DA 42–58)",
-    impact: "+24% qualified leads",
-    quote: "Being quoted in industry publications transformed our authority.",
-    metrics: {
-      organicTraffic: "+28%",
-      domainAuthority: "+6 points",
-      backlinks: "4 high-quality"
-    }
-  },
-];
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { caseStudies } from "@/data/caseStudies";
 
 export function CaseStudiesSection() {
+  // Get top 3 case studies
+  const topCaseStudies = caseStudies.slice(0, 3);
+
   return (
-    <section className="py-16 bg-muted/30">
+    <section className="py-16 bg-background">
       <div className="container px-4">
-        <div className="text-center mb-12">
-          <p className="text-sm font-semibold text-primary mb-2 uppercase tracking-wide">
-            Success Stories
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Read success stories from current customers
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            See how businesses like yours are growing their organic traffic and authority with our backlink service.
-          </p>
-        </div>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-xs font-semibold text-muted-foreground mb-3 uppercase tracking-wider">
+              SUCCESS STORIES
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Case Studies
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Learn about our customers' successes with BoostMyRank
+            </p>
+          </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
-          {caseStudies.map((study, index) => (
-            <Card 
-              key={index} 
-              className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer bg-background border-border/50"
-            >
-              <CardContent className="p-8">
-                <div className="space-y-6">
-                  {/* Category Badge */}
-                  <div className="flex items-center justify-between">
-                    <Badge variant="outline" className="font-medium">
-                      {study.category}
-                    </Badge>
-                    <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {topCaseStudies.map((study) => (
+              <Link
+                key={study.slug}
+                to={`/case-studies/${study.slug}`}
+                className="group block"
+              >
+                <Card className="overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl bg-background border-border/50">
+                  {/* Hero Image Area */}
+                  <div 
+                    className="aspect-[16/9] relative bg-gradient-to-br p-6 flex items-center justify-between"
+                    style={{ 
+                      background: `linear-gradient(135deg, ${study.accentFrom}, ${study.accentTo})`
+                    }}
+                  >
+                    {/* Person Image */}
+                    <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
+                      <img 
+                        src={study.heroImage} 
+                        alt={study.personName}
+                        className="w-16 h-16 rounded-full object-cover"
+                      />
+                    </div>
+
+                    {/* Top Right Area - Logo and Case Study Pill */}
+                    <div className="flex flex-col items-end space-y-3">
+                      {/* Partner Logo */}
+                      {study.partnerLogo && (
+                        <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                          <img 
+                            src={study.partnerLogo} 
+                            alt={study.orgName}
+                            className="w-8 h-8 object-contain"
+                          />
+                        </div>
+                      )}
+                      
+                      {/* BoostMyRank + Case Study Pill */}
+                      <div className="text-right">
+                        <div className="text-white font-bold text-lg mb-1">BoostMyRank</div>
+                        <div className="inline-flex items-center px-2.5 py-1 rounded-full bg-black text-white text-xs font-semibold">
+                          CASE STUDY
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Vertical */}
-                  <div>
-                    <h3 className="text-lg font-bold text-foreground mb-2">
-                      {study.vertical}
+                  {/* Content Area */}
+                  <CardContent className="px-6 py-6">
+                    <h3 className="text-lg md:text-xl font-bold leading-tight text-foreground line-clamp-3 group-hover:text-primary transition-colors">
+                      {study.title}
                     </h3>
-                  </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
 
-                  {/* Metrics */}
-                  <div className="space-y-3">
-                    <div className="flex items-center text-sm text-muted-foreground">
-                      <Calendar className="h-4 w-4 mr-2" />
-                      <span className="font-medium">{study.timeframe}</span>
-                      <span className="mx-2">•</span>
-                      <Link className="h-4 w-4 mr-1" />
-                      <span>Links: {study.links}</span>
-                    </div>
-                    
-                    <div className="flex items-center text-sm">
-                      <TrendingUp className="h-4 w-4 mr-2 text-accent" />
-                      <span className="font-semibold text-accent">Impact: {study.impact}</span>
-                    </div>
-                  </div>
-
-                  {/* Quote */}
-                  <blockquote className="text-sm italic text-foreground leading-relaxed border-l-3 border-primary pl-4">
-                    "{study.quote}"
-                  </blockquote>
-
-                  {/* Additional Metrics */}
-                  <div className="grid grid-cols-3 gap-3 pt-4 border-t border-border">
-                    <div className="text-center">
-                      <div className="text-lg font-bold text-primary">{study.metrics.organicTraffic}</div>
-                      <div className="text-xs text-muted-foreground">Traffic</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-lg font-bold text-primary">{study.metrics.domainAuthority}</div>
-                      <div className="text-xs text-muted-foreground">DA Boost</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-lg font-bold text-primary">{study.metrics.backlinks}</div>
-                      <div className="text-xs text-muted-foreground">Links</div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <div className="text-center">
-          <Button variant="outline" size="lg">
-            See more stories
-          </Button>
+          <div className="text-center mt-12">
+            <Button variant="outline" size="lg" asChild>
+              <Link to="/case-studies">
+                <ArrowRight className="h-4 w-4 mr-2" />
+                See more stories
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
     </section>

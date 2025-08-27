@@ -9,10 +9,10 @@ export function VideoSection() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              See How It Works
+              Live Demo
             </h2>
             <p className="text-xl text-muted-foreground">
-              Watch a live demo of our backlink outreach process in action
+              Watch our demo of our backlink outreach in action
             </p>
           </div>
 
