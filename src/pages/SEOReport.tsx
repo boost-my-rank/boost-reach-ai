@@ -75,42 +75,37 @@ const SEOReport = () => {
 
   const benefitItems = [
     "Understand the 2025 link-signal landscape and what Google is rewarding now.",
-    "Benchmark \"safe\" anchor-text distributions by industry to avoid penalties.",
     "Learn DA/DR realities: which metrics matter and how to prioritize targets.",
     "See proven outreach frameworks that convert (HARO/Featured/queries that win).",
-    "Plan link velocity the right way: how fast to ramp without risking spam flags.",
-    "Get an on-page + link-building checklist for new pages vs. aged content.",
-    "Read mini case studies showing traffic impact from 3 quality links/month.",
-    "Use our monthly reporting template to communicate ROI internally.",
   ];
 
   return (
     <div className="min-h-screen bg-[#F7F8FA]">
       <Header />
-      <main className="pt-20">
-        <div className="max-w-[1120px] mx-auto px-4 md:px-6 lg:px-8 py-16">
+      <main className="pt-8">
+        <div className="max-w-[1344px] mx-auto px-4 md:px-6 lg:px-8 py-8">
           {/* Four-quadrant grid layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-[auto_auto] lg:grid-rows-2 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-[auto_auto] lg:grid-rows-2 gap-6 lg:gap-y-6 lg:gap-x-10">
             
             {/* Top-left: Hero title + subhead */}
-            <div className="order-1 space-y-6">
+            <div className="order-1 space-y-3">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
-                SEO in 2025: Advice to grow your organic traffic using proven link-building strategies
+                SEO in 2025. How to grow your traffic using using proven link building strategies
               </h1>
               
               <p className="text-lg text-gray-600 leading-relaxed">
-                A complete report to help you grow your organic SEO traffic using link-building strategies that responsibly increase your domain reputation.
+                Download the free report to help you grow your SEO traffic and increase your domain reputation.
               </p>
             </div>
 
             {/* Top-right: Report image/visual */}
             <div className="order-2 flex items-center justify-center">
-              <div className="relative">
+              <div className="relative max-h-[320px] md:max-h-[360px]">
                 <div className="bg-gradient-to-br from-[#F6C343]/30 to-[#F59E0B]/10 rounded-2xl shadow-md overflow-hidden p-8">
                   <img 
                     src={reportMockup}
                     alt="Free 2025 SEO Backlink Report preview showing charts and insights for organic traffic growth"
-                    className="w-full h-auto rounded-lg shadow-sm"
+                    className="w-full h-auto rounded-lg shadow-sm aspect-[4/3] object-contain"
                   />
                   <div className="absolute top-4 right-4">
                     <span className="bg-gray-900 text-white text-xs font-semibold px-3 py-1 rounded-full">
@@ -121,8 +116,13 @@ const SEOReport = () => {
               </div>
             </div>
 
+            {/* Separator line */}
+            <div className="order-2.5 lg:col-span-2">
+              <div className="border-t border-gray-200 my-6 lg:my-8"></div>
+            </div>
+
             {/* Bottom-left: Benefits list */}
-            <div className="order-3 space-y-6">
+            <div className="order-3 space-y-6 mt-0">
               <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">
                 How can this report help you stand out from the competition?
               </h2>
