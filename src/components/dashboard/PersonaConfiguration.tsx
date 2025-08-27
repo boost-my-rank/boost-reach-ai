@@ -5,13 +5,27 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-
+import { supabase } from "@/integrations/supabase/client";
 interface PersonaData {
   linkedin: string;
   companyName: string;
   jobTitle: string;
   companyWebsite: string;
   biography: string;
+}
+
+interface UserInfoRow {
+  id: string;
+  user_id: string;
+  linkedin_url: string | null;
+  company_name: string | null;
+  job_title: string | null;
+  company_website: string | null;
+  professional_bio: string | null;
+  is_under_review: boolean;
+  reviewed_at: string | null;
+  created_at: string;
+  updated_at: string;
 }
 
 const initialData: PersonaData = {
@@ -30,16 +44,35 @@ export function PersonaConfiguration() {
   const [hasChanges, setHasChanges] = useState(false);
   const [errors, setErrors] = useState<Partial<PersonaData>>({});
 
-  // Simulate API load on mount
+  // Load user info from Supabase on mount
   useEffect(() => {
     const loadUserInfo = async () => {
       try {
-        // Simulate API call - in real app this would be: GET /api/user-info
-        const savedData = localStorage.getItem('personaData');
-        if (savedData) {
-          const parsed = JSON.parse(savedData);
-          setData(parsed);
-          setOriginalData(parsed);
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
+
+        const { data: userInfo, error } = await (supabase as any)
+          .from('user_info')
+          .select('*')
+          .eq('user_id', user.id)
+          .maybeSingle();
+
+        if (error && error.code !== 'PGRST116') {
+          console.error('Failed to load user info:', error);
+          return;
+        }
+
+        if (userInfo) {
+          const userInfoTyped = userInfo as UserInfoRow;
+          const loadedData: PersonaData = {
+            linkedin: userInfoTyped.linkedin_url || "",
+            companyName: userInfoTyped.company_name || "",
+            jobTitle: userInfoTyped.job_title || "",
+            companyWebsite: userInfoTyped.company_website || "",
+            biography: userInfoTyped.professional_bio || ""
+          };
+          setData(loadedData);
+          setOriginalData(loadedData);
         }
       } catch (error) {
         console.error('Failed to load user info:', error);
@@ -74,9 +107,8 @@ export function PersonaConfiguration() {
         }
         break;
       case 'biography':
-        const wordCount = value.trim().split(/\s+/).filter(word => word.length > 0).length;
-        if (value && (wordCount < 1 || wordCount > 1000)) {
-          return 'Biography must be between 1 and 1000 words';
+        if (value && value.length > 2000) {
+          return 'Maximum 2000 characters allowed';
         }
         break;
     }
@@ -112,15 +144,36 @@ export function PersonaConfiguration() {
     }
 
     try {
-      // Simulate API call - in real app this would be: PUT /api/user-info
-      localStorage.setItem('personaData', JSON.stringify(data));
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        throw new Error('User not authenticated');
+      }
+
+      const payload = {
+        user_id: user.id,
+        linkedin_url: data.linkedin || null,
+        company_name: data.companyName || null,
+        job_title: data.jobTitle || null,
+        company_website: data.companyWebsite || null,
+        professional_bio: data.biography || null,
+      };
+
+      const { error } = await (supabase as any)
+        .from('user_info')
+        .upsert(payload, { onConflict: 'user_id' });
+
+      if (error) {
+        throw error;
+      }
+
       setOriginalData(data);
       
       toast({
-        title: "Settings saved",
+        title: "Saved.",
         description: "Your outreach settings have been updated successfully.",
       });
     } catch (error) {
+      console.error('Save error:', error);
       toast({
         title: "Error",
         description: "Failed to save settings. Please try again.",
@@ -136,9 +189,6 @@ export function PersonaConfiguration() {
     setErrors({});
   };
 
-  const getBiographyWordCount = () => {
-    return data.biography.trim().split(/\s+/).filter(word => word.length > 0).length;
-  };
 
   return (
     <div className="bg-card border border-card-border rounded-xl shadow-sm overflow-hidden">
@@ -248,7 +298,7 @@ export function PersonaConfiguration() {
               <p className="text-sm text-destructive">{errors.biography}</p>
             ) : (
               <p className="text-xs text-muted-foreground">
-                {getBiographyWordCount()}/1000 words
+                {data.biography.length}/2000 characters
               </p>
             )}
           </div>
