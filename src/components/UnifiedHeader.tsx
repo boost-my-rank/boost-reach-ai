@@ -86,9 +86,11 @@ export function UnifiedHeader() {
         <div className="hidden md:flex items-center space-x-4">
           {!isSignedIn ? (
             <>
-              <Button variant="ghost" size="sm">
-                Sign in
-              </Button>
+              <Link to="/signin">
+                <Button variant="ghost" size="sm">
+                  Sign in
+                </Button>
+              </Link>
               <Button variant="cta" size="sm" asChild>
                 <Link to="/signup">Try it now</Link>
               </Button>
@@ -126,9 +128,11 @@ export function UnifiedHeader() {
             ))}
             {!isSignedIn && (
               <div className="flex flex-col space-y-2 pt-4 border-t">
-                <Button variant="ghost" size="sm" className="justify-start">
-                  Sign in
-                </Button>
+                <Link to="/signin">
+                  <Button variant="ghost" size="sm" className="justify-start">
+                    Sign in
+                  </Button>
+                </Link>
                 <Button variant="cta" size="sm" asChild>
                   <Link to="/signup">Try it now</Link>
                 </Button>

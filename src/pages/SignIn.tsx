@@ -1,7 +1,7 @@
 import { UnifiedHeader } from "@/components/UnifiedHeader";
 import AuthForm from "@/components/auth/AuthForm";
 
-const SignUp = () => {
+const SignIn = () => {
   return (
     <div className="min-h-screen bg-slate-50">
       <UnifiedHeader />
@@ -10,8 +10,8 @@ const SignUp = () => {
       <main className="pt-20">
         <div className="flex items-center justify-center min-h-[calc(100vh-80px)] px-6 py-12">
           <AuthForm 
-            mode="signup" 
-            showTerms={true}
+            mode="signin" 
+            showForgotPassword={true}
           />
         </div>
       </main>
@@ -19,4 +19,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;
