@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { SubscriptionModal } from "./SubscriptionModal";
 interface PersonaData {
   linkedin: string;
   companyName: string;
@@ -43,6 +44,7 @@ export function PersonaConfiguration() {
   const [isLoading, setIsLoading] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
   const [errors, setErrors] = useState<Partial<PersonaData>>({});
+  const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
 
   // Load user info from Supabase on mount
   useEffect(() => {
@@ -168,6 +170,9 @@ export function PersonaConfiguration() {
 
       setOriginalData(data);
       
+      // Check payment status after successful save
+      await checkPaymentStatusAndShowModal();
+      
       toast({
         title: "Saved.",
         description: "Your outreach settings have been updated successfully.",
@@ -187,6 +192,27 @@ export function PersonaConfiguration() {
   const handleRevert = () => {
     setData(originalData);
     setErrors({});
+  };
+
+  const checkPaymentStatusAndShowModal = async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      // Get payment status from user_info table
+      const { data: userInfo } = await supabase
+        .from('user_info')
+        .select('payment_status')
+        .eq('user_id', user.id)
+        .single();
+
+      // If payment status is not active, show subscription modal
+      if (userInfo?.payment_status !== 'active') {
+        setShowSubscriptionModal(true);
+      }
+    } catch (error) {
+      console.error('Failed to check payment status:', error);
+    }
   };
 
 
@@ -304,6 +330,11 @@ export function PersonaConfiguration() {
           </div>
         </div>
       </div>
+
+      <SubscriptionModal 
+        isOpen={showSubscriptionModal}
+        onClose={() => setShowSubscriptionModal(false)}
+      />
     </div>
   );
 }
