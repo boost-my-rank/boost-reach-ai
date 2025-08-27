@@ -204,10 +204,10 @@ export function PersonaConfiguration() {
         .from('user_info')
         .select('payment_status')
         .eq('user_id', user.id)
-        .single();
+        .maybeSingle();
 
       // If payment status is not active, show subscription modal
-      if (userInfo?.payment_status !== 'active') {
+      if (!userInfo || userInfo.payment_status !== 'active') {
         setShowSubscriptionModal(true);
       }
     } catch (error) {

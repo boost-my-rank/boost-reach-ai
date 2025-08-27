@@ -113,6 +113,7 @@ export type Database = {
           is_under_review: boolean
           job_title: string | null
           linkedin_url: string | null
+          payment_status: string
           professional_bio: string | null
           reviewed_at: string | null
           updated_at: string
@@ -126,6 +127,7 @@ export type Database = {
           is_under_review?: boolean
           job_title?: string | null
           linkedin_url?: string | null
+          payment_status?: string
           professional_bio?: string | null
           reviewed_at?: string | null
           updated_at?: string
@@ -139,6 +141,7 @@ export type Database = {
           is_under_review?: boolean
           job_title?: string | null
           linkedin_url?: string | null
+          payment_status?: string
           professional_bio?: string | null
           reviewed_at?: string | null
           updated_at?: string

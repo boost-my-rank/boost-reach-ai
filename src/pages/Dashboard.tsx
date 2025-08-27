@@ -7,13 +7,40 @@ import { PersonaConfiguration } from "@/components/dashboard/PersonaConfiguratio
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
+import { useToast } from "@/hooks/use-toast";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [user, setUser] = useState(null);
   const [showHowItWorks, setShowHowItWorks] = useState(false);
 
   useEffect(() => {
+    // Check for payment success/cancel URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('paid') === '1') {
+      // Show success message and clean URL
+      setTimeout(() => {
+        toast({
+          title: "Subscription active",
+          description: "Persona will start immediately.",
+        });
+      }, 500);
+      // Clean URL without page refresh
+      window.history.replaceState({}, document.title, '/dashboard');
+    } else if (urlParams.get('checkout') === 'cancelled') {
+      // Show gentle reminder
+      setTimeout(() => {
+        toast({
+          title: "Payment required",
+          description: "Payment is required to activate outreach.",
+          variant: "destructive",
+        });
+      }, 500);
+      // Clean URL without page refresh
+      window.history.replaceState({}, document.title, '/dashboard');
+    }
+
     // Check authentication
     const checkAuth = async () => {
       const { data: { session } } = await supabase.auth.getSession();
