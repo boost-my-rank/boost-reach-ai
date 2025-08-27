@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { CheckCircle } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
-import { Header } from "@/components/Header";
+import { UnifiedHeader } from "@/components/UnifiedHeader";
 
 const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -47,7 +47,7 @@ const SignUp = () => {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <Header />
+      <UnifiedHeader />
 
       {/* Main Content */}
       <main className="pt-20">

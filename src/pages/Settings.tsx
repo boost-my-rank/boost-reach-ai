@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { DashboardSidebar } from "@/components/dashboard/DashboardSidebar";
 import { useToast } from "@/hooks/use-toast";
-import { Header } from "@/components/Header";
+import { UnifiedHeader } from "@/components/UnifiedHeader";
 
 const Settings = () => {
   const navigate = useNavigate();
@@ -75,7 +75,7 @@ const Settings = () => {
 
   return (
     <div className="min-h-screen bg-app-canvas">
-      <Header />
+      <UnifiedHeader />
       <main className="pt-20">
         <SidebarProvider>
           <div className="flex min-h-screen w-full">

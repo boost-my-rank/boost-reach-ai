@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Check } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Header } from "@/components/Header";
+import { UnifiedHeader } from "@/components/UnifiedHeader";
 import { Footer } from "@/components/Footer";
 import reportMockup from "@/assets/seo-report-mockup.jpg";
 
@@ -81,7 +81,7 @@ const SEOReport = () => {
 
   return (
     <div className="min-h-screen bg-[#F7F8FA]">
-      <Header />
+      <UnifiedHeader />
       <main className="pt-8">
         <div className="max-w-[1344px] mx-auto px-4 md:px-6 lg:px-8 py-8">
           {/* Four-quadrant grid layout */}

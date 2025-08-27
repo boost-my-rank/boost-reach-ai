@@ -1,5 +1,5 @@
 import { useParams, Navigate } from "react-router-dom";
-import { Header } from "@/components/Header";
+import { UnifiedHeader } from "@/components/UnifiedHeader";
 import { Footer } from "@/components/Footer";
 import { getCaseStudyBySlug } from "@/data/caseStudies";
 
@@ -18,7 +18,7 @@ export default function CaseStudyDetail() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      <UnifiedHeader />
       
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4 max-w-4xl">

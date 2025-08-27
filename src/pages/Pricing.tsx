@@ -3,7 +3,7 @@ import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Header } from "@/components/Header";
+import { UnifiedHeader } from "@/components/UnifiedHeader";
 import { Footer } from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { PricingStyleFAQ } from "@/components/shared/PricingStyleFAQ";
@@ -55,7 +55,7 @@ export default function Pricing() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      <UnifiedHeader />
       <main className="pt-20">
         {/* Header Section */}
         <div className="container px-4 py-16">

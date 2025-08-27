@@ -6,7 +6,7 @@ import { HowItWorksModal } from "@/components/dashboard/HowItWorksModal";
 import { PersonaConfiguration } from "@/components/dashboard/PersonaConfiguration";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
-import { Header } from "@/components/Header";
+import { UnifiedHeader } from "@/components/UnifiedHeader";
 import { useToast } from "@/hooks/use-toast";
 
 const Dashboard = () => {
@@ -91,7 +91,7 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-app-canvas">
-      <Header />
+      <UnifiedHeader />
       <main className="pt-20">
         <SidebarProvider>
           <div className="flex min-h-screen w-full">
