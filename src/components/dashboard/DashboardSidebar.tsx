@@ -48,13 +48,7 @@ export function DashboardSidebar() {
 
   return (
     <Sidebar className="w-60 bg-sidebar border-r border-sidebar-border">
-      <SidebarHeader className="p-6 border-b border-sidebar-border">
-        <div 
-          className="text-lg font-semibold text-sidebar-foreground cursor-pointer hover:text-primary transition-colors"
-          onClick={() => navigate('/dashboard')}
-        >
-          BoostMyRank
-        </div>
+      <SidebarHeader className="px-3 py-6 border-b border-sidebar-border">
       </SidebarHeader>
 
       <SidebarContent className="p-4">

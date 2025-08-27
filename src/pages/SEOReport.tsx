@@ -82,10 +82,10 @@ const SEOReport = () => {
   return (
     <div className="min-h-screen bg-[#F7F8FA]">
       <UnifiedHeader />
-      <main className="pt-8">
+      <main className="pt-[50px]">
         <div className="max-w-[1344px] mx-auto px-4 md:px-6 lg:px-8 py-8">
           {/* Four-quadrant grid layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-[auto_auto] lg:grid-rows-2 gap-6 lg:gap-x-10 gap-y-10 md:gap-y-12 lg:gap-y-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-[auto_auto] lg:grid-rows-2 gap-6 lg:gap-x-10 gap-y-10 md:gap-y-12 lg:gap-y-20">
             
             {/* Top-left: Hero title + subhead */}
             <div className="order-1 space-y-3">
