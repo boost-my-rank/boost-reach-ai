@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Check } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
 
 interface AuthFormProps {
@@ -25,12 +25,14 @@ const AuthForm = ({
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [error, setError] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
 
   const handleEmailPasswordSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setShowSuccess(false);
 
     if (!email || !password) {
       setError("Email and password are required");
@@ -56,7 +58,15 @@ const AuthForm = ({
 
         if (error) {
           setError(error.message);
+          setShowSuccess(false);
         } else {
+          setShowSuccess(true);
+          // Optional analytics event
+          if (typeof window !== 'undefined' && (window as any).gtag) {
+            (window as any).gtag('event', 'signup_success_banner_shown', {
+              method: 'email'
+            });
+          }
           toast({
             title: "Check your email",
             description: "We sent you a confirmation link to complete your signup.",
@@ -76,6 +86,7 @@ const AuthForm = ({
       }
     } catch (error) {
       setError("An unexpected error occurred. Please try again.");
+      setShowSuccess(false);
     } finally {
       setIsLoading(false);
     }
@@ -173,8 +184,20 @@ const AuthForm = ({
           <h2 className="text-2xl font-semibold text-slate-900 mb-3">
             {mode === "signup" ? "Sign up" : "Sign in"}
           </h2>
-          {error && (
+          {error && !showSuccess && (
             <p className="text-red-600 text-sm mt-2">{error}</p>
+          )}
+          {showSuccess && mode === "signup" && (
+            <div 
+              role="status" 
+              aria-live="polite"
+              className="mt-2 p-3 bg-green-50 border border-green-200 rounded-lg flex items-start gap-3"
+            >
+              <Check className="h-4 w-4 text-green-700 flex-shrink-0 mt-0.5" aria-hidden="true" />
+              <p className="text-green-700 text-sm leading-relaxed">
+                <span className="font-medium">Success!</span> Thanks for signing up! Please check your email to confirm your account.
+              </p>
+            </div>
           )}
         </div>
 
