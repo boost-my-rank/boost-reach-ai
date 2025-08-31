@@ -28,19 +28,13 @@ export function HeroSection() {
       />
       
       <div className="container relative px-4 py-16 md:py-24">
-        {/* Social Proof Badges */}
-        <div className="flex flex-wrap justify-center gap-4 mb-8">
-          {testimonialLogos.map((logo) => (
-            <Badge
-              key={logo.name}
-              variant="outline"
-              className="flex items-center gap-2 bg-background/90 backdrop-blur px-3 py-2"
-            >
-              <logo.icon className="h-4 w-4 text-warning" />
-              <span className="font-medium">{logo.name}</span>
-              <span className="text-muted-foreground">{logo.rating}</span>
-            </Badge>
-          ))}
+        {/* Hero Button */}
+        <div className="flex justify-center mb-8">
+          <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-white to-gray-50 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200">
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-semibold text-sm">
+              Meet AI-powered backlink generation
+            </span>
+          </div>
         </div>
 
         {/* Main Hero Content */}

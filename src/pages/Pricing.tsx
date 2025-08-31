@@ -56,9 +56,9 @@ export default function Pricing() {
   return (
     <div className="min-h-screen bg-gray-50">
       <UnifiedHeader />
-      <main className="pt-20">
+      <main className="pt-24 pb-16">
         {/* Header Section */}
-        <div className="container px-4 py-16">
+        <div className="container px-4 py-8">
           <div className="max-w-4xl mx-auto text-center">
             <div className="space-y-6">
               <p className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
