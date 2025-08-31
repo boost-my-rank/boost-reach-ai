@@ -85,7 +85,7 @@ const SEOReport = () => {
       <main className="pt-24 pb-16">
         <div className="max-w-[1344px] mx-auto px-4 md:px-6 lg:px-8 py-8">
           {/* Four-quadrant grid layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-[auto_auto] lg:grid-rows-2 gap-6 lg:gap-x-10 gap-y-10 md:gap-y-12 lg:gap-y-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-[auto_auto] lg:grid-rows-2 gap-6 lg:gap-x-10 gap-y-10 md:gap-y-12 lg:gap-y-[calc(theme(spacing.20)+30px)]">
             
             {/* Top-left: Hero title + subhead */}
             <div className="order-1 space-y-3">
