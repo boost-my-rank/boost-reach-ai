@@ -97,7 +97,7 @@ const Dashboard = () => {
           <div className="flex min-h-screen w-full">
             <DashboardSidebar />
           
-          <main className="flex-1 p-6 lg:p-8">
+          <main className="flex-1 px-6 lg:px-8 pb-6 lg:pb-8 pt-[10px]">
             <div className="max-w-6xl mx-auto space-y-6">
               {/* KPI Tiles Section */}
               <section aria-labelledby="kpi-title" className="relative rounded-2xl border bg-card shadow-sm">
