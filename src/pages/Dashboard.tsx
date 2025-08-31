@@ -91,36 +91,22 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-app-canvas">
-      <SidebarProvider>
-        <div className="flex min-h-screen w-full">
-          <DashboardSidebar />
+      <UnifiedHeader />
+      <main className="pt-20">
+        <SidebarProvider>
+          <div className="flex min-h-screen w-full">
+            <DashboardSidebar />
           
-          {/* Header positioned to align logo with sidebar content */}
-          <div className="flex-1 flex flex-col">
-            <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-              <div className="flex h-16 items-center">
-                {/* Logo positioned to align with sidebar text */}
-                <div className="pl-7 pr-4">
-                  <div className="flex items-center space-x-2">
-                    <div className="h-8 w-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                      <span className="text-white font-bold text-sm">B</span>
-                    </div>
-                    <span className="text-xl font-bold text-foreground">BoostMyRank</span>
-                  </div>
-                </div>
+          <main className="flex-1 p-6 lg:p-8">
+            <div className="max-w-6xl mx-auto">
+              <div id="persona-config">
+                <PersonaConfiguration />
               </div>
-            </header>
-            
-            <main className="flex-1 p-6 lg:p-8">
-              <div className="max-w-6xl mx-auto">
-                <div id="persona-config">
-                  <PersonaConfiguration />
-                </div>
-              </div>
+            </div>
             </main>
           </div>
-        </div>
-      </SidebarProvider>
+        </SidebarProvider>
+      </main>
 
       {showHowItWorks && (
         <HowItWorksModal 
