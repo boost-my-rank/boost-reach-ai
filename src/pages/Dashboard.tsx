@@ -98,7 +98,37 @@ const Dashboard = () => {
             <DashboardSidebar />
           
           <main className="flex-1 p-6 lg:p-8">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-6xl mx-auto space-y-6">
+              {/* KPI Tiles Section */}
+              <section aria-labelledby="kpi-title" className="relative rounded-2xl border bg-card shadow-sm">
+                {/* Yellow top bar */}
+                <div className="absolute left-0 right-0 top-0 h-1.5 rounded-t-2xl bg-yellow-400" />
+
+                <div className="p-5 md:p-6 lg:p-8">
+                  <h2 id="kpi-title" className="sr-only">Key activity metrics</h2>
+
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {/* Tile 1 */}
+                    <article className="rounded-xl border bg-card p-5">
+                      <p className="text-4xl font-extrabold tracking-tight text-foreground">120</p>
+                      <p className="mt-1 text-sm text-muted-foreground">Number of backlink opportunities scanned today</p>
+                    </article>
+
+                    {/* Tile 2 */}
+                    <article className="rounded-xl border bg-card p-5">
+                      <p className="text-4xl font-extrabold tracking-tight text-foreground">18</p>
+                      <p className="mt-1 text-sm text-muted-foreground">Number of backlink pitches sent</p>
+                    </article>
+
+                    {/* Tile 3 */}
+                    <article className="rounded-xl border bg-card p-5">
+                      <p className="text-4xl font-extrabold tracking-tight text-foreground">42</p>
+                      <p className="mt-1 text-sm text-muted-foreground">Number of journalist profiles reviewed</p>
+                    </article>
+                  </div>
+                </div>
+              </section>
+
               <div id="persona-config">
                 <PersonaConfiguration />
               </div>
