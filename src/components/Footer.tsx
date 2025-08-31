@@ -5,22 +5,10 @@ import { Link } from "react-router-dom";
 
 const footerLinks = {
   product: [
-    { label: "How it Works", href: "#how-it-works" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "Case Studies", href: "#case-studies" },
-    { label: "Features", href: "#features" },
-  ],
-  resources: [
-    { label: "Blog", href: "#blog" },
-    { label: "SEO Guide", href: "#seo-guide" },
-    { label: "Templates", href: "#templates" },
-    { label: "FAQ", href: "#faq" },
-  ],
-  company: [
-    { label: "About", href: "#about" },
-    { label: "Contact", href: "#contact" },
-    { label: "Careers", href: "#careers" },
-    { label: "Partners", href: "#partners" },
+    { label: "How it Works", href: "/#how-it-works" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Case Studies", href: "/case-studies" },
+    { label: "Free SEO Guide", href: "/free-seo-guide" },
   ],
   legal: [
     { label: "Privacy Policy", href: "#privacy" },
@@ -42,16 +30,16 @@ export function Footer() {
     <footer className="bg-muted/30 border-t">
       <div className="container px-4 py-16">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-12">
           {/* Brand Section */}
-          <div className="col-span-2 space-y-4">
+          <div className="space-y-4 max-w-md">
             <div className="flex items-center space-x-2">
               <div className="h-8 w-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">B</span>
               </div>
               <span className="text-xl font-bold text-foreground">BoostMyRank</span>
             </div>
-            <p className="text-muted-foreground max-w-md leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed">
               Triple your SEO traffic with automated backlink outreach. 
               Get 3+ high-authority links monthly from Forbes, Newsweek, and CNN.
             </p>
@@ -69,72 +57,41 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Product Links */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Product</h4>
-            <ul className="space-y-2">
-              {footerLinks.product.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Navigation Links - Right Aligned */}
+          <div className="grid grid-cols-2 gap-8 md:gap-12">
+            {/* Product Links */}
+            <div className="space-y-4">
+              <h4 className="font-semibold text-foreground">Product</h4>
+              <ul className="space-y-2">
+                {footerLinks.product.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      to={link.href}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Resources Links */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Resources</h4>
-            <ul className="space-y-2">
-              {footerLinks.resources.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company Links */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Company</h4>
-            <ul className="space-y-2">
-              {footerLinks.company.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal Links */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Legal</h4>
-            <ul className="space-y-2">
-              {footerLinks.legal.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            {/* Legal Links */}
+            <div className="space-y-4">
+              <h4 className="font-semibold text-foreground">Legal</h4>
+              <ul className="space-y-2">
+                {footerLinks.legal.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
