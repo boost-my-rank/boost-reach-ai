@@ -11,7 +11,7 @@ const footerLinks = {
     { label: "Free SEO Guide", href: "/free-seo-guide" },
   ],
   legal: [
-    { label: "Privacy Policy", href: "#privacy" },
+    { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Service", href: "#terms" },
     { label: "Cookie Policy", href: "#cookies" },
     { label: "GDPR", href: "#gdpr" },
@@ -82,12 +82,12 @@ export function Footer() {
               <ul className="space-y-2">
                 {footerLinks.legal.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
+                    <Link
+                      to={link.href}
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
