@@ -67,34 +67,34 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "truckee-chamber-commerce",
-    title: "Case Study — Loch",
-    subtitle: "Learn how an online news site covering global market trends broke through page-one competition and established domain authority.",
-    personName: "Prithvir Jhaveri",
-    orgName: "Loch",
+    title: "Case Study — How VoiceValet increased organic traffic 70% in 3 months using BoostMyRank",
+    subtitle: "Learn how an AI phone-answering service turned missed calls into inbound pipeline by building domain authority.",
+    personName: "Aidan Mattrick",
+    orgName: "VoiceValet",
     updatedAt: "Aug 26, 2024",
     heroImage: "/placeholder.svg",
     accentFrom: "#F59E0B",
     accentTo: "#EC4899",
     challenge: {
-      p1: "Loch is an online news site covering global market trends with a focus on US news, politics, and finance stories. Despite publishing on their blog consistently, they struggled to break into page-one results against bigger publishers.",
-      p2: "Referral traffic had leveled off, and the site lacked the domain authority signals Google uses to trust and rank content from newer brands.",
-      p3: "As a newer outlet competing with established media for the same headlines, Loch had great content but too few high-authority mentions pointing back to the site. The small team had no bandwidth for ongoing, white-hat outreach.",
-      quote: "We were publishing strong stories, but they stalled on page two. We needed clear proof of authority that search engines and readers recognize.",
-      attribution: "Prithvir Jhaveri, Founder, Loch"
+      p1: "VoiceValet helps businesses answer every call with a smart AI that qualifies prospects, books appointments, and pushes clean data into the CRM, without adding human headcount. But the category is noisy and crowded.",
+      p2: "Larger vendors dominated the SERP with long-standing authority. Referral traffic had plateaued, and many top-funnel keywords lingered on page two.",
+      p3: "The team was focused on shipping product and customer stories, not managing ongoing outreach.",
+      quote: "We were missing out on high-intent organic traffic because our brand didn't yet have the authority signals that buyers and Google look for.",
+      attribution: "Aidan Mattrick, CEO, VoiceValet"
     },
     solution: {
-      p1: "BoostMyRank ran a fully managed outreach program to earn editorial backlinks from respected business and finance publications. We positioned Loch editors as quotable experts, responded to journalist requests on timely topics, and delivered 3–5 DA30+ links per month.",
-      p2: "This enabled them to create a simple \"As Seen In\" section and media badges for the homepage, article templates, and author bios to showcase credibility.",
-      p3: "We provided a hands-off workflow: We sourced opportunities, drafted quotes in the Loch voice, handled submissions and follow-ups, and provided monthly reports on newspaper placements (URL, anchor, DA, status).",
-      quote: "Being cited by well-known outlets changed the conversation for us as partners and readers suddenly starting taking us more seriously.",
-      attribution: "Prithvir Jhaveri, Founder, Loch"
+      p1: "BoostMyRank executed a hands-off, white-hat editorial outreach program designed for CMOs who need results without adding workload.",
+      p2: "Expert positioning: We matched VoiceValet's CEO to journalist requests on customer experience, lead capture, and AI in customer service, supplying concise quotes and proof points. Editorial backlinks: BoostMyRank delivered 3–5 DA30+ links per month from respected business, technology, and marketing outlets, all automated, with no paid link schemes or PBNs.",
+      p3: "Clear reporting: Monthly CSV and dashboard with URL, anchor, DA, status, and impact highlights the team could share in exec meetings.",
+      quote: "Once we started appearing in well-known publications, sales conversations moved faster. Prospects came in already trusting the brand.",
+      attribution: "Aidan Mattrick, CEO, VoiceValet"
     },
     impact: {
-      p1: "In 90 days, Loch's Google domain authority increased by 9 points, organic sessions grew 68%, and 18 priority keywords moved into the top 10.",
-      p2: "The site's newsletter signups rose 54%, which improved sponsorship interest and ad performance. New articles began indexing faster and earned visibility sooner because the brand now carried clear authority signals.",
-      p3: "Authority: DA +9 in 90 days; referring domains up 42%. Visibility: 18 target keywords entered top-10 positions; new posts started ranking sooner. Growth: Organic sessions +68% QoQ; newsletter signups +54%; more inbound sponsor interest.",
-      quote: "This investment in our digital authority has transformed our business trajectory.",
-      attribution: "Prithvir Jhaveri, Founder, Loch"
+      p1: "In 90 days, domain authority rose +12 points, organic sessions grew 72%, and demo requests increased 58%, while customer acquisition costs (CAC) decreased 22% due to stronger organic performance. Domain Authority: +12 in 90 days; referring domains: +45%. 19 priority keywords moved into top-10 (e.g., \"AI receptionist,\" \"24/7 phone answering,\" \"AI book appointments\").",
+      p2: "Organic sessions: +72% QoQ; demo requests: +58%; trial starts: +41%. New articles indexed faster and began ranking sooner due to stronger brand signals.",
+      p3: "Paid CAC down 22% as organic took a larger share of conversions; SDRs reported shorter time-to-trust on discovery calls.",
+      quote: "This program turned missed calls into a steady stream of qualified demos, and it did it without adding work to our team.",
+      attribution: "Avery Kim, CMO, VoiceValet"
     }
   },
   {
