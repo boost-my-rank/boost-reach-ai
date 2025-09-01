@@ -67,34 +67,34 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "truckee-chamber-commerce",
-    title: "Truckee Chamber Of Commerce Saves 10hrs/Week With New Job Board, Becoming The #1 Job Destination For Locals",
-    subtitle: "Discover how strategic backlink placement helped transform a local chamber's digital presence.",
-    personName: "Melissa Rodriguez",
-    orgName: "Truckee Chamber of Commerce",
+    title: "Case Study — Loch",
+    subtitle: "Learn how an online news site covering global market trends broke through page-one competition and established domain authority.",
+    personName: "Prithvir Jhaveri",
+    orgName: "Loch",
     updatedAt: "Aug 26, 2024",
     heroImage: "/placeholder.svg",
     accentFrom: "#F59E0B",
     accentTo: "#EC4899",
     challenge: {
-      p1: "The Truckee Chamber of Commerce was dealing with an outdated job board system that required excessive manual management and frustrated both employers and job seekers.",
-      p2: "Melissa, the Chamber's Marketing & Communications Manager, was spending over 40 hours per week filtering through spam applications and manually managing legitimate job postings.",
-      p3: "The poor user experience was damaging the Chamber's reputation and preventing them from effectively serving their business community members.",
-      quote: "I was getting calls with complaints all the time from employers and job seekers. The system was a nightmare to manage.",
-      attribution: "Melissa Rodriguez, Marketing Manager"
+      p1: "Loch is an online news site covering global market trends with a focus on US news, politics, and finance stories. Despite publishing on their blog consistently, they struggled to break into page-one results against bigger publishers.",
+      p2: "Referral traffic had leveled off, and the site lacked the domain authority signals Google uses to trust and rank content from newer brands.",
+      p3: "As a newer outlet competing with established media for the same headlines, Loch had great content but too few high-authority mentions pointing back to the site. The small team had no bandwidth for ongoing, white-hat outreach.",
+      quote: "We were publishing strong stories, but they stalled on page two. We needed clear proof of authority that search engines and readers recognize.",
+      attribution: "Prithvir Jhaveri, Founder, Loch"
     },
     solution: {
-      p1: "BoostMyRank secured strategic placements in regional business publications and workforce development websites to establish the Chamber as the go-to resource for local employment.",
-      p2: "High-authority backlinks from government workforce sites and regional economic development publications increased the job board's search visibility.",
-      p3: "Featured articles in local business journals highlighted the Chamber's role in connecting employers with quality candidates, driving organic traffic and credibility.",
-      quote: "The increased visibility helped us become the obvious choice for local job seekers and employers.",
-      attribution: "Melissa Rodriguez, Marketing Manager"
+      p1: "BoostMyRank ran a fully managed outreach program to earn editorial backlinks from respected business and finance publications. We positioned Loch editors as quotable experts, responded to journalist requests on timely topics, and delivered 3–5 DA30+ links per month.",
+      p2: "This enabled them to create a simple \"As Seen In\" section and media badges for the homepage, article templates, and author bios to showcase credibility.",
+      p3: "We provided a hands-off workflow: We sourced opportunities, drafted quotes in the Loch voice, handled submissions and follow-ups, and provided monthly reports on newspaper placements (URL, anchor, DA, status).",
+      quote: "Being cited by well-known outlets changed the conversation for us as partners and readers suddenly starting taking us more seriously.",
+      attribution: "Prithvir Jhaveri, Founder, Loch"
     },
     impact: {
-      p1: "The new system combined with enhanced online visibility saved Melissa over 10 hours per week in administrative work, allowing her to focus on strategic initiatives.",
-      p2: "The job board became the #1 destination for local employment, with a 400% increase in quality job applications and a 90% reduction in spam.",
-      p3: "Local businesses reported higher satisfaction rates and faster hiring times, strengthening the Chamber's value proposition to its membership.",
-      quote: "We went from being overwhelmed to being the most efficient job resource in the region.",
-      attribution: "Melissa Rodriguez, Marketing Manager"
+      p1: "In 90 days, Loch's Google domain authority increased by 9 points, organic sessions grew 68%, and 18 priority keywords moved into the top 10.",
+      p2: "The site's newsletter signups rose 54%, which improved sponsorship interest and ad performance. New articles began indexing faster and earned visibility sooner because the brand now carried clear authority signals.",
+      p3: "Authority: DA +9 in 90 days; referring domains up 42%. Visibility: 18 target keywords entered top-10 positions; new posts started ranking sooner. Growth: Organic sessions +68% QoQ; newsletter signups +54%; more inbound sponsor interest.",
+      quote: "This investment in our digital authority has transformed our business trajectory.",
+      attribution: "Prithvir Jhaveri, Founder, Loch"
     }
   },
   {
