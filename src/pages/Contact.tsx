@@ -171,7 +171,7 @@ export default function Contact() {
           />
           
           <div className="relative py-18 sm:py-24 px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-4xl text-center mb-16">
+            <div className="mx-auto max-w-4xl text-center mb-8 sm:mb-6">
               {/* Eyebrow */}
               <div className="inline-block px-3 py-1 mb-4 text-xs font-semibold text-slate-600 uppercase tracking-wider bg-slate-100 rounded-full">
                 SUPPORT
@@ -190,24 +190,9 @@ export default function Contact() {
               </h1>
               
               {/* Subtext */}
-              <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-slate-600 mb-0 max-w-2xl mx-auto">
                 Get help and questions answered by our friendly support team.
               </p>
-              
-              {/* Info band */}
-              <div 
-                className="bg-white rounded-lg p-6 mb-12 max-w-3xl mx-auto"
-                style={{
-                  border: '1px solid rgba(15,23,42,0.06)',
-                  boxShadow: '0 4px 12px -4px rgba(15,23,42,0.08)'
-                }}
-              >
-                <p className="text-slate-600 leading-relaxed">
-                  For pre-sales questions, existing customers who need help, or other inquiries, 
-                  contact us and we'll typically get back to you in less than 24 hours. 
-                  Search the <span className="text-slate-900">Help Desk</span> or send us a message to get help.
-                </p>
-              </div>
             </div>
 
             {/* Form Card */}
@@ -346,15 +331,6 @@ export default function Contact() {
                     )}
                   </div>
 
-                  {/* reCAPTCHA Placeholder */}
-                  <div className="pt-4 pb-2">
-                    <div className="bg-gray-50 border border-gray-200 rounded p-4 text-center">
-                      <p className="text-sm text-gray-600">
-                        {/* TODO: Integrate reCAPTCHA or hCaptcha */}
-                        <span className="text-gray-400">[ Captcha placeholder - to be implemented ]</span>
-                      </p>
-                    </div>
-                  </div>
 
                   {/* Submit Button */}
                   <Button 
