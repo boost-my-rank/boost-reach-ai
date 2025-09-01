@@ -8,12 +8,15 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { UnifiedHeader } from "@/components/UnifiedHeader";
 import { useToast } from "@/hooks/use-toast";
+import { useDashboardMetrics } from "@/hooks/useDashboardMetrics";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [user, setUser] = useState(null);
   const [showHowItWorks, setShowHowItWorks] = useState(false);
+  const { metrics, isLoading: metricsLoading } = useDashboardMetrics();
 
   useEffect(() => {
     // Check for payment success/cancel URL parameters
@@ -110,19 +113,37 @@ const Dashboard = () => {
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {/* Tile 1 */}
                     <article className="rounded-xl border bg-card p-5">
-                      <p className="text-4xl font-extrabold tracking-tight text-foreground">120</p>
+                      {metricsLoading ? (
+                        <Skeleton className="h-10 w-16 mb-2" />
+                      ) : (
+                        <p className="text-4xl font-extrabold tracking-tight text-foreground">
+                          {metrics?.opportunities_today ?? 0}
+                        </p>
+                      )}
                       <p className="mt-1 text-sm text-muted-foreground">Number of backlink opportunities scanned today</p>
                     </article>
 
                     {/* Tile 2 */}
                     <article className="rounded-xl border bg-card p-5">
-                      <p className="text-4xl font-extrabold tracking-tight text-foreground">18</p>
+                      {metricsLoading ? (
+                        <Skeleton className="h-10 w-16 mb-2" />
+                      ) : (
+                        <p className="text-4xl font-extrabold tracking-tight text-foreground">
+                          {metrics?.my_pitches_today ?? 0}
+                        </p>
+                      )}
                       <p className="mt-1 text-sm text-muted-foreground">Number of backlink pitches sent</p>
                     </article>
 
                     {/* Tile 3 */}
                     <article className="rounded-xl border bg-card p-5">
-                      <p className="text-4xl font-extrabold tracking-tight text-foreground">42</p>
+                      {metricsLoading ? (
+                        <Skeleton className="h-10 w-16 mb-2" />
+                      ) : (
+                        <p className="text-4xl font-extrabold tracking-tight text-foreground">
+                          {metrics?.journalists_today ?? 0}
+                        </p>
+                      )}
                       <p className="mt-1 text-sm text-muted-foreground">Number of journalist profiles reviewed</p>
                     </article>
                   </div>
