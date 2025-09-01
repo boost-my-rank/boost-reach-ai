@@ -11,11 +11,11 @@ const footerLinks = {
     { label: "Contact Us", href: "/contact" },
     { label: "Free SEO Guide", href: "/free-seo-guide" },
   ],
-  legal: [
+  resources: [
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Service", href: "/terms" },
-    { label: "Cookie Policy", href: "#cookies" },
-    { label: "GDPR", href: "#gdpr" },
+    { label: "Book a Demo", href: null }, // null href indicates plain text
+    { label: "Contact Us", href: "/contact" },
   ],
 };
 
@@ -77,18 +77,27 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Legal Links */}
+            {/* Resources Links */}
             <div className="space-y-4">
-              <h4 className="font-semibold text-foreground">Legal</h4>
+              <h4 className="font-semibold text-foreground">Resources</h4>
               <ul className="space-y-2">
-                {footerLinks.legal.map((link) => (
+                {footerLinks.resources.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      to={link.href}
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {link.label}
-                    </Link>
+                    {link.href ? (
+                      <Link
+                        to={link.href}
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <span
+                        className="text-muted-foreground cursor-default"
+                        aria-disabled="true"
+                      >
+                        {link.label}
+                      </span>
+                    )}
                   </li>
                 ))}
               </ul>
