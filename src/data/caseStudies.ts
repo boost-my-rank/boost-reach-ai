@@ -99,34 +99,34 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "medical-alley-association",
-    title: "Exceeding Medical Alley's Expectations: Association Job Board Turns Profit In The First Year On 15mins/Day",
-    subtitle: "How a medical industry association leveraged backlinks to transform their job board into a profitable venture.",
-    personName: "Dr. Sarah Chen",
-    orgName: "Medical Alley Association",
+    title: "How QT Marketing grew demo requests by 44% in 90 days by improving its backlinking strategy",
+    subtitle: "Learn how a personal trainer marketing agency increased organic pipeline through strategic editorial placement and credibility building.",
+    personName: "Quentin Thomassin",
+    orgName: "QT Marketing",
     updatedAt: "Aug 26, 2024",
     heroImage: "/placeholder.svg",
     accentFrom: "#F6C343",
     accentTo: "#EAB308",
     challenge: {
-      p1: "Medical Alley Association's job board was underperforming and required significant daily management time that detracted from their core mission of advancing the medical technology industry.",
-      p2: "The association struggled to attract high-quality medical technology professionals and companies to their platform, limiting its effectiveness as a member benefit.",
-      p3: "Previous attempts to improve the job board had failed to generate meaningful revenue or engagement, leading to questions about its viability.",
-      quote: "We were spending too much time on something that wasn't delivering value to our members.",
-      attribution: "Dr. Sarah Chen, Executive Director"
+      p1: "QT Marketing helps personal trainers win clients with targeted Facebook/Instagram ads and a proven follow-up script. Despite strong paid results, the brand struggled to rank on page one for core queries and to convert high-intent inbound traffic.",
+      p2: "Larger agencies and directories dominated the SERP with long-standing authority. Referral traffic plateaued; many priority keywords sat on page two or three.",
+      p3: "The team was focused on campaign execution, not ongoing PR or white-hat outreach.",
+      quote: "We were winning in paid, but our brand signals didn't match our results. We needed credible mentions that search engines, and skeptical prospects, could recognize.",
+      attribution: "Quentin Thomassin, Founder, QT Marketing"
     },
     solution: {
-      p1: "BoostMyRank secured authoritative backlinks from medical technology publications, healthcare business journals, and industry association directories.",
-      p2: "Strategic content placement in medical device trade publications and healthcare innovation websites established the association as a thought leader in medical technology talent.",
-      p3: "Featured coverage in business publications highlighted the association's role in connecting top medical technology talent with innovative companies.",
-      quote: "The credibility boost helped us attract the caliber of professionals and companies we'd been missing.",
-      attribution: "Dr. Sarah Chen, Executive Director"
+      p1: "BoostMyRank executed a hands-off, white-hat outreach program designed for busy growth teams.",
+      p2: "Editorial backlinks (3–5/mo, DA30+): Consistent placements in business, marketing, and small-business outlets with no paid links or networks. Expert positioning: Rapid responses to journalist requests on lead generation, offer design, and follow-up scripting; concise quotes in QT's voice.",
+      p3: "Clear reporting: Monthly CSV + summary (URL, anchor, DA, status) to keep track of all mentions and backlinks.",
+      quote: "Once we started showing up in recognized publications, our organic traffic increased significantly. Plus, our prospects arrived already trusting us.",
+      attribution: "Quentin Thomassin, Founder, QT Marketing"
     },
     impact: {
-      p1: "The job board turned profitable in its first year, generating enough revenue to fund additional member services and association programs.",
-      p2: "Daily management time was reduced to just 15 minutes per day while significantly improving the quality of both job postings and applications.",
-      p3: "Member satisfaction increased dramatically as the job board became a valuable networking and recruitment tool for the medical technology community.",
-      quote: "This success exceeded our expectations and proved the value of strategic online positioning.",
-      attribution: "Dr. Sarah Chen, Executive Director"
+      p1: "In 90 days, domain authority rose +8 points, organic sessions grew 62%, and inbound demo requests increased 44%. Domain Authority: +8 in 90 days; referring domains: +38%. 15 priority keywords moved into the top-10 (e.g., \"find clients as a personal trainer,\" \"fitness coach marketing,\" \"Facebook ads for trainers\").",
+      p2: "Organic sessions: +62% QoQ; inbound demo requests: +44%; more qualified conversations from non-paid channels. New case studies indexed faster and began ranking sooner due to stronger brand signals.",
+      p3: "Homepage conversion rate lifted after adding media badges, reducing blended CAC and reliance on incremental ad spend.",
+      quote: "The credibility boost didn't just help rankings, it also improved close rates. It's the compounder our paid engine was missing.",
+      attribution: "Quentin Thomassin, Founder, QT Marketing"
     }
   },
   {
