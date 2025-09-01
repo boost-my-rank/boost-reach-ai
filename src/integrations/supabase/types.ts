@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      contact_us_requests: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          topic: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          topic: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          topic?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       haro_requests: {
         Row: {
           category: string | null
@@ -104,6 +131,44 @@ export type Database = {
         }
         Relationships: []
       }
+      pitches_sent: {
+        Row: {
+          created_at: string
+          haro_request_id: string | null
+          id: string
+          note: string | null
+          sent_at: string
+          status: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          haro_request_id?: string | null
+          id?: string
+          note?: string | null
+          sent_at?: string
+          status?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          haro_request_id?: string | null
+          id?: string
+          note?: string | null
+          sent_at?: string
+          status?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pitches_sent_haro_request_id_fkey"
+            columns: ["haro_request_id"]
+            isOneToOne: false
+            referencedRelation: "haro_requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_info: {
         Row: {
           company_name: string | null
@@ -154,7 +219,14 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      dashboard_metrics_today: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          journalists_today: number
+          my_pitches_today: number
+          opportunities_today: number
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never

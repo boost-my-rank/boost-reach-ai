@@ -8,6 +8,7 @@ const footerLinks = {
     { label: "How it Works", href: "/#how-it-works" },
     { label: "Pricing", href: "/pricing" },
     { label: "Case Studies", href: "/case-studies" },
+    { label: "Contact Us", href: "/contact" },
     { label: "Free SEO Guide", href: "/free-seo-guide" },
   ],
   legal: [
