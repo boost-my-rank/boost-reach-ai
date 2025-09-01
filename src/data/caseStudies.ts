@@ -35,34 +35,34 @@ export interface CaseStudy {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "grow-cycling-foundation",
-    title: "Shaping The Cycling World: How Grow Cycling Foundation Generated Over $40k In Revenue To Fund Community Initiatives With A Custom Job Board",
-    subtitle: "Learn how a cycling foundation transformed their community outreach and funding strategy.",
-    personName: "Marcus Johnson",
-    orgName: "Grow Cycling Foundation",
+    title: "Case Study — Loch",
+    subtitle: "Learn how an online news site covering global market trends broke through page-one competition and established domain authority.",
+    personName: "Prithvir Jhaveri",
+    orgName: "Loch",
     updatedAt: "Aug 26, 2024",
     heroImage: "/placeholder.svg",
     accentFrom: "#F6C343",
     accentTo: "#F59E0B",
     challenge: {
-      p1: "The Grow Cycling Foundation was struggling to generate sustainable revenue to fund their community cycling initiatives. Traditional fundraising methods were time-consuming and yielded inconsistent results.",
-      p2: "With limited staff and resources, the foundation needed a scalable solution that could operate with minimal oversight while still generating meaningful income for their programs.",
-      p3: "The cycling community was growing rapidly, but the foundation lacked the digital infrastructure to capitalize on this momentum and connect with potential supporters effectively.",
-      quote: "We needed a way to turn our passion for cycling into sustainable funding for our community programs.",
-      attribution: "Marcus Johnson, Program Director"
+      p1: "Loch is an online news site covering global market trends with a focus on US news, politics, and finance stories. Despite publishing on their blog consistently, they struggled to break into page-one results against bigger publishers.",
+      p2: "Referral traffic had leveled off, and the site lacked the domain authority signals Google uses to trust and rank content from newer brands.",
+      p3: "As a newer outlet competing with established media for the same headlines, Loch had great content but too few high-authority mentions pointing back to the site. The small team had no bandwidth for ongoing, white-hat outreach.",
+      quote: "We were publishing strong stories, but they stalled on page two. We needed clear proof of authority that search engines and readers recognize.",
+      attribution: "Prithvir Jhaveri, Founder, Loch"
     },
     solution: {
-      p1: "BoostMyRank helped the foundation establish thought leadership in the cycling industry through strategic content placement in major cycling publications and business journals.",
-      p2: "By securing high-authority backlinks from cycling magazines, business publications, and nonprofit directories, the foundation's online visibility increased dramatically.",
-      p3: "The enhanced credibility led to partnerships with major cycling brands and attracted the attention of potential corporate sponsors who discovered them through featured articles.",
-      quote: "The credibility boost from being featured in major publications opened doors we never expected.",
-      attribution: "Marcus Johnson, Program Director"
+      p1: "BoostMyRank ran a fully managed outreach program to earn editorial backlinks from respected business and finance publications. We positioned Loch editors as quotable experts, responded to journalist requests on timely topics, and delivered 3–5 DA30+ links per month.",
+      p2: "This enabled them to create a simple \"As Seen In\" section and media badges for the homepage, article templates, and author bios to showcase credibility.",
+      p3: "We provided a hands-off workflow: We sourced opportunities, drafted quotes in the Loch voice, handled submissions and follow-ups, and provided monthly reports on newspaper placements (URL, anchor, DA, status).",
+      quote: "Being cited by well-known outlets changed the conversation for us as partners and readers suddenly starting taking us more seriously.",
+      attribution: "Prithvir Jhaveri, Founder, Loch"
     },
     impact: {
-      p1: "Within six months, the foundation generated over $40,000 in new revenue through corporate partnerships and sponsorships that originated from their enhanced online presence.",
-      p2: "Website traffic increased by 320%, with a significant portion coming from high-intent visitors who converted into donors and volunteers.",
-      p3: "The foundation was able to launch three new community cycling programs and expand their reach to underserved neighborhoods throughout the region.",
-      quote: "This investment in our online presence has been transformational for our mission.",
-      attribution: "Marcus Johnson, Program Director"
+      p1: "In 90 days, Loch's Google domain authority increased by 9 points, organic sessions grew 68%, and 18 priority keywords moved into the top 10.",
+      p2: "The site's newsletter signups rose 54%, which improved sponsorship interest and ad performance. New articles began indexing faster and earned visibility sooner because the brand now carried clear authority signals.",
+      p3: "Authority: DA +9 in 90 days; referring domains up 42%. Visibility: 18 target keywords entered top-10 positions; new posts started ranking sooner. Growth: Organic sessions +68% QoQ; newsletter signups +54%; more inbound sponsor interest.",
+      quote: "This investment in our digital authority has transformed our business trajectory.",
+      attribution: "Prithvir Jhaveri, Founder, Loch"
     }
   },
   {
