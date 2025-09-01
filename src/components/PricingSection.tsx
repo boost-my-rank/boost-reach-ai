@@ -83,7 +83,7 @@ export function PricingSection() {
 
                 {/* CTA Buttons */}
                 <div className="space-y-4 pt-6">
-                  <Button variant="cta" size="lg" className="w-full" asChild>
+                  <Button variant="cta" size="lg" className="w-full cta-shimmer" asChild>
                     <Link to="/signup">Try it now</Link>
                   </Button>
                   <Button variant="outline" size="lg" className="w-full">

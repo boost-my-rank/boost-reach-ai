@@ -169,7 +169,7 @@ export default function Pricing() {
                       ))}
                     </div>
                     <div className="space-y-3 pt-4">
-                      <Button asChild className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold">
+                      <Button asChild className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold cta-shimmer">
                         <Link to="/signup">Get started</Link>
                       </Button>
                       <p className="text-xs text-muted-foreground text-center">
@@ -223,8 +223,8 @@ export default function Pricing() {
                       ))}
                     </div>
                     <div className="pt-4">
-                      <Button variant="outline" className="w-full font-semibold">
-                        Contact sales »
+                      <Button variant="outline" className="w-full font-semibold cta-shimmer" asChild>
+                        <Link to="/contact">Contact sales »</Link>
                       </Button>
                     </div>
                   </CardContent>

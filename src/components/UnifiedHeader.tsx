@@ -91,7 +91,7 @@ export function UnifiedHeader() {
                   Sign in
                 </Button>
               </Link>
-              <Button variant="cta" size="sm" asChild>
+              <Button variant="cta" size="sm" className="cta-shimmer" asChild>
                 <Link to="/signup">Try it now</Link>
               </Button>
             </>
@@ -133,7 +133,7 @@ export function UnifiedHeader() {
                     Sign in
                   </Button>
                 </Link>
-                <Button variant="cta" size="sm" asChild>
+                <Button variant="cta" size="sm" className="cta-shimmer" asChild>
                   <Link to="/signup">Try it now</Link>
                 </Button>
               </div>

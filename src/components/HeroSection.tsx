@@ -55,7 +55,7 @@ export function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button variant="cta" size="lg" className="min-w-[200px]" asChild>
+            <Button variant="cta" size="lg" className="min-w-[200px] cta-shimmer" asChild>
               <Link to="/signup">Try it now</Link>
             </Button>
             <Button variant="outline" size="lg" className="min-w-[200px]">
