@@ -69,11 +69,6 @@ export default function Pricing() {
     <div className="min-h-screen bg-gray-50">
       <UnifiedHeader />
       <main className="pt-24 pb-16">
-        {/* Special Offer Banner */}
-        <div className="container px-4">
-          <SpecialOfferBanner />
-        </div>
-
         {/* Header Section */}
         <div className="container px-4 py-8">
           <div className="max-w-4xl mx-auto text-center">
@@ -87,6 +82,11 @@ export default function Pricing() {
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Build your SEO authority at your own pace and upgrade as you grow.
               </p>
+            </div>
+
+            {/* Special Offer Banner */}
+            <div className="mt-8 mb-6">
+              <SpecialOfferBanner />
             </div>
 
             {/* Billing Toggle */}
@@ -140,6 +140,7 @@ export default function Pricing() {
                           <span className="line-through" aria-label={`was $${getOriginalPrice(plans.standard.monthly)}`}>
                             ${getOriginalPrice(plans.standard.monthly)}/mo
                           </span>
+                          <span className="ml-2">Limited Time Only!</span>
                         </div>
                         <div className="text-4xl font-extrabold text-foreground">
                           {getPriceText(plans.standard.monthly)}
@@ -193,6 +194,7 @@ export default function Pricing() {
                           <span className="line-through" aria-label={`was $${getOriginalPrice(plans.agency.monthly)}`}>
                             ${getOriginalPrice(plans.agency.monthly)}/mo
                           </span>
+                          <span className="ml-2">Limited Time Only!</span>
                         </div>
                         <div className="text-4xl font-extrabold text-foreground">
                           {getPriceText(plans.agency.monthly, plans.agency.startingFrom)}
