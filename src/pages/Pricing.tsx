@@ -8,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { PricingStyleFAQ } from "@/components/shared/PricingStyleFAQ";
 import { pricingFaqItems } from "@/data/faqData";
+import { SpecialOfferBanner } from "@/components/SpecialOfferBanner";
 
 const plans = {
   standard: {
@@ -46,6 +47,17 @@ export default function Pricing() {
     return monthlyPrice;
   };
 
+  const getOriginalPrice = (monthlyPrice: number) => {
+    if (billingCycle === 'annual') {
+      if (monthlyPrice === 249) return 299; // Standard annual: was $299, now $199
+      if (monthlyPrice === 999) return 1099; // Agency annual: was $1099, now $699
+    } else {
+      if (monthlyPrice === 249) return 349; // Standard monthly: was $349, now $249
+      if (monthlyPrice === 999) return 1499; // Agency monthly: was $1499, now $999
+    }
+    return monthlyPrice;
+  };
+
   const getPriceText = (monthlyPrice: number, startingFrom = false) => {
     const price = getPrice(monthlyPrice);
     const prefix = startingFrom ? "Starting at " : "";
@@ -57,6 +69,11 @@ export default function Pricing() {
     <div className="min-h-screen bg-gray-50">
       <UnifiedHeader />
       <main className="pt-24 pb-16">
+        {/* Special Offer Banner */}
+        <div className="container px-4">
+          <SpecialOfferBanner />
+        </div>
+
         {/* Header Section */}
         <div className="container px-4 py-8">
           <div className="max-w-4xl mx-auto text-center">
@@ -118,13 +135,20 @@ export default function Pricing() {
                   <CardHeader className="space-y-6">
                     <div>
                       <h3 className="text-2xl font-extrabold text-foreground mb-2">Standard</h3>
-                      <div className="text-4xl font-extrabold text-foreground">
-                        {getPriceText(plans.standard.monthly)}
-                        {billingCycle === 'annual' && (
-                          <span className="text-lg text-muted-foreground font-normal ml-2">
-                            billed annually
+                      <div className="space-y-1">
+                        <div className="text-lg text-red-600">
+                          <span className="line-through" aria-label={`was $${getOriginalPrice(plans.standard.monthly)}`}>
+                            ${getOriginalPrice(plans.standard.monthly)}/mo
                           </span>
-                        )}
+                        </div>
+                        <div className="text-4xl font-extrabold text-foreground">
+                          {getPriceText(plans.standard.monthly)}
+                          {billingCycle === 'annual' && (
+                            <span className="text-lg text-muted-foreground font-normal ml-2">
+                              billed annually
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </div>
                     <hr className="border-gray-200" />
@@ -164,13 +188,20 @@ export default function Pricing() {
                   <CardHeader className="space-y-6">
                     <div>
                       <h3 className="text-2xl font-extrabold text-foreground mb-2">Agency</h3>
-                      <div className="text-4xl font-extrabold text-foreground">
-                        {getPriceText(plans.agency.monthly, plans.agency.startingFrom)}
-                        {billingCycle === 'annual' && (
-                          <span className="text-lg text-muted-foreground font-normal ml-2">
-                            billed annually
+                      <div className="space-y-1">
+                        <div className="text-lg text-red-600">
+                          <span className="line-through" aria-label={`was $${getOriginalPrice(plans.agency.monthly)}`}>
+                            ${getOriginalPrice(plans.agency.monthly)}/mo
                           </span>
-                        )}
+                        </div>
+                        <div className="text-4xl font-extrabold text-foreground">
+                          {getPriceText(plans.agency.monthly, plans.agency.startingFrom)}
+                          {billingCycle === 'annual' && (
+                            <span className="text-lg text-muted-foreground font-normal ml-2">
+                              billed annually
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </div>
                     <hr className="border-gray-200" />
