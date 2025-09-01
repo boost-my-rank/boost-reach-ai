@@ -15,6 +15,7 @@ import {
   SidebarFooter,
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
+import { ReferralCard } from "./ReferralCard";
 
 export function DashboardSidebar() {
   const navigate = useNavigate();
@@ -88,7 +89,9 @@ export function DashboardSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="p-4 border-t border-sidebar-border">
+      <SidebarFooter className="p-4 border-t border-sidebar-border space-y-3">
+        <ReferralCard />
+        
         <Button 
           variant="ghost" 
           onClick={handleSignOut}
