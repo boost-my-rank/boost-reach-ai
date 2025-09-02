@@ -119,7 +119,7 @@ const Dashboard = () => {
                       {metricsLoading ? (
                         <Skeleton className="h-10 w-16 mb-2" />
                       ) : (
-                        <div className="relative">
+                        <div className="flex items-baseline">
                           <p className="text-4xl font-extrabold tracking-tight text-foreground">
                             {firstTileIncrement.displayValue}
                           </p>

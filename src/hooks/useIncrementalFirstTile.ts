@@ -91,7 +91,7 @@ export function useIncrementalFirstTile(originalValue: number | undefined): Incr
           setDisplayValue(prev => prev + 1);
           setShowIncrement(true);
           
-          setTimeout(() => setShowIncrement(false), 800);
+          setTimeout(() => setShowIncrement(false), 5000);
           
           currentIncrement++;
           state.value++;
@@ -144,7 +144,7 @@ export function useIncrementalFirstTile(originalValue: number | undefined): Incr
       setDisplayValue(prev => prev + 1);
       setShowIncrement(true);
       
-      setTimeout(() => setShowIncrement(false), 800);
+      setTimeout(() => setShowIncrement(false), 5000);
       
       // Update state
       const newState = {
