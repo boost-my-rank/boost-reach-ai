@@ -67,36 +67,34 @@ export function TestimonialsSection() {
           <div className="relative">
             <Card className="bg-background border-border/50 shadow-lg">
               <CardContent className="p-8 md:p-12">
-                <div className="space-y-8">
-                  {/* Quote */}
-                  <div className="text-center">
-                    <div className="text-4xl md:text-6xl text-muted-foreground/20 mb-4">"</div>
-                    <blockquote className="text-lg md:text-xl font-medium text-foreground leading-relaxed max-w-3xl mx-auto">
-                      {currentTestimonial.quote}
-                    </blockquote>
-                  </div>
-
-                  {/* Rating Stars */}
-                  <div className="flex justify-center space-x-1">
-                    {[...Array(currentTestimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-warning text-warning" />
-                    ))}
-                  </div>
-
-                  {/* Author Info */}
-                  <div className="flex flex-col items-center space-y-4">
-                    <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center overflow-hidden">
+                <div className="space-y-5">
+                  {/* Header - Avatar + Name */}
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center overflow-hidden flex-shrink-0">
                       <img 
                         src={currentTestimonial.avatar} 
-                        alt={currentTestimonial.author}
+                        alt={`Photo of ${currentTestimonial.author}`}
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <div className="text-center">
-                      <div className="font-semibold text-foreground text-lg">{currentTestimonial.author}</div>
-                      <div className="text-muted-foreground">{currentTestimonial.role}</div>
-                      <div className="text-primary font-medium">{currentTestimonial.company}</div>
+                    <div className="text-left">
+                      <div className="font-semibold text-foreground text-base">{currentTestimonial.author}</div>
+                      <div className="text-sm text-muted-foreground">
+                        {currentTestimonial.role} • {currentTestimonial.company}
+                      </div>
                     </div>
+                  </div>
+
+                  {/* Quote */}
+                  <blockquote className="text-lg font-medium text-foreground leading-relaxed text-left">
+                    {currentTestimonial.quote}
+                  </blockquote>
+
+                  {/* Rating Stars */}
+                  <div className="flex space-x-1">
+                    {[...Array(currentTestimonial.rating)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 fill-warning text-warning" />
+                    ))}
                   </div>
                 </div>
               </CardContent>
