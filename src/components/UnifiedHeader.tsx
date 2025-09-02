@@ -9,6 +9,10 @@ interface NavItem {
   href: string;
 }
 
+interface UnifiedHeaderProps {
+  flushLeft?: boolean;
+}
+
 const navigation: NavItem[] = [
   { label: "How it Works", href: "/#how-it-works" },
   { label: "Case Studies", href: "/case-studies" },
@@ -16,7 +20,7 @@ const navigation: NavItem[] = [
   { label: "Free SEO Report", href: "/resources/seo-2025-backlink-report" },
 ];
 
-export function UnifiedHeader() {
+export function UnifiedHeader({ flushLeft = false }: UnifiedHeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -43,7 +47,7 @@ export function UnifiedHeader() {
     return (
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container">
-          <nav className="flex h-16 items-center justify-between pl-6 pr-4">
+          <nav className={`flex h-16 items-center justify-between pr-4 ${flushLeft ? 'pl-0' : 'pl-6'}`}>
             <div className="flex items-center space-x-2">
               <Link to="/" className="flex items-center space-x-2">
                 <div className="h-8 w-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
@@ -61,7 +65,7 @@ export function UnifiedHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container">
-        <nav className="flex h-16 items-center justify-between pl-6 pr-4">
+        <nav className={`flex h-16 items-center justify-between pr-4 ${flushLeft ? 'pl-0' : 'pl-6'}`}>
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <Link to="/" className="flex items-center space-x-2">
