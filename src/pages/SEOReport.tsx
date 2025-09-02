@@ -82,58 +82,22 @@ const SEOReport = () => {
   return (
     <div className="min-h-screen bg-[#F7F8FA]">
       <UnifiedHeader />
-      <main className="pt-24 pb-16">
-        <div className="max-w-[1344px] mx-auto px-4 md:px-6 lg:px-8 py-8">
+      <main className="pt-12 pb-16">
+        <div className="max-w-[1344px] mx-auto px-4 md:px-6 lg:px-8 py-4">
           {/* Four-quadrant grid layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 md:items-stretch gap-6 md:gap-x-10 gap-y-10 mb-10 md:mb-12 lg:mb-[calc(theme(spacing.20)+30px)]">
+          <div className="grid grid-cols-1 md:grid-cols-2 md:items-stretch gap-6 md:gap-x-10 gap-y-10 mb-5">
             
             {/* Top-left: Hero title + subhead */}
-            <div className="order-1 space-y-4 md:h-full flex flex-col justify-center">
-              <div className="inline-block">
-                <span className="bg-[#F6C343]/20 text-gray-900 text-sm font-semibold px-3 py-1 rounded-full">
-                  What's new in 2025
-                </span>
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
-                Claim your Free What's New in 2025 SEO Report
-              </h1>
-              
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Download the free report covering how to help you grow your SEO domain reputation using our proven backlink-building strategies.
-              </p>
-            </div>
-
-            {/* Top-right: Report image/visual */}
-            <div className="order-2 md:h-full">
-              <div className="bg-gradient-to-br from-[#F6C343]/30 to-[#F59E0B]/10 rounded-2xl shadow-md overflow-hidden p-8 h-full flex items-center justify-center">
-                <div className="relative w-full h-full max-h-[320px] md:max-h-none">
-                  <img 
-                    src={reportMockup}
-                    alt="Free 2025 SEO Backlink Report preview showing charts and insights for organic traffic growth"
-                    className="w-full h-full rounded-lg shadow-sm object-cover md:object-contain"
-                  />
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-gray-900 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                      FREE REPORT
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
+...
           </div>
 
-          {/* Separator line */}
-          <div className="border-t border-gray-200 my-6 md:my-8 lg:my-10"></div>
+          {/* 20px spacing between sections */}
+          <div className="h-5"></div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-x-10 gap-y-10 md:gap-y-12">
-
-            {/* Separator line */}
-            <div className="order-2.5 lg:col-span-2">
-              <div className="border-t border-gray-200 my-6 md:my-8 lg:my-10"></div>
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-x-10 gap-y-6 md:gap-y-8">
 
             {/* Bottom-left: Benefits list */}
-            <div className="order-3 space-y-6 mt-6 md:mt-8 lg:mt-10">
+            <div className="order-3 space-y-6">
               <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">
                 How can this report help you stand out from the competition?
               </h2>
@@ -153,7 +117,7 @@ const SEOReport = () => {
             </div>
 
             {/* Bottom-right: Form card */}
-            <div className="order-4 lg:self-start mt-6 md:mt-8 lg:mt-10">
+            <div className="order-4 lg:self-start">
               <div className="bg-white border border-[#E6E8EE] rounded-xl shadow-sm p-6 md:p-8">
                 {!isSubmitted ? (
                   <>
