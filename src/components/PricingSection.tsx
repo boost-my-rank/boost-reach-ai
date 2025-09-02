@@ -90,17 +90,6 @@ export function PricingSection() {
                     Book a demo
                   </Button>
                 </div>
-
-                {/* Transparency Note */}
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <div className="flex items-start space-x-2">
-                    <Calendar className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                    <p className="text-sm text-muted-foreground">
-                      <span className="font-medium">Transparency note:</span> Editorial placements depend on journalist selection. 
-                      We pitch enough qualified opportunities to reliably hit 3 links/month.
-                    </p>
-                  </div>
-                </div>
               </CardContent>
             </Card>
           </div>
