@@ -10,6 +10,8 @@ import { UnifiedHeader } from "@/components/UnifiedHeader";
 import { useToast } from "@/hooks/use-toast";
 import { useDashboardMetrics } from "@/hooks/useDashboardMetrics";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useIncrementalFirstTile } from "@/hooks/useIncrementalFirstTile";
+import { IncrementIndicator } from "@/components/IncrementIndicator";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -17,6 +19,7 @@ const Dashboard = () => {
   const [user, setUser] = useState(null);
   const [showHowItWorks, setShowHowItWorks] = useState(false);
   const { metrics, isLoading: metricsLoading } = useDashboardMetrics();
+  const firstTileIncrement = useIncrementalFirstTile(metrics?.opportunities_today);
 
   useEffect(() => {
     // Check for payment success/cancel URL parameters
@@ -116,9 +119,12 @@ const Dashboard = () => {
                       {metricsLoading ? (
                         <Skeleton className="h-10 w-16 mb-2" />
                       ) : (
-                        <p className="text-4xl font-extrabold tracking-tight text-foreground">
-                          {metrics?.opportunities_today ?? 0}
-                        </p>
+                        <div className="relative">
+                          <p className="text-4xl font-extrabold tracking-tight text-foreground">
+                            {firstTileIncrement.displayValue}
+                          </p>
+                          <IncrementIndicator show={firstTileIncrement.showIncrement} />
+                        </div>
                       )}
                       <p className="mt-1 text-sm text-muted-foreground">Number of backlink opportunities scanned today</p>
                     </article>
