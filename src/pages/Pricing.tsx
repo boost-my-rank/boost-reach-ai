@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { UnifiedHeader } from "@/components/UnifiedHeader";
+import { CTABanner } from "@/components/CTABanner";
 import { Footer } from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { PricingStyleFAQ } from "@/components/shared/PricingStyleFAQ";
@@ -237,6 +238,7 @@ export default function Pricing() {
         {/* FAQ Section */}
         <PricingStyleFAQ items={pricingFaqItems} />
       </main>
+      <CTABanner />
       <Footer />
     </div>
   );

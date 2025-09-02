@@ -6,6 +6,7 @@ import { Check } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { UnifiedHeader } from "@/components/UnifiedHeader";
+import { CTABanner } from "@/components/CTABanner";
 import { Footer } from "@/components/Footer";
 import reportMockup from "@/assets/seo-report-mockup.jpg";
 
@@ -257,6 +258,7 @@ const SEOReport = () => {
           </div>
         </div>
       </main>
+      <CTABanner />
       <Footer />
     </div>
   );

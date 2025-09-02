@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { UnifiedHeader } from "@/components/UnifiedHeader";
+import { CTABanner } from "@/components/CTABanner";
 import { Footer } from "@/components/Footer";
 import { caseStudies } from "@/data/caseStudies";
 
@@ -84,6 +85,7 @@ export default function CaseStudies() {
         </div>
       </main>
 
+      <CTABanner />
       <Footer />
     </div>
   );
