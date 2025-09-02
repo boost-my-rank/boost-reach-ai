@@ -5,6 +5,10 @@ interface TileState {
   nextTriggerAt: number;
   lastResetDate: string;
   showIncrement: boolean;
+  // Special tracking for tile1's initial increments
+  firstIncrementDone?: boolean;
+  secondIncrementDone?: boolean;
+  sessionStartedAt?: number;
 }
 
 interface ClientTilesResult {
@@ -54,7 +58,7 @@ export function useClientTiles(): ClientTilesResult {
     tile2: TileState; 
     tile3: TileState;
   }>({
-    tile1: { value: 5, nextTriggerAt: 0, lastResetDate: '', showIncrement: false },
+    tile1: { value: 5, nextTriggerAt: 0, lastResetDate: '', showIncrement: false, firstIncrementDone: false, secondIncrementDone: false, sessionStartedAt: Date.now() },
     tile2: { value: 2, nextTriggerAt: 0, lastResetDate: '', showIncrement: false },
     tile3: { value: 1, nextTriggerAt: 0, lastResetDate: '', showIncrement: false }
   });
@@ -83,7 +87,13 @@ export function useClientTiles(): ClientTilesResult {
       try {
         const parsed = JSON.parse(storedData);
         initialState = {
-          tile1: { ...parsed.tile1, showIncrement: false },
+          tile1: { 
+            ...parsed.tile1, 
+            showIncrement: false,
+            firstIncrementDone: parsed.tile1.firstIncrementDone || false,
+            secondIncrementDone: parsed.tile1.secondIncrementDone || false,
+            sessionStartedAt: parsed.tile1.sessionStartedAt || now
+          },
           tile2: { ...parsed.tile2, showIncrement: false },
           tile3: { ...parsed.tile3, showIncrement: false }
         };
@@ -99,17 +109,83 @@ export function useClientTiles(): ClientTilesResult {
       
       if (initialState[key].lastResetDate !== today) {
         // Reset for new day
-        initialState[key] = {
-          value: config.resetValue,
-          nextTriggerAt: now + getRandomInterval(config.minInterval, config.maxInterval),
-          lastResetDate: today,
-          showIncrement: false
-        };
+        if (key === 'tile1') {
+          initialState[key] = {
+            value: config.resetValue,
+            nextTriggerAt: 0, // Will be set by special logic
+            lastResetDate: today,
+            showIncrement: false,
+            firstIncrementDone: false,
+            secondIncrementDone: false,
+            sessionStartedAt: now
+          };
+        } else {
+          initialState[key] = {
+            value: config.resetValue,
+            nextTriggerAt: now + getRandomInterval(config.minInterval, config.maxInterval),
+            lastResetDate: today,
+            showIncrement: false
+          };
+        }
       }
     });
 
-    // Handle catch-up for missed increments
-    Object.keys(TILE_CONFIG).forEach((tileKey) => {
+    // Special handling for tile1 if it's a new session or missing session data
+    if (!initialState.tile1.sessionStartedAt || initialState.tile1.lastResetDate !== today) {
+      initialState.tile1.sessionStartedAt = now;
+      initialState.tile1.firstIncrementDone = false;
+      initialState.tile1.secondIncrementDone = false;
+    }
+
+    // Handle catch-up for missed increments and special tile1 logic
+    const sessionStart = initialState.tile1.sessionStartedAt || now;
+    const timeFromSessionStart = now - sessionStart;
+    
+    // Special handling for tile1's first two increments
+    if (!initialState.tile1.firstIncrementDone && timeFromSessionStart >= 5000) {
+      // First increment should have happened
+      initialState.tile1.value += 1;
+      initialState.tile1.firstIncrementDone = true;
+      
+      // Show animation
+      setTimeout(() => {
+        setTiles(prev => ({
+          ...prev,
+          tile1: { ...prev.tile1, showIncrement: true }
+        }));
+        
+        hideTimeoutsRef.current.tile1 = setTimeout(() => {
+          setTiles(prev => ({
+            ...prev,
+            tile1: { ...prev.tile1, showIncrement: false }
+          }));
+        }, 5000);
+      }, 100);
+    }
+    
+    if (!initialState.tile1.secondIncrementDone && timeFromSessionStart >= 60000) {
+      // Second increment should have happened
+      initialState.tile1.value += 1;
+      initialState.tile1.secondIncrementDone = true;
+      
+      // Show animation
+      setTimeout(() => {
+        setTiles(prev => ({
+          ...prev,
+          tile1: { ...prev.tile1, showIncrement: true }
+        }));
+        
+        hideTimeoutsRef.current.tile1 = setTimeout(() => {
+          setTiles(prev => ({
+            ...prev,
+            tile1: { ...prev.tile1, showIncrement: false }
+          }));
+        }, 5000);
+      }, 200);
+    }
+
+    // Handle catch-up for tiles 2 and 3 (regular random intervals)
+    ['tile2', 'tile3'].forEach((tileKey) => {
       const key = tileKey as keyof typeof TILE_CONFIG;
       const config = TILE_CONFIG[key];
       const tileState = initialState[key];
@@ -148,20 +224,111 @@ export function useClientTiles(): ClientTilesResult {
     setTiles(initialState);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(initialState));
 
-    // Schedule next increments
+    // Schedule next increments with special logic for tile1
     const scheduleIncrement = (tileKey: keyof typeof TILE_CONFIG) => {
-      const config = TILE_CONFIG[tileKey];
-      const tileState = initialState[tileKey];
-      const timeToNext = tileState.nextTriggerAt - now;
-      
-      if (timeToNext > 0) {
-        timeoutsRef.current[tileKey] = setTimeout(() => {
+      if (tileKey === 'tile1') {
+        const sessionStart = initialState.tile1.sessionStartedAt || now;
+        const timeFromSessionStart = now - sessionStart;
+        
+        // Schedule first increment (5 seconds)
+        if (!initialState.tile1.firstIncrementDone) {
+          const timeToFirst = Math.max(0, 5000 - timeFromSessionStart);
+          timeoutsRef.current.tile1 = setTimeout(() => {
+            performTile1FirstIncrement();
+          }, timeToFirst);
+          return;
+        }
+        
+        // Schedule second increment (1 minute)
+        if (!initialState.tile1.secondIncrementDone) {
+          const timeToSecond = Math.max(0, 60000 - timeFromSessionStart);
+          timeoutsRef.current.tile1 = setTimeout(() => {
+            performTile1SecondIncrement();
+          }, timeToSecond);
+          return;
+        }
+        
+        // Both special increments done, now use random intervals
+        const config = TILE_CONFIG.tile1;
+        const nextRandomDelay = getRandomInterval(config.minInterval, config.maxInterval);
+        timeoutsRef.current.tile1 = setTimeout(() => {
+          performIncrement('tile1');
+        }, nextRandomDelay);
+      } else {
+        // Regular scheduling for tiles 2 and 3
+        const config = TILE_CONFIG[tileKey];
+        const tileState = initialState[tileKey];
+        const timeToNext = tileState.nextTriggerAt - now;
+        
+        if (timeToNext > 0) {
+          timeoutsRef.current[tileKey] = setTimeout(() => {
+            performIncrement(tileKey);
+          }, timeToNext);
+        } else if (tileState.nextTriggerAt > 0) {
+          // Immediate increment if overdue
           performIncrement(tileKey);
-        }, timeToNext);
-      } else if (tileState.nextTriggerAt > 0) {
-        // Immediate increment if overdue
-        performIncrement(tileKey);
+        }
       }
+    };
+
+    const performTile1FirstIncrement = () => {
+      setTiles(prev => {
+        const newState = {
+          ...prev,
+          tile1: {
+            ...prev.tile1,
+            value: prev.tile1.value + 1,
+            firstIncrementDone: true,
+            showIncrement: true
+          }
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(newState));
+        return newState;
+      });
+
+      // Hide increment after 5 seconds
+      hideTimeoutsRef.current.tile1 = setTimeout(() => {
+        setTiles(prev => ({
+          ...prev,
+          tile1: { ...prev.tile1, showIncrement: false }
+        }));
+      }, 5000);
+
+      // Schedule second increment (55 seconds later, for total of 1 minute)
+      timeoutsRef.current.tile1 = setTimeout(() => {
+        performTile1SecondIncrement();
+      }, 55000);
+    };
+
+    const performTile1SecondIncrement = () => {
+      setTiles(prev => {
+        const newState = {
+          ...prev,
+          tile1: {
+            ...prev.tile1,
+            value: prev.tile1.value + 1,
+            secondIncrementDone: true,
+            showIncrement: true
+          }
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(newState));
+        return newState;
+      });
+
+      // Hide increment after 5 seconds
+      hideTimeoutsRef.current.tile1 = setTimeout(() => {
+        setTiles(prev => ({
+          ...prev,
+          tile1: { ...prev.tile1, showIncrement: false }
+        }));
+      }, 5000);
+
+      // Now start random 6-8 minute intervals
+      const config = TILE_CONFIG.tile1;
+      const nextRandomDelay = getRandomInterval(config.minInterval, config.maxInterval);
+      timeoutsRef.current.tile1 = setTimeout(() => {
+        performIncrement('tile1');
+      }, nextRandomDelay);
     };
 
     const performIncrement = (tileKey: keyof typeof TILE_CONFIG) => {
@@ -216,9 +383,12 @@ export function useClientTiles(): ClientTilesResult {
         const resetState = {
           tile1: { 
             value: TILE_CONFIG.tile1.resetValue, 
-            nextTriggerAt: Date.now() + getRandomInterval(TILE_CONFIG.tile1.minInterval, TILE_CONFIG.tile1.maxInterval),
+            nextTriggerAt: 0,
             lastResetDate: newDate, 
-            showIncrement: false 
+            showIncrement: false,
+            firstIncrementDone: false,
+            secondIncrementDone: false,
+            sessionStartedAt: Date.now()
           },
           tile2: { 
             value: TILE_CONFIG.tile2.resetValue, 
