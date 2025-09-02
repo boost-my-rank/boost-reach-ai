@@ -1,5 +1,3 @@
-import { Card } from "@/components/ui/card";
-
 // Placeholder for company logos - these can be updated later
 const clientLogos = [
   { name: "Company 1", placeholder: "C1" },
@@ -29,20 +27,16 @@ export function CompanyLogos() {
             Boosting SEO rankings of dozens of leading companies:
           </h3>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
-            {clientLogos.map((company, index) => (
-              <Card 
-                key={index} 
-                className="p-6 bg-background hover:shadow-md transition-shadow duration-200 border-border/50"
-              >
-                <div className="flex items-center justify-center h-12">
-                  {/* Placeholder for logo - can be replaced with actual images */}
+          <div className="bg-white rounded-lg shadow-sm p-8 mx-auto max-w-5xl">
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+              {clientLogos.map((company, index) => (
+                <div key={index} className="flex items-center justify-center">
                   <div className="w-16 h-8 bg-muted rounded flex items-center justify-center text-sm font-medium text-muted-foreground">
                     {company.placeholder}
                   </div>
                 </div>
-              </Card>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
@@ -52,16 +46,15 @@ export function CompanyLogos() {
             Seen in / Opportunities from
           </h3>
           
-          <div className="flex flex-wrap justify-center items-center gap-8">
-            {publicationLogos.map((publication) => (
-              <div 
-                key={publication.name}
-                className="flex items-center gap-3 p-4 rounded-lg bg-background border border-border/50 hover:shadow-md transition-shadow duration-200"
-              >
-                <span className="text-2xl">{publication.logo}</span>
-                <span className="font-semibold text-foreground">{publication.name}</span>
-              </div>
-            ))}
+          <div className="bg-white rounded-lg shadow-sm p-8 mx-auto max-w-4xl">
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+              {publicationLogos.map((publication) => (
+                <div key={publication.name} className="flex items-center gap-3">
+                  <span className="text-2xl">{publication.logo}</span>
+                  <span className="font-semibold text-foreground">{publication.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
