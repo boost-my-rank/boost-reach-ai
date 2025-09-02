@@ -16,7 +16,7 @@ const Dashboard = () => {
   const { toast } = useToast();
   const [user, setUser] = useState(null);
   const [showHowItWorks, setShowHowItWorks] = useState(false);
-  const tiles = useClientTiles();
+  const { tile1, tile2, tile3, enableTile2Incrementing } = useClientTiles();
 
   useEffect(() => {
     // Check for payment success/cancel URL parameters
@@ -115,9 +115,9 @@ const Dashboard = () => {
                     <article className="rounded-xl border bg-card p-5">
                       <div className="flex items-baseline">
                         <p className="text-4xl font-extrabold tracking-tight text-foreground">
-                          {tiles.tile1.value}
+                          {tile1.value}
                         </p>
-                        <IncrementIndicator show={tiles.tile1.showIncrement} />
+                        <IncrementIndicator show={tile1.showIncrement} />
                       </div>
                       <p className="mt-1 text-sm text-muted-foreground">Number of backlink opportunities scanned today</p>
                     </article>
@@ -126,9 +126,9 @@ const Dashboard = () => {
                     <article className="rounded-xl border bg-card p-5">
                       <div className="flex items-baseline">
                         <p className="text-4xl font-extrabold tracking-tight text-foreground">
-                          {tiles.tile2.value}
+                          {tile2.value}
                         </p>
-                        <IncrementIndicator show={tiles.tile2.showIncrement} />
+                        <IncrementIndicator show={tile2.showIncrement} />
                       </div>
                       <p className="mt-1 text-sm text-muted-foreground">Number of backlink pitches sent</p>
                     </article>
@@ -137,9 +137,9 @@ const Dashboard = () => {
                     <article className="rounded-xl border bg-card p-5">
                       <div className="flex items-baseline">
                         <p className="text-4xl font-extrabold tracking-tight text-foreground">
-                          {tiles.tile3.value}
+                          {tile3.value}
                         </p>
-                        <IncrementIndicator show={tiles.tile3.showIncrement} />
+                        <IncrementIndicator show={tile3.showIncrement} />
                       </div>
                       <p className="mt-1 text-sm text-muted-foreground">Number of journalist profiles reviewed</p>
                     </article>
@@ -148,7 +148,7 @@ const Dashboard = () => {
               </section>
 
               <div id="persona-config">
-                <PersonaConfiguration />
+                <PersonaConfiguration onSaveChanges={enableTile2Incrementing} />
               </div>
             </div>
             </main>

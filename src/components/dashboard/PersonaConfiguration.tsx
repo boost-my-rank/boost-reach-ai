@@ -37,7 +37,11 @@ const initialData: PersonaData = {
   biography: ""
 };
 
-export function PersonaConfiguration() {
+interface PersonaConfigurationProps {
+  onSaveChanges?: () => void;
+}
+
+export function PersonaConfiguration({ onSaveChanges }: PersonaConfigurationProps) {
   const { toast } = useToast();
   const [data, setData] = useState<PersonaData>(initialData);
   const [originalData, setOriginalData] = useState<PersonaData>(initialData);
@@ -169,6 +173,11 @@ export function PersonaConfiguration() {
       }
 
       setOriginalData(data);
+      
+      // Enable tile2 incrementing if callback provided
+      if (onSaveChanges) {
+        onSaveChanges();
+      }
       
       // Check payment status after successful save
       await checkPaymentStatusAndShowModal();
