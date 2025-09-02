@@ -94,7 +94,7 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-app-canvas">
-      <UnifiedHeader flushLeft />
+      <UnifiedHeader />
       <main className="pt-20">
         <SidebarProvider>
           <div className="flex min-h-screen w-full">

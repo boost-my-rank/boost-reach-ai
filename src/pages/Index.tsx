@@ -12,7 +12,7 @@ import { Footer } from "@/components/Footer";
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <UnifiedHeader flushLeft />
+      <UnifiedHeader />
       <main>
         <HeroSection />
         <CompanyLogos />
