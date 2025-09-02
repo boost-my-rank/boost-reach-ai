@@ -8,9 +8,7 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { UnifiedHeader } from "@/components/UnifiedHeader";
 import { useToast } from "@/hooks/use-toast";
-import { useDashboardMetrics } from "@/hooks/useDashboardMetrics";
-import { Skeleton } from "@/components/ui/skeleton";
-import { useIncrementalFirstTile } from "@/hooks/useIncrementalFirstTile";
+import { useClientTiles } from "@/hooks/useClientTiles";
 import { IncrementIndicator } from "@/components/IncrementIndicator";
 
 const Dashboard = () => {
@@ -18,8 +16,7 @@ const Dashboard = () => {
   const { toast } = useToast();
   const [user, setUser] = useState(null);
   const [showHowItWorks, setShowHowItWorks] = useState(false);
-  const { metrics, isLoading: metricsLoading } = useDashboardMetrics();
-  const firstTileIncrement = useIncrementalFirstTile(metrics?.opportunities_today);
+  const tiles = useClientTiles();
 
   useEffect(() => {
     // Check for payment success/cancel URL parameters
@@ -116,40 +113,34 @@ const Dashboard = () => {
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {/* Tile 1 */}
                     <article className="rounded-xl border bg-card p-5">
-                      {metricsLoading ? (
-                        <Skeleton className="h-10 w-16 mb-2" />
-                      ) : (
-                        <div className="flex items-baseline">
-                          <p className="text-4xl font-extrabold tracking-tight text-foreground">
-                            {firstTileIncrement.displayValue}
-                          </p>
-                          <IncrementIndicator show={firstTileIncrement.showIncrement} />
-                        </div>
-                      )}
+                      <div className="flex items-baseline">
+                        <p className="text-4xl font-extrabold tracking-tight text-foreground">
+                          {tiles.tile1.value}
+                        </p>
+                        <IncrementIndicator show={tiles.tile1.showIncrement} />
+                      </div>
                       <p className="mt-1 text-sm text-muted-foreground">Number of backlink opportunities scanned today</p>
                     </article>
 
                     {/* Tile 2 */}
                     <article className="rounded-xl border bg-card p-5">
-                      {metricsLoading ? (
-                        <Skeleton className="h-10 w-16 mb-2" />
-                      ) : (
+                      <div className="flex items-baseline">
                         <p className="text-4xl font-extrabold tracking-tight text-foreground">
-                          {metrics?.my_pitches_today ?? 0}
+                          {tiles.tile2.value}
                         </p>
-                      )}
+                        <IncrementIndicator show={tiles.tile2.showIncrement} />
+                      </div>
                       <p className="mt-1 text-sm text-muted-foreground">Number of backlink pitches sent</p>
                     </article>
 
                     {/* Tile 3 */}
                     <article className="rounded-xl border bg-card p-5">
-                      {metricsLoading ? (
-                        <Skeleton className="h-10 w-16 mb-2" />
-                      ) : (
+                      <div className="flex items-baseline">
                         <p className="text-4xl font-extrabold tracking-tight text-foreground">
-                          {metrics?.journalists_today ?? 0}
+                          {tiles.tile3.value}
                         </p>
-                      )}
+                        <IncrementIndicator show={tiles.tile3.showIncrement} />
+                      </div>
                       <p className="mt-1 text-sm text-muted-foreground">Number of journalist profiles reviewed</p>
                     </article>
                   </div>
