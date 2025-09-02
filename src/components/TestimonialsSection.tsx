@@ -64,12 +64,12 @@ export function TestimonialsSection() {
             </p>
           </div>
 
-          <div className="relative">
+          <div className="relative mx-8">
             <Card className="bg-background border-border/50 shadow-lg">
-              <CardContent className="p-8 md:p-12">
-                <div className="space-y-5">
-                  {/* Header - Avatar + Name */}
-                  <div className="flex items-center gap-4">
+              <CardContent className="p-6">
+                <div className="space-y-4">
+                  {/* Header - Avatar + Name/Title */}
+                  <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center overflow-hidden flex-shrink-0">
                       <img 
                         src={currentTestimonial.avatar} 
@@ -77,35 +77,37 @@ export function TestimonialsSection() {
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <div className="text-left">
-                      <div className="font-semibold text-foreground text-base">{currentTestimonial.author}</div>
-                      <div className="text-sm text-muted-foreground">
-                        {currentTestimonial.role} • {currentTestimonial.company}
+                    <div className="text-left min-w-0 flex-1">
+                      <div className="font-semibold text-foreground text-lg">{currentTestimonial.author}</div>
+                      <div className="text-sm text-muted-foreground mt-1">
+                        {currentTestimonial.role}, {currentTestimonial.company}
+                      </div>
+                      {/* Rating Stars */}
+                      <div className="flex space-x-1 mt-3">
+                        {[...Array(currentTestimonial.rating)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-warning text-warning" />
+                        ))}
                       </div>
                     </div>
                   </div>
 
-                  {/* Quote */}
-                  <blockquote className="text-lg font-medium text-foreground leading-relaxed text-left">
-                    {currentTestimonial.quote}
-                  </blockquote>
-
-                  {/* Rating Stars */}
-                  <div className="flex space-x-1">
-                    {[...Array(currentTestimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-warning text-warning" />
-                    ))}
+                  {/* Quote - Centered */}
+                  <div className="pt-4">
+                    <blockquote className="text-lg font-medium text-foreground leading-relaxed text-center">
+                      {currentTestimonial.quote}
+                    </blockquote>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Navigation Buttons */}
+            {/* Navigation Buttons - Positioned outside content area */}
             <Button
               variant="outline"
               size="icon"
               onClick={prevTestimonial}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-background/80 backdrop-blur-sm hover:bg-background"
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-background/80 backdrop-blur-sm hover:bg-background"
+              aria-label="Previous testimonial"
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
@@ -113,7 +115,8 @@ export function TestimonialsSection() {
               variant="outline"
               size="icon"
               onClick={nextTestimonial}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-background/80 backdrop-blur-sm hover:bg-background"
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-background/80 backdrop-blur-sm hover:bg-background"
+              aria-label="Next testimonial"
             >
               <ChevronRight className="h-4 w-4" />
             </Button>
