@@ -42,7 +42,27 @@ export function UnifiedHeader() {
   if (loading) {
     return (
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <nav className="container flex h-16 items-center justify-between px-4">
+        <div className="container">
+          <nav className="flex h-16 items-center justify-between pl-6 pr-4">
+            <div className="flex items-center space-x-2">
+              <Link to="/" className="flex items-center space-x-2">
+                <div className="h-8 w-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">B</span>
+                </div>
+                <span className="text-xl font-bold text-foreground">BoostMyRank</span>
+              </Link>
+            </div>
+          </nav>
+        </div>
+      </header>
+    );
+  }
+
+  return (
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container">
+        <nav className="flex h-16 items-center justify-between pl-6 pr-4">
+          {/* Logo */}
           <div className="flex items-center space-x-2">
             <Link to="/" className="flex items-center space-x-2">
               <div className="h-8 w-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
@@ -51,66 +71,50 @@ export function UnifiedHeader() {
               <span className="text-xl font-bold text-foreground">BoostMyRank</span>
             </Link>
           </div>
-        </nav>
-      </header>
-    );
-  }
 
-  return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <nav className="container flex h-16 items-center justify-between px-4">
-        {/* Logo */}
-        <div className="flex items-center space-x-2">
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="h-8 w-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">B</span>
-            </div>
-            <span className="text-xl font-bold text-foreground">BoostMyRank</span>
-          </Link>
-        </div>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            {navigation.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          {navigation.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
-        {/* Desktop Right Side - Changes based on auth state */}
-        <div className="hidden md:flex items-center space-x-4">
-          {!isSignedIn ? (
-            <>
-              <Link to="/signin">
-                <Button variant="ghost" size="sm">
-                  Sign in
+          {/* Desktop Right Side - Changes based on auth state */}
+          <div className="hidden md:flex items-center space-x-4">
+            {!isSignedIn ? (
+              <>
+                <Link to="/signin">
+                  <Button variant="ghost" size="sm">
+                    Sign in
+                  </Button>
+                </Link>
+                <Button variant="cta" size="sm" className="cta-shimmer" asChild>
+                  <Link to="/signup">Try it now</Link>
                 </Button>
-              </Link>
-              <Button variant="cta" size="sm" className="cta-shimmer" asChild>
-                <Link to="/signup">Try it now</Link>
-              </Button>
-            </>
-          ) : (
-            // Post-signed-in: Show nothing
-            <div />
-          )}
-        </div>
+              </>
+            ) : (
+              // Post-signed-in: Show nothing
+              <div />
+            )}
+          </div>
 
-        {/* Mobile Menu Button */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </Button>
-      </nav>
+          {/* Mobile Menu Button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </Button>
+        </nav>
+      </div>
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
