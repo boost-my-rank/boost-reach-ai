@@ -53,9 +53,10 @@ const Dashboard = () => {
       }
       setUser(session.user);
 
-      // Check if this is the first visit (simplified - in real app you'd track this in DB)
+      // Check if this is the first visit and onboarding hasn't been dismissed
       const hasSeenOnboarding = localStorage.getItem('hasSeenOnboarding');
-      if (!hasSeenOnboarding) {
+      const onboardingDismissed = localStorage.getItem('onboardingDismissed');
+      if (!hasSeenOnboarding && !onboardingDismissed) {
         setShowHowItWorks(true);
       }
     };
@@ -82,6 +83,11 @@ const Dashboard = () => {
     if (configSection) {
       configSection.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleCloseOnboarding = () => {
+    setShowHowItWorks(false);
+    localStorage.setItem('onboardingDismissed', '1');
   };
 
   if (!user) {
@@ -160,6 +166,7 @@ const Dashboard = () => {
         <HowItWorksModal 
           isOpen={showHowItWorks}
           onStartConfiguring={handleStartConfiguring}
+          onClose={handleCloseOnboarding}
         />
       )}
     </div>

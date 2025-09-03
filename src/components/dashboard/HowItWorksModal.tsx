@@ -4,9 +4,10 @@ import { Button } from "@/components/ui/button";
 interface HowItWorksModalProps {
   isOpen: boolean;
   onStartConfiguring: () => void;
+  onClose: () => void;
 }
 
-export function HowItWorksModal({ isOpen, onStartConfiguring }: HowItWorksModalProps) {
+export function HowItWorksModal({ isOpen, onStartConfiguring, onClose }: HowItWorksModalProps) {
   const steps = [
     {
       number: 1,
@@ -26,7 +27,7 @@ export function HowItWorksModal({ isOpen, onStartConfiguring }: HowItWorksModalP
   ];
 
   return (
-    <Dialog open={isOpen} onOpenChange={() => {}}>
+    <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-3xl p-0 gap-0">
         <div className="p-8">
           <div className="text-center mb-8">

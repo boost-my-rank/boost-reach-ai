@@ -71,6 +71,9 @@ const AuthForm = ({
             title: "Check your email",
             description: "We sent you a confirmation link to complete your signup.",
           });
+          
+          // For new signups, redirect immediately to dashboard after email confirmation
+          // The emailRedirectTo already points to dashboard for new users
         }
       } else {
         const { error } = await supabase.auth.signInWithPassword({
