@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 
 interface NavItem {
@@ -20,6 +20,8 @@ export function UnifiedHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
+  const isLandingPage = location.pathname === "/";
 
   useEffect(() => {
     // Check current auth state
@@ -42,8 +44,8 @@ export function UnifiedHeader() {
   if (loading) {
     return (
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container">
-          <nav className="flex h-16 items-center justify-between pl-0 pr-4">
+        <div className="w-full px-4">
+          <nav className="flex h-16 items-center justify-between">
             <div className="flex items-center space-x-2">
               <Link to="/" className="flex items-center space-x-2">
                 <div className="h-8 w-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
@@ -60,66 +62,126 @@ export function UnifiedHeader() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container">
-        <nav className="flex h-16 items-center justify-between pl-0 pr-4">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="h-8 w-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">B</span>
+      <div className="w-full px-4">
+        {isLandingPage ? (
+          // Landing page layout with centered navigation
+          <nav className="flex h-16 items-center justify-between">
+            {/* Logo - flush left */}
+            <div className="flex items-center space-x-2">
+              <Link to="/" className="flex items-center space-x-2">
+                <div className="h-8 w-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">B</span>
+                </div>
+                <span className="text-xl font-bold text-foreground">BoostMyRank</span>
+              </Link>
+            </div>
+
+            {/* Centered Navigation - matches hero content width */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:block">
+              <div className="max-w-4xl mx-auto">
+                <nav className="flex items-center justify-center space-x-8">
+                  {navigation.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="text-sm font-medium text-foreground hover:text-primary transition-colors whitespace-nowrap"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </nav>
               </div>
-              <span className="text-xl font-bold text-foreground">BoostMyRank</span>
-            </Link>
-          </div>
+            </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Desktop Right Side - Changes based on auth state */}
-          <div className="hidden md:flex items-center space-x-4">
-            {!isSignedIn ? (
-              <>
-                <Link to="/signin">
-                  <Button variant="ghost" size="sm">
-                    Sign in
+            {/* Right Side */}
+            <div className="hidden md:flex items-center space-x-4">
+              {!isSignedIn ? (
+                <>
+                  <Link to="/signin">
+                    <Button variant="ghost" size="sm">
+                      Sign in
+                    </Button>
+                  </Link>
+                  <Button variant="cta" size="sm" className="cta-shimmer" asChild>
+                    <Link to="/signup">Try it now</Link>
                   </Button>
-                </Link>
-                <Button variant="cta" size="sm" className="cta-shimmer" asChild>
-                  <Link to="/signup">Try it now</Link>
-                </Button>
-              </>
-            ) : (
-              // Post-signed-in: Show nothing
-              <div />
-            )}
-          </div>
+                </>
+              ) : (
+                <div />
+              )}
+            </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
-        </nav>
+            {/* Mobile Menu Button */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
+          </nav>
+        ) : (
+          // Other pages layout with standard navigation
+          <nav className="flex h-16 items-center justify-between">
+            {/* Logo - flush left */}
+            <div className="flex items-center space-x-2">
+              <Link to="/" className="flex items-center space-x-2">
+                <div className="h-8 w-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">B</span>
+                </div>
+                <span className="text-xl font-bold text-foreground">BoostMyRank</span>
+              </Link>
+            </div>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center space-x-8">
+              {navigation.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+
+            {/* Desktop Right Side */}
+            <div className="hidden md:flex items-center space-x-4">
+              {!isSignedIn ? (
+                <>
+                  <Link to="/signin">
+                    <Button variant="ghost" size="sm">
+                      Sign in
+                    </Button>
+                  </Link>
+                  <Button variant="cta" size="sm" className="cta-shimmer" asChild>
+                    <Link to="/signup">Try it now</Link>
+                  </Button>
+                </>
+              ) : (
+                <div />
+              )}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
+          </nav>
+        )}
       </div>
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t bg-background/95 backdrop-blur">
-          <div className="container space-y-4 p-4">
+          <div className="px-4 space-y-4 p-4">
             {navigation.map((item) => (
               <a
                 key={item.label}
