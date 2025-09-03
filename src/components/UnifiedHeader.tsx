@@ -63,119 +63,62 @@ export function UnifiedHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="w-full px-4">
-        {isLandingPage ? (
-          // Landing page layout with centered navigation
-          <nav className="flex h-16 items-center justify-between">
-            {/* Logo - flush left */}
-            <div className="flex items-center space-x-2">
-              <Link to="/" className="flex items-center space-x-2">
-                <div className="h-8 w-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">B</span>
-                </div>
-                <span className="text-xl font-bold text-foreground">BoostMyRank</span>
-              </Link>
-            </div>
-
-            {/* Centered Navigation - matches hero content width */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:block">
-              <div className="max-w-4xl mx-auto">
-                <nav className="flex items-center justify-center space-x-8">
-                  {navigation.map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      className="text-sm font-medium text-foreground hover:text-primary transition-colors whitespace-nowrap"
-                    >
-                      {item.label}
-                    </a>
-                  ))}
-                </nav>
+        <nav className="flex h-16 items-center justify-between">
+          {/* Logo - flush left */}
+          <div className="flex items-center space-x-2">
+            <Link to="/" className="flex items-center space-x-2">
+              <div className="h-8 w-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">B</span>
               </div>
-            </div>
+              <span className="text-xl font-bold text-foreground">BoostMyRank</span>
+            </Link>
+          </div>
 
-            {/* Right Side */}
-            <div className="hidden md:flex items-center space-x-4">
-              {!isSignedIn ? (
-                <>
-                  <Link to="/signin">
-                    <Button variant="ghost" size="sm">
-                      Sign in
-                    </Button>
-                  </Link>
-                  <Button variant="cta" size="sm" className="cta-shimmer" asChild>
-                    <Link to="/signup">Try it now</Link>
+          {/* Centered Navigation - matches hero content width */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:block">
+            <div className="max-w-4xl mx-auto">
+              <nav className="flex items-center justify-center space-x-8">
+                {navigation.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className="text-sm font-medium text-foreground hover:text-primary transition-colors whitespace-nowrap"
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </nav>
+            </div>
+          </div>
+
+          {/* Right Side */}
+          <div className="hidden md:flex items-center space-x-4">
+            {!isSignedIn ? (
+              <>
+                <Link to="/signin">
+                  <Button variant="ghost" size="sm">
+                    Sign in
                   </Button>
-                </>
-              ) : (
-                <div />
-              )}
-            </div>
+                </Link>
+                <Button variant="cta" size="sm" className="cta-shimmer" asChild>
+                  <Link to="/signup">Try it now</Link>
+                </Button>
+              </>
+            ) : (
+              <div />
+            )}
+          </div>
 
-            {/* Mobile Menu Button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
-          </nav>
-        ) : (
-          // Other pages layout with standard navigation
-          <nav className="flex h-16 items-center justify-between">
-            {/* Logo - flush left */}
-            <div className="flex items-center space-x-2">
-              <Link to="/" className="flex items-center space-x-2">
-                <div className="h-8 w-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">B</span>
-                </div>
-                <span className="text-xl font-bold text-foreground">BoostMyRank</span>
-              </Link>
-            </div>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
-              {navigation.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </nav>
-
-            {/* Desktop Right Side */}
-            <div className="hidden md:flex items-center space-x-4">
-              {!isSignedIn ? (
-                <>
-                  <Link to="/signin">
-                    <Button variant="ghost" size="sm">
-                      Sign in
-                    </Button>
-                  </Link>
-                  <Button variant="cta" size="sm" className="cta-shimmer" asChild>
-                    <Link to="/signup">Try it now</Link>
-                  </Button>
-                </>
-              ) : (
-                <div />
-              )}
-            </div>
-
-            {/* Mobile Menu Button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
-          </nav>
-        )}
+          {/* Mobile Menu Button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </Button>
+        </nav>
       </div>
 
       {/* Mobile Menu */}
