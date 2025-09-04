@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { DashboardSidebar } from "@/components/dashboard/DashboardSidebar";
 import { HowItWorksModal } from "@/components/dashboard/HowItWorksModal";
 import { PersonaConfiguration } from "@/components/dashboard/PersonaConfiguration";
+import { KnowledgeUploader } from "@/components/dashboard/KnowledgeUploader";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { UnifiedHeader } from "@/components/UnifiedHeader";
@@ -156,6 +157,8 @@ const Dashboard = () => {
               <div id="persona-config">
                 <PersonaConfiguration onSaveChanges={enableTile2Incrementing} />
               </div>
+              
+              <KnowledgeUploader />
             </div>
             </main>
           </div>
