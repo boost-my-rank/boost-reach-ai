@@ -309,12 +309,15 @@ export function PersonaConfiguration({ onSaveChanges }: PersonaConfigurationProp
     const file = files.find(f => f.id === fileId);
     if (!file) return;
 
+    console.log('🚀 Starting upload for file:', file.name, 'Size:', file.size, 'Type:', file.type);
+
     setFiles(prev => prev.map(f => 
       f.id === fileId ? { ...f, status: 'uploading' as const } : f
     ));
 
     try {
       // Step 1: Get upload URL from Supabase
+      console.log('📡 Step 1: Requesting upload URL from Supabase...');
       const { data: uploadData, error: urlError } = await supabase.rpc('create_upload_url', {
         file_name: file.name,
         file_size: file.size,
@@ -322,12 +325,15 @@ export function PersonaConfiguration({ onSaveChanges }: PersonaConfigurationProp
       });
 
       if (urlError) {
+        console.error('❌ Failed to get upload URL:', urlError);
         throw new Error(urlError.message);
       }
 
+      console.log('✅ Upload URL received:', uploadData);
       const { file_id, signed_url } = uploadData as { file_id: string; signed_url: string };
 
       // Step 2: Upload file to Supabase Storage using signed URL
+      console.log('📤 Step 2: Uploading file to storage...');
       const uploadResponse = await fetch(signed_url, {
         method: 'PUT',
         body: file.file,
@@ -336,18 +342,28 @@ export function PersonaConfiguration({ onSaveChanges }: PersonaConfigurationProp
         },
       });
 
+      console.log('Upload response status:', uploadResponse.status, uploadResponse.statusText);
+
       if (!uploadResponse.ok) {
-        throw new Error(`Upload failed: ${uploadResponse.statusText}`);
+        const errorText = await uploadResponse.text();
+        console.error('❌ Upload failed with response:', errorText);
+        throw new Error(`Upload failed: ${uploadResponse.statusText} - ${errorText}`);
       }
 
+      console.log('✅ File uploaded successfully to storage');
+
       // Step 3: Mark upload as complete
+      console.log('💾 Step 3: Marking upload as complete in database...');
       const { error: completeError } = await supabase.rpc('complete_upload', {
         file_id: file_id
       });
 
       if (completeError) {
+        console.error('❌ Failed to complete upload:', completeError);
         throw new Error(completeError.message);
       }
+
+      console.log('✅ Upload completed successfully and recorded in database');
 
       // Update file status to done
       setFiles(prev => prev.map(f => 
