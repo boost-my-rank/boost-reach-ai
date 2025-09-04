@@ -243,12 +243,35 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      cancel_upload: {
+        Args: { file_id: string }
+        Returns: boolean
+      }
+      complete_upload: {
+        Args: { file_id: string }
+        Returns: boolean
+      }
+      create_upload_url: {
+        Args: { file_name: string; file_size: number; mime_type: string }
+        Returns: Json
+      }
       dashboard_metrics_today: {
         Args: Record<PropertyKey, never>
         Returns: {
           journalists_today: number
           my_pitches_today: number
           opportunities_today: number
+        }[]
+      }
+      get_user_knowledge_files: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          created_at: string
+          id: string
+          mime_type: string
+          original_name: string
+          size_bytes: number
+          status: string
         }[]
       }
       has_role: {
