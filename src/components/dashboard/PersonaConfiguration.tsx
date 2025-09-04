@@ -91,25 +91,23 @@ export function PersonaConfiguration({ onSaveChanges }: PersonaConfigurationProp
   const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Load user info from Supabase on mount
+  // Load user info and existing files from Supabase on mount
   useEffect(() => {
-    const loadUserInfo = async () => {
+    const loadUserData = async () => {
       try {
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) return;
 
-        const { data: userInfo, error } = await (supabase as any)
+        // Load user info
+        const { data: userInfo, error: userInfoError } = await (supabase as any)
           .from('user_info')
           .select('*')
           .eq('user_id', user.id)
           .maybeSingle();
 
-        if (error && error.code !== 'PGRST116') {
-          console.error('Failed to load user info:', error);
-          return;
-        }
-
-        if (userInfo) {
+        if (userInfoError && userInfoError.code !== 'PGRST116') {
+          console.error('Failed to load user info:', userInfoError);
+        } else if (userInfo) {
           const userInfoTyped = userInfo as UserInfoRow;
           const loadedData: PersonaData = {
             linkedin: userInfoTyped.linkedin_url || "",
@@ -121,12 +119,30 @@ export function PersonaConfiguration({ onSaveChanges }: PersonaConfigurationProp
           setData(loadedData);
           setOriginalData(loadedData);
         }
+
+        // Load existing knowledge files
+        const { data: knowledgeFiles, error: filesError } = await supabase.rpc('get_user_knowledge_files');
+        
+        if (filesError) {
+          console.error('Failed to load knowledge files:', filesError);
+        } else if (knowledgeFiles && knowledgeFiles.length > 0) {
+          const existingFiles: UploadFile[] = knowledgeFiles.map((kf: any) => ({
+            id: kf.id,
+            file: new File([], kf.original_name), // Placeholder file object
+            name: kf.original_name,
+            size: kf.size_bytes,
+            type: kf.mime_type,
+            status: kf.status === 'uploaded' ? 'done' as const : 'error' as const,
+            progress: 100
+          }));
+          setFiles(existingFiles);
+        }
       } catch (error) {
-        console.error('Failed to load user info:', error);
+        console.error('Failed to load user data:', error);
       }
     };
 
-    loadUserInfo();
+    loadUserData();
   }, []);
 
   // Check for changes
@@ -289,6 +305,85 @@ export function PersonaConfiguration({ onSaveChanges }: PersonaConfigurationProp
     return null;
   };
 
+  const uploadFileToSupabase = useCallback(async (fileId: string) => {
+    const file = files.find(f => f.id === fileId);
+    if (!file) return;
+
+    setFiles(prev => prev.map(f => 
+      f.id === fileId ? { ...f, status: 'uploading' as const } : f
+    ));
+
+    try {
+      // Step 1: Get upload URL from Supabase
+      const { data: uploadData, error: urlError } = await supabase.rpc('create_upload_url', {
+        file_name: file.name,
+        file_size: file.size,
+        mime_type: file.type
+      });
+
+      if (urlError) {
+        throw new Error(urlError.message);
+      }
+
+      const { file_id, signed_url } = uploadData as { file_id: string; signed_url: string };
+
+      // Step 2: Upload file to Supabase Storage using signed URL
+      const uploadResponse = await fetch(signed_url, {
+        method: 'PUT',
+        body: file.file,
+        headers: {
+          'Content-Type': file.type,
+        },
+      });
+
+      if (!uploadResponse.ok) {
+        throw new Error(`Upload failed: ${uploadResponse.statusText}`);
+      }
+
+      // Step 3: Mark upload as complete
+      const { error: completeError } = await supabase.rpc('complete_upload', {
+        file_id: file_id
+      });
+
+      if (completeError) {
+        throw new Error(completeError.message);
+      }
+
+      // Update file status to done
+      setFiles(prev => prev.map(f => 
+        f.id === fileId ? { 
+          ...f, 
+          status: 'done' as const, 
+          progress: 100 
+        } : f
+      ));
+
+      // Show success message
+      toast({
+        title: "File uploaded successfully",
+        description: `${file.name} has been uploaded and will be used for AI responses.`,
+      });
+
+    } catch (error) {
+      console.error('Upload error:', error);
+      
+      // Update file status to error
+      setFiles(prev => prev.map(f => 
+        f.id === fileId ? { 
+          ...f, 
+          status: 'error' as const, 
+          error: error instanceof Error ? error.message : 'Upload failed'
+        } : f
+      ));
+
+      toast({
+        title: "Upload failed",
+        description: error instanceof Error ? error.message : 'Please try again.',
+        variant: "destructive",
+      });
+    }
+  }, [files, toast]);
+
   const addFiles = useCallback((newFiles: FileList | File[]) => {
     const filesToAdd: UploadFile[] = [];
     const errors: string[] = [];
@@ -335,7 +430,7 @@ export function PersonaConfiguration({ onSaveChanges }: PersonaConfigurationProp
     if (filesToAdd.length > 0) {
       setFiles(prev => [...prev, ...filesToAdd]);
       // Auto-start upload
-      filesToAdd.forEach(file => simulateUpload(file.id));
+      filesToAdd.forEach(file => uploadFileToSupabase(file.id));
     }
 
     if (errors.length > 0) {
@@ -345,39 +440,23 @@ export function PersonaConfiguration({ onSaveChanges }: PersonaConfigurationProp
         variant: "destructive",
       });
     }
-  }, [files, toast]);
+  }, [files, toast, uploadFileToSupabase]);
 
-  const simulateUpload = useCallback((fileId: string) => {
-    setFiles(prev => prev.map(f => 
-      f.id === fileId ? { ...f, status: 'uploading' as const } : f
-    ));
+  const removeFile = useCallback(async (fileId: string) => {
+    const file = files.find(f => f.id === fileId);
+    if (!file) return;
 
-    // Simulate upload progress
-    let progress = 0;
-    const interval = setInterval(() => {
-      progress += Math.random() * 15 + 5;
-      
-      if (progress >= 100) {
-        clearInterval(interval);
-        setFiles(prev => prev.map(f => 
-          f.id === fileId ? { 
-            ...f, 
-            status: 'done' as const, 
-            progress: 100 
-          } : f
-        ));
-        return;
+    // If file is uploading or uploaded, try to cancel/delete from backend
+    if (file.status === 'uploading' || file.status === 'done') {
+      try {
+        await supabase.rpc('cancel_upload', { file_id: fileId });
+      } catch (error) {
+        console.error('Error removing file from backend:', error);
       }
+    }
 
-      setFiles(prev => prev.map(f => 
-        f.id === fileId ? { ...f, progress: Math.min(progress, 100) } : f
-      ));
-    }, 200);
-  }, []);
-
-  const removeFile = useCallback((fileId: string) => {
     setFiles(prev => prev.filter(f => f.id !== fileId));
-  }, []);
+  }, [files]);
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
