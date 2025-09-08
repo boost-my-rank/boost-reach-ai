@@ -10,7 +10,7 @@ import { UnifiedHeader } from "@/components/UnifiedHeader";
 import { useToast } from "@/hooks/use-toast";
 import { useClientTiles } from "@/hooks/useClientTiles";
 import { IncrementIndicator } from "@/components/IncrementIndicator";
-import { SubscriptionBanner } from "@/components/dashboard/SubscriptionBanner";
+import { PlanStatusCard } from "@/components/dashboard/PlanStatusCard";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -102,15 +102,17 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-app-canvas">
       <UnifiedHeader />
-      <SubscriptionBanner />
       <main className="pt-20">
         <SidebarProvider>
           <div className="flex min-h-screen w-full">
             <DashboardSidebar />
           
-          <main className="flex-1 px-6 lg:px-8 pb-6 lg:pb-8 pt-[10px]">
-            <div className="max-w-6xl mx-auto space-y-6">
-              {/* KPI Tiles Section */}
+            <main className="flex-1 px-6 lg:px-8 pb-6 lg:pb-8 pt-[10px]">
+              <div className="max-w-6xl mx-auto space-y-6">
+                {/* Plan Status Card */}
+                <PlanStatusCard />
+
+                {/* KPI Tiles Section */}
               <section aria-labelledby="kpi-title" className="relative rounded-2xl border bg-card shadow-sm">
                 {/* Yellow top bar */}
                 <div className="absolute left-0 right-0 top-0 h-1.5 rounded-t-2xl bg-yellow-400" />
