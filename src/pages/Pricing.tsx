@@ -225,10 +225,10 @@ export default function Pricing() {
                     </div>
                     <div className="pt-4">
                       <Button variant="outline" className="w-full font-semibold cta-shimmer" asChild>
-                        <Link to="/contact">Contact sales »</Link>
+                        <a href="https://calendar.app.google/xWgL9AeYruybGjgv5" target="_blank" rel="noopener noreferrer">Contact sales »</a>
                       </Button>
                     </div>
-                  </CardContent>
+                  </CardContent>  
                 </Card>
               </div>
             </div>

@@ -39,7 +39,7 @@ serve(async (req) => {
     
     logStep("User authenticated", { userId: user.id, email: user.email });
 
-    const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY_TEST") || "", { 
+    const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", { 
       apiVersion: "2023-10-16" 
     });
 
@@ -69,22 +69,30 @@ serve(async (req) => {
     const customerId = customers.data[0].id;
     logStep("Found Stripe customer", { customerId });
 
-    // Check for active subscriptions
-    const subscriptions = await stripe.subscriptions.list({
-      customer: customerId,
-      status: "active",
-      limit: 1,
-    });
+    // Check for active subscriptions in our database
+    const { data: subscriptionData, error: subscriptionError } = await supabaseClient
+      .from("subscriptions")
+      .select("*")
+      .eq("user_id", user.id)
+      .eq("status", "active")
+      .single();
 
-    const hasActiveSub = subscriptions.data.length > 0;
+    if (subscriptionError && subscriptionError.code !== 'PGRST116') {
+      logStep("Error checking subscription", { error: subscriptionError });
+      throw subscriptionError;
+    }
+
+    const hasActiveSub = !!subscriptionData;
     let nextBillDate = null;
 
     if (hasActiveSub) {
-      const subscription = subscriptions.data[0];
-      nextBillDate = new Date(subscription.current_period_end * 1000).toISOString();
-      logStep("Active subscription found", { subscriptionId: subscription.id, nextBillDate });
+      nextBillDate = subscriptionData.current_period_end;
+      logStep("Active subscription found in database", { 
+        subscriptionId: subscriptionData.stripe_subscription_id, 
+        nextBillDate 
+      });
     } else {
-      logStep("No active subscription found");
+      logStep("No active subscription found in database");
     }
 
     // Update payment_status in user_info table

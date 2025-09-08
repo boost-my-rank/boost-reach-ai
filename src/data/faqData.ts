@@ -11,10 +11,10 @@ export const faqItems = [
     question: "What sites do you target?",
     answer: "Reputable publications, trades, and vetted niche blogs (DA>30). We focus on legitimate media outlets like Forbes, Yahoo, industry publications, and high-authority niche sites that journalists actually use."
   },
-  {
-    question: "Can I choose topics/anchors?",
-    answer: "Yes—set them in your onboarding brief. During setup, we'll work with you to define your expertise areas, preferred topics, target pages, and anchor text preferences to ensure everything aligns with your SEO strategy."
-  },
+  // {
+  //   question: "Can I choose topics?",
+  //   answer: "Yes—set them in your onboarding brief. During setup, we'll work with you to define your expertise areas, preferred topics, target pages, and anchor text preferences to ensure everything aligns with your SEO strategy."
+  // },
   {
     question: "How fast are results?",
     answer: "First links often land in 7–30 days; SEO impact compounds over 3–6 months. While we can't control journalist timelines, our process typically produces initial backlinks within the first month, with ranking improvements becoming visible over 3-6 months."

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import logoImage from "@/assets/logo.png"; // Update this path to your logo file
 
 interface NavItem {
   label: string;
@@ -13,7 +14,7 @@ const navigation: NavItem[] = [
   { label: "How it Works", href: "/#how-it-works" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Pricing", href: "/pricing" },
-  { label: "Free SEO Report", href: "/resources/seo-2025-backlink-report" },
+  // { label: "Free SEO Report", href: "/resources/seo-2025-backlink-report" },
 ];
 
 export function UnifiedHeader() {
@@ -48,9 +49,11 @@ export function UnifiedHeader() {
           <nav className="flex h-16 items-center justify-between">
             <div className="flex items-center space-x-2">
               <Link to="/" className="flex items-center space-x-2">
-                <div className="h-8 w-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">B</span>
-                </div>
+                <img 
+                  src={logoImage} 
+                  alt="BoostMyRank Logo" 
+                  className="h-8 w-8 object-contain"
+                />
                 <span className="text-xl font-bold text-foreground">BoostMyRank</span>
               </Link>
             </div>
@@ -67,9 +70,11 @@ export function UnifiedHeader() {
           {/* Logo - flush left */}
           <div className="flex items-center space-x-2">
             <Link to="/" className="flex items-center space-x-2">
-              <div className="h-8 w-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">B</span>
-              </div>
+              <img 
+                src={logoImage} 
+                alt="BoostMyRank Logo" 
+                className="h-8 w-8 object-contain"
+              />
               <span className="text-xl font-bold text-foreground">BoostMyRank</span>
             </Link>
           </div>

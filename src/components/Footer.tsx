@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Twitter, Linkedin, Youtube, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import logoImage from "@/assets/logo.png"; // Update this path to your logo file
 
 const footerLinks = {
   product: [
@@ -13,15 +14,15 @@ const footerLinks = {
   resources: [
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Service", href: "/terms" },
-    { label: "Book a Demo", href: null }, // null href indicates plain text
+    { label: "Book a Demo", href: "https://calendar.app.google/xWgL9AeYruybGjgv5" },
     { label: "Contact Us", href: "/contact" },
   ],
 };
 
 const socialLinks = [
-  { icon: Twitter, href: "#twitter", label: "Twitter" },
-  { icon: Linkedin, href: "#linkedin", label: "LinkedIn" },
-  { icon: Youtube, href: "#youtube", label: "YouTube" },
+  // { icon: Twitter, href: "#twitter", label: "Twitter" },
+  // { icon: Linkedin, href: "#linkedin", label: "LinkedIn" },
+  // { icon: Youtube, href: "#youtube", label: "YouTube" },
   { icon: Mail, href: "#email", label: "Email" },
 ];
 
@@ -34,9 +35,11 @@ export function Footer() {
           {/* Brand Section */}
           <div className="space-y-4 max-w-md">
             <div className="flex items-center space-x-2">
-              <div className="h-8 w-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">B</span>
-              </div>
+              <img 
+                src={logoImage} 
+                alt="BoostMyRank Logo" 
+                className="h-8 w-8 object-contain"
+              />
               <span className="text-xl font-bold text-foreground">BoostMyRank</span>
             </div>
             <p className="text-muted-foreground leading-relaxed">
@@ -110,7 +113,7 @@ export function Footer() {
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-sm text-muted-foreground">
-            © 2024 BoostMyRank. All rights reserved.
+            © 2025 BoostMyRank. All rights reserved.
           </div>
           <div className="flex items-center space-x-6 text-sm text-muted-foreground">
             <span>Made with ❤️ for growing businesses</span>

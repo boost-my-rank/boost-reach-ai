@@ -17,8 +17,10 @@ export function CTABanner() {
               <Button variant="cta" size="lg" asChild>
                 <Link to="/signup">Try it now</Link>
               </Button>
-              <Button variant="outline" size="lg">
-                Book a demo
+              <Button variant="outline" size="lg" asChild>
+                <a href="https://calendar.app.google/xWgL9AeYruybGjgv5" target="_blank" rel="noopener noreferrer">
+                  Book a demo
+                </a>
               </Button>
             </div>
           </div>

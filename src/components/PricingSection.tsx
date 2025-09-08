@@ -86,8 +86,10 @@ export function PricingSection() {
                   <Button variant="cta" size="lg" className="w-full cta-shimmer" asChild>
                     <Link to="/signup">Try it now</Link>
                   </Button>
-                  <Button variant="outline" size="lg" className="w-full">
-                    Book a demo
+                  <Button variant="outline" size="lg" className="w-full" asChild>
+                    <a href="https://calendar.app.google/xWgL9AeYruybGjgv5" target="_blank" rel="noopener noreferrer">
+                      Book a demo
+                    </a>
                   </Button>
                 </div>
               </CardContent>

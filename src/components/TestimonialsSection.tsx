@@ -3,40 +3,43 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
+
 const testimonials = [
   {
-    quote: "Backlinker AI has generated over 70+ dofollow backlinks for my site that are relevant + authoritative within 6 months. My Domain Rating (DR) went from 0 to 15. Notable links include College Recruiter, GoBankingRates, Marketer Interview, HR.com, HubSpot and Fiverr.",
-    author: "Ryan Hawker",
-    role: "Owner",
-    company: "ThriveOneFive Media",
-    avatar: "/placeholder.svg",
+    quote: "BoostMyRank got us featured in ten highly reputable publications in only two months. By month three our domain authority was up 15 points. If you're tired of spending tens of hours reaching out to publications to get featured, I recommend BoostMyRank.",
+    author: "Aidan Mattrick",
+    role: "CEO",
+    company: "VoiceValet",
+    avatar: "/aidan_avatar.webp",
     rating: 5
   },
   {
-    quote: "We stopped chasing cold links—now the press comes to us.",
-    author: "Sarah Chen",
-    role: "Marketing Director",
-    company: "TechFlow Solutions",
-    avatar: "/placeholder.svg",
-    rating: 5
-  },
-  {
-    quote: "Three legit DA40+ links a month changed our authority curve.",
-    author: "Michael Rodriguez",
-    role: "SEO Manager",
-    company: "GrowthCorp",
-    avatar: "/placeholder.svg",
-    rating: 5
-  },
-  {
-    quote: "Hands-off and transparent reporting—perfect for a lean team.",
-    author: "Emily Thompson",
+    quote: "BoostMyRank generated us over thirty authoritative backlinks, which boosted our domain rating from 3 to 19 and our organic traffic by 300% in six months. Their team was super responsive to our questions and easy to work with. I highlyrecommend them.",
+    author: "PJ Jhaveri",
     role: "Founder",
-    company: "StartupLaunch",
-    avatar: "/placeholder.svg",
+    company: "Loch Digital",
+    avatar: "/pjavatar.jpeg",
     rating: 5
   },
+  {
+    quote: "We were trying to get featured in publications, but it took our head of media at least ten hours per week. BoostMyRank helped us do that with no work on our part and we started showing up in highly reputable publications. It was the growth boost we were missing.",
+    author: "Quentin Thomassin",
+    role: "Founder",
+    company: "QT Marketing",
+    avatar: "/quentin_avatar.png",
+    rating: 5
+  },
+  {
+    quote: "Our brand stands at the intersection of innovation and media, so credibility is everything. BoostMyRank helped us secure media coverage that aligned with our mission and accelerated our visibility without draining our team. I recommend it to anyone looking to grow their brand.",
+    author: "Lin Yang",
+    role: "Founder",
+    company: "The Innovators Club",
+    avatar: "/linyang_avatar.jpeg",
+    rating: 5
+  }
 ];
+
+
 
 export function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);

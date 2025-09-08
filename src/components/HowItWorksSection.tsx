@@ -6,23 +6,23 @@ const steps = [
   {
     number: "01",
     icon: Users,
-    title: "Onboarding Brief",
-    description: "Brand, topics, boundaries, target pages/anchors.",
-    details: "We learn about your business, expertise areas, and SEO goals to ensure perfect alignment."
+    title: "Tell us about your business",
+    // description: "Brand, topics, boundaries, target pages/anchors.",
+    details: "During onboarding, you provide us with your website and bio that journalists will use to credit you. We'll use this to learn about your business, expertise areas, and SEO goals to ensure we target the right journalists."
   },
   {
     number: "02",
     icon: FileText,
-    title: "We Scan & Select",
-    description: "Only relevant journalist requests get a pitch.",
-    details: "Our team monitors multiple sources and filters opportunities that match your industry and expertise."
+    title: "We find opportunities",
+    // description: "Only relevant journalist requests get a pitch.",
+    details: "Our smart AI + human review team finds journalists looking for article quotes on questions relevant to your business. Once we find an opportunity, we'll draft a pitch and send it to the journalist. If they accept your quote, you get a backlink."
   },
   {
     number: "03",
     icon: Link,
-    title: "You Get Links & Proof",
-    description: "Live links verified; monthly report sent.",
-    details: "Receive detailed reports with live backlinks, DA scores, and traffic impact measurements."
+    title: "You get 3 backlinks every month & a report",
+    // description: "Live links verified; monthly report sent.",
+    details: "Every month we'll make sure you receive a minimum of three backlinks, or your money back. We'll also send you a detailed report of all the backlinks we secured for you, with information about each outlet."
   },
 ];
 

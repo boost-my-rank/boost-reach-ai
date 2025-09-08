@@ -35,7 +35,7 @@ export interface CaseStudy {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "grow-cycling-foundation",
-    title: "Case Study — Loch",
+    title: "Case Study: How Loch boosted organic traffic 68% in 90 days by improving its backlinking strategy",
     subtitle: "Learn how an online news site covering global market trends broke through page-one competition and established domain authority.",
     personName: "Prithvir Jhaveri",
     orgName: "Loch",
@@ -67,7 +67,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "truckee-chamber-commerce",
-    title: "Case Study — How VoiceValet increased organic traffic 70% in 3 months using BoostMyRank",
+    title: "Case Study: How VoiceValet increased organic traffic 150% in 6 months using BoostMyRank",
     subtitle: "Learn how an AI phone-answering service turned missed calls into inbound pipeline by building domain authority.",
     personName: "Aidan Mattrick",
     orgName: "VoiceValet",
@@ -90,8 +90,8 @@ export const caseStudies: CaseStudy[] = [
       attribution: "Aidan Mattrick, CEO, VoiceValet"
     },
     impact: {
-      p1: "In 90 days, domain authority rose +12 points, organic sessions grew 72%, and demo requests increased 58%, while customer acquisition costs (CAC) decreased 22% due to stronger organic performance. Domain Authority: +12 in 90 days; referring domains: +45%. 19 priority keywords moved into top-10 (e.g., \"AI receptionist,\" \"24/7 phone answering,\" \"AI book appointments\").",
-      p2: "Organic sessions: +72% QoQ; demo requests: +58%; trial starts: +41%. New articles indexed faster and began ranking sooner due to stronger brand signals.",
+      p1: "In 6 months, domain authority rose +12 points, organic sessions grew 150%, and demo requests increased 58%, while customer acquisition costs (CAC) decreased 22% due to stronger organic performance. Domain Authority: +12 in 6 months; referring domains: +45%. 19 priority keywords moved into top-10 (e.g., \"AI receptionist,\" \"24/7 phone answering,\" \"AI book appointments\").",
+      p2: "Organic sessions: +150% over 6 months; demo requests: +58%; trial starts: +41%. New articles indexed faster and began ranking sooner due to stronger brand signals.",
       p3: "Paid CAC down 22% as organic took a larger share of conversions; SDRs reported shorter time-to-trust on discovery calls.",
       quote: "This program turned missed calls into a steady stream of qualified demos, and it did it without adding work to our team.",
       attribution: "Avery Kim, CMO, VoiceValet"
@@ -99,7 +99,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "medical-alley-association",
-    title: "How QT Marketing grew demo requests by 44% in 90 days by improving its backlinking strategy",
+    title: "Case Study: How QT Marketing grew demo requests by 44% in 90 days by improving its backlinking strategy",
     subtitle: "Learn how a personal trainer marketing agency increased organic pipeline through strategic editorial placement and credibility building.",
     personName: "Quentin Thomassin",
     orgName: "QT Marketing",

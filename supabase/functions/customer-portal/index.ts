@@ -25,7 +25,7 @@ serve(async (req) => {
       env: {
         hasSupabaseUrl: !!Deno.env.get("SUPABASE_URL"),
         hasSupabaseAnonKey: !!Deno.env.get("SUPABASE_ANON_KEY"),
-        hasStripeSecretKey: !!Deno.env.get("STRIPE_SECRET_KEY_TEST")
+        hasStripeSecretKey: !!Deno.env.get("STRIPE_SECRET_KEY")
       }
     }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -39,7 +39,7 @@ serve(async (req) => {
     // Check environment variables first
     const supabaseUrl = Deno.env.get("SUPABASE_URL");
     const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY");
-    const stripeSecretKey = Deno.env.get("STRIPE_SECRET_KEY_TEST");
+    const stripeSecretKey = Deno.env.get("STRIPE_SECRET_KEY");
 
     logStep("Environment check", {
       hasSupabaseUrl: !!supabaseUrl,
@@ -49,7 +49,7 @@ serve(async (req) => {
 
     if (!supabaseUrl) throw new Error("SUPABASE_URL environment variable is not set");
     if (!supabaseAnonKey) throw new Error("SUPABASE_ANON_KEY environment variable is not set");
-    if (!stripeSecretKey) throw new Error("STRIPE_SECRET_KEY_TEST environment variable is not set");
+    if (!stripeSecretKey) throw new Error("STRIPE_SECRET_KEY environment variable is not set");
 
     const supabaseClient = createClient(supabaseUrl, supabaseAnonKey);
 
