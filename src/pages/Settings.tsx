@@ -70,9 +70,16 @@ const Settings = () => {
       }
     } catch (error) {
       console.error("Billing portal error:", error);
+      
+      // More detailed error message
+      let errorMessage = "We couldn't open the billing portal. Please try again or contact support.";
+      if (error instanceof Error) {
+        errorMessage = `Billing portal error: ${error.message}`;
+      }
+      
       toast({
         title: "Error",
-        description: "We couldn't open the billing portal. Please try again or contact support.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {

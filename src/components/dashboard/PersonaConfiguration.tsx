@@ -121,7 +121,11 @@ export function PersonaConfiguration({ onSaveChanges }: PersonaConfigurationProp
         }
 
         // Load existing knowledge files
-        const { data: knowledgeFiles, error: filesError } = await supabase.rpc('get_user_knowledge_files');
+        const { data: knowledgeFiles, error: filesError } = await supabase
+          .from('knowledge_files')
+          .select('*')
+          .eq('user_id', user.id)
+          .order('created_at', { ascending: false });
         
         if (filesError) {
           console.error('Failed to load knowledge files:', filesError);
@@ -160,7 +164,7 @@ export function PersonaConfiguration({ onSaveChanges }: PersonaConfigurationProp
         break;
       case 'companyWebsite':
         if (value && !value.match(/^https?:\/\/.+\..+/)) {
-          return 'Please enter a valid website URL';
+          return 'Please enter a valid website URL like https://www.example.com';
         }
         break;
       case 'companyName':
@@ -305,62 +309,79 @@ export function PersonaConfiguration({ onSaveChanges }: PersonaConfigurationProp
     return null;
   };
 
-  const uploadFileToSupabase = useCallback(async (fileId: string) => {
-    const file = files.find(f => f.id === fileId);
-    if (!file) return;
+  const uploadFileToSupabase = useCallback(async (fileId: string, fileData?: UploadFile) => {
+    // Use provided fileData or find in current state
+    const file = fileData || files.find(f => f.id === fileId);
+    if (!file) {
+      console.log('❌ File not found for ID:', fileId);
+      return;
+    }
 
     console.log('🚀 Starting upload for file:', file.name, 'Size:', file.size, 'Type:', file.type);
+
+    // Check authentication first
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
+      console.error('❌ Authentication error:', authError);
+      setFiles(prev => prev.map(f => 
+        f.id === fileId ? { 
+          ...f, 
+          status: 'error' as const, 
+          error: 'Authentication failed'
+        } : f
+      ));
+      return;
+    }
+
+    console.log('✅ User authenticated:', user.id);
 
     setFiles(prev => prev.map(f => 
       f.id === fileId ? { ...f, status: 'uploading' as const } : f
     ));
 
     try {
-      // Step 1: Get upload URL from Supabase
-      console.log('📡 Step 1: Requesting upload URL from Supabase...');
-      const { data: uploadData, error: urlError } = await supabase.rpc('create_upload_url', {
-        file_name: file.name,
-        file_size: file.size,
-        mime_type: file.type
-      });
+      // Step 1: Generate file ID and storage path
+      console.log('📡 Step 1: Generating file info...');
+      const file_id = crypto.randomUUID();
+      const storage_path = `${user.id}/${file_id}-${file.name}`;
+      
+      console.log('✅ File info generated:', { file_id, storage_path });
 
-      if (urlError) {
-        console.error('❌ Failed to get upload URL:', urlError);
-        throw new Error(urlError.message);
-      }
-
-      console.log('✅ Upload URL received:', uploadData);
-      const { file_id, signed_url } = uploadData as { file_id: string; signed_url: string };
-
-      // Step 2: Upload file to Supabase Storage using signed URL
+      // Step 2: Upload file directly to Supabase Storage
       console.log('📤 Step 2: Uploading file to storage...');
-      const uploadResponse = await fetch(signed_url, {
-        method: 'PUT',
-        body: file.file,
-        headers: {
-          'Content-Type': file.type,
-        },
-      });
+      const { data: uploadResult, error: uploadError } = await supabase.storage
+        .from('user_uploads')
+        .upload(storage_path, file.file, {
+          cacheControl: '3600',
+          upsert: false
+        });
 
-      console.log('Upload response status:', uploadResponse.status, uploadResponse.statusText);
-
-      if (!uploadResponse.ok) {
-        const errorText = await uploadResponse.text();
-        console.error('❌ Upload failed with response:', errorText);
-        throw new Error(`Upload failed: ${uploadResponse.statusText} - ${errorText}`);
+      if (uploadError) {
+        console.error('❌ Upload failed:', uploadError);
+        throw new Error(uploadError.message);
       }
 
-      console.log('✅ File uploaded successfully to storage');
+      console.log('✅ File uploaded successfully to storage:', uploadResult);
 
-      // Step 3: Mark upload as complete
-      console.log('💾 Step 3: Marking upload as complete in database...');
-      const { error: completeError } = await supabase.rpc('complete_upload', {
-        file_id: file_id
-      });
+      // Step 3: Create database record
+      console.log('💾 Step 3: Creating database record...');
+      const { error: insertError } = await supabase
+        .from('knowledge_files')
+        .insert({
+          id: file_id,
+          user_id: user.id,
+          storage_path: storage_path,
+          original_name: file.name,
+          mime_type: file.type,
+          size_bytes: file.size,
+          status: 'uploaded'
+        });
 
-      if (completeError) {
-        console.error('❌ Failed to complete upload:', completeError);
-        throw new Error(completeError.message);
+      if (insertError) {
+        console.error('❌ Failed to create database record:', insertError);
+        // Try to clean up the uploaded file
+        await supabase.storage.from('user_uploads').remove([storage_path]);
+        throw new Error(insertError.message);
       }
 
       console.log('✅ Upload completed successfully and recorded in database');
@@ -401,18 +422,23 @@ export function PersonaConfiguration({ onSaveChanges }: PersonaConfigurationProp
   }, [files, toast]);
 
   const addFiles = useCallback((newFiles: FileList | File[]) => {
+    console.log('📝 addFiles called with:', newFiles.length, 'files');
     const filesToAdd: UploadFile[] = [];
     const errors: string[] = [];
 
     Array.from(newFiles).forEach((file) => {
+      console.log('🔍 Processing file:', file.name);
+      
       // Check if we're at max files
       if (files.length + filesToAdd.length >= MAX_FILES) {
+        console.log('❌ Max files reached');
         errors.push(`Maximum ${MAX_FILES} files allowed`);
         return;
       }
 
       // Check if file already exists
       if (files.some(f => f.name === file.name && f.size === file.size)) {
+        console.log('❌ File already exists');
         errors.push(`File "${file.name}" already exists`);
         return;
       }
@@ -420,6 +446,7 @@ export function PersonaConfiguration({ onSaveChanges }: PersonaConfigurationProp
       // Validate file
       const error = validateFile(file);
       if (error) {
+        console.log('❌ File validation failed:', error);
         errors.push(`${file.name}: ${error}`);
         return;
       }
@@ -428,11 +455,12 @@ export function PersonaConfiguration({ onSaveChanges }: PersonaConfigurationProp
       const totalSize = files.reduce((sum, f) => sum + f.size, 0) + 
                        filesToAdd.reduce((sum, f) => sum + f.size, 0) + file.size;
       if (totalSize > MAX_TOTAL_SIZE) {
+        console.log('❌ Total size exceeded');
         errors.push('Total file size exceeds 200MB limit');
         return;
       }
 
-      filesToAdd.push({
+      const uploadFile: UploadFile = {
         id: Math.random().toString(36).substr(2, 9),
         file,
         name: file.name,
@@ -440,16 +468,31 @@ export function PersonaConfiguration({ onSaveChanges }: PersonaConfigurationProp
         type: file.type,
         status: 'idle',
         progress: 0
-      });
+      };
+      
+      console.log('✅ File validated, adding to queue:', uploadFile);
+      filesToAdd.push(uploadFile);
     });
 
+    console.log('📊 Files to add:', filesToAdd.length, 'Errors:', errors.length);
+
     if (filesToAdd.length > 0) {
-      setFiles(prev => [...prev, ...filesToAdd]);
+      console.log('🔄 Adding files to state and starting uploads...');
+      setFiles(prev => {
+        const newFiles = [...prev, ...filesToAdd];
+        console.log('📁 New files state:', newFiles.length, 'total files');
+        return newFiles;
+      });
+      
       // Auto-start upload
-      filesToAdd.forEach(file => uploadFileToSupabase(file.id));
+      filesToAdd.forEach(file => {
+        console.log('🚀 Starting upload for file ID:', file.id);
+        uploadFileToSupabase(file.id, file);
+      });
     }
 
     if (errors.length > 0) {
+      console.log('⚠️ Showing error toast:', errors);
       toast({
         title: "Upload issues",
         description: errors.slice(0, 3).join(', ') + (errors.length > 3 ? '...' : ''),
@@ -462,10 +505,30 @@ export function PersonaConfiguration({ onSaveChanges }: PersonaConfigurationProp
     const file = files.find(f => f.id === fileId);
     if (!file) return;
 
-    // If file is uploading or uploaded, try to cancel/delete from backend
+    // If file is uploading or uploaded, try to delete from backend
     if (file.status === 'uploading' || file.status === 'done') {
       try {
-        await supabase.rpc('cancel_upload', { file_id: fileId });
+        // Get the user ID for the storage path
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          // Try to find the file in the database to get the storage path
+          const { data: dbFile } = await supabase
+            .from('knowledge_files')
+            .select('storage_path')
+            .eq('user_id', user.id)
+            .eq('original_name', file.name)
+            .single();
+          
+          if (dbFile?.storage_path) {
+            // Remove from storage
+            await supabase.storage.from('user_uploads').remove([dbFile.storage_path]);
+            // Remove from database
+            await supabase
+              .from('knowledge_files')
+              .delete()
+              .eq('storage_path', dbFile.storage_path);
+          }
+        }
       } catch (error) {
         console.error('Error removing file from backend:', error);
       }
@@ -489,7 +552,19 @@ export function PersonaConfiguration({ onSaveChanges }: PersonaConfigurationProp
     setIsDragOver(false);
     
     const droppedFiles = e.dataTransfer.files;
+    console.log('🎯 Files dropped:', droppedFiles.length, 'files');
+    
     if (droppedFiles.length > 0) {
+      // Log each file for debugging
+      Array.from(droppedFiles).forEach((file, index) => {
+        console.log(`📁 File ${index + 1}:`, {
+          name: file.name,
+          size: file.size,
+          type: file.type,
+          lastModified: file.lastModified
+        });
+      });
+      
       addFiles(droppedFiles);
     }
   }, [addFiles]);

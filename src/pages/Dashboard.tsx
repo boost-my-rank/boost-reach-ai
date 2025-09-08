@@ -65,9 +65,12 @@ const Dashboard = () => {
 
     // Listen for auth state changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      console.log('🔄 Auth state change:', event, session?.user?.id);
       if (!session) {
+        console.log('❌ No session, redirecting to signup');
         navigate('/signup');
       } else {
+        console.log('✅ Session found, setting user');
         setUser(session.user);
       }
     });

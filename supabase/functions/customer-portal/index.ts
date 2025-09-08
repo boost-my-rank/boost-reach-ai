@@ -17,13 +17,41 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
-  const supabaseClient = createClient(
-    Deno.env.get("SUPABASE_URL") ?? "",
-    Deno.env.get("SUPABASE_ANON_KEY") ?? ""
-  );
+  // Simple health check endpoint
+  if (req.method === "GET") {
+    return new Response(JSON.stringify({ 
+      status: "ok", 
+      timestamp: new Date().toISOString(),
+      env: {
+        hasSupabaseUrl: !!Deno.env.get("SUPABASE_URL"),
+        hasSupabaseAnonKey: !!Deno.env.get("SUPABASE_ANON_KEY"),
+        hasStripeSecretKey: !!Deno.env.get("STRIPE_SECRET_KEY_TEST")
+      }
+    }), {
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+      status: 200,
+    });
+  }
 
   try {
     logStep("Function started");
+
+    // Check environment variables first
+    const supabaseUrl = Deno.env.get("SUPABASE_URL");
+    const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY");
+    const stripeSecretKey = Deno.env.get("STRIPE_SECRET_KEY_TEST");
+
+    logStep("Environment check", {
+      hasSupabaseUrl: !!supabaseUrl,
+      hasSupabaseAnonKey: !!supabaseAnonKey,
+      hasStripeSecretKey: !!stripeSecretKey
+    });
+
+    if (!supabaseUrl) throw new Error("SUPABASE_URL environment variable is not set");
+    if (!supabaseAnonKey) throw new Error("SUPABASE_ANON_KEY environment variable is not set");
+    if (!stripeSecretKey) throw new Error("STRIPE_SECRET_KEY_TEST environment variable is not set");
+
+    const supabaseClient = createClient(supabaseUrl, supabaseAnonKey);
 
     const authHeader = req.headers.get("Authorization");
     if (!authHeader) throw new Error("No authorization header provided");
@@ -35,7 +63,7 @@ serve(async (req) => {
 
     logStep("User authenticated", { userId: user.id, email: user.email });
 
-    const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
+    const stripe = new Stripe(stripeSecretKey, {
       apiVersion: "2023-10-16",
     });
 
@@ -57,25 +85,56 @@ serve(async (req) => {
       logStep("Created new customer", { customerId });
     }
 
-    const origin = req.headers.get("origin") || "http://localhost:3000";
-    const returnUrl = `${origin}/dashboard/settings`;
+    const origin = req.headers.get("origin") || "http://localhost:8080";
+    
+    // Determine the correct return URL based on origin
+    let returnUrl;
+    if (origin.includes('localhost')) {
+      returnUrl = `http://localhost:8080/dashboard`;
+    } else if (origin.includes('boostmyrank.co')) {
+      returnUrl = `https://boostmyrank.co/dashboard`;
+    } else if (origin.includes('lovable.app')) {
+      returnUrl = `https://preview--boost-reach-ai.lovable.app/dashboard`;
+    } else {
+      // Fallback to current origin
+      returnUrl = `${origin}/dashboard`;
+    }
 
-    logStep("Creating customer portal session", { customerId, returnUrl });
-
-    const portalSession = await stripe.billingPortal.sessions.create({
-      customer: customerId,
-      return_url: returnUrl,
+    logStep("Creating customer portal session", { 
+      customerId, 
+      returnUrl, 
+      origin,
+      headers: Object.fromEntries(req.headers.entries())
     });
 
-    logStep("Customer portal session created", { 
-      sessionId: portalSession.id, 
-      url: portalSession.url 
-    });
+    try {
+      const portalSession = await stripe.billingPortal.sessions.create({
+        customer: customerId,
+        return_url: returnUrl,
+      });
 
-    return new Response(JSON.stringify({ url: portalSession.url }), {
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-      status: 200,
-    });
+      logStep("Customer portal session created", { 
+        sessionId: portalSession.id, 
+        url: portalSession.url 
+      });
+
+      return new Response(JSON.stringify({ url: portalSession.url }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+        status: 200,
+      });
+    } catch (stripeError) {
+      logStep("Stripe portal session creation failed", { 
+        error: stripeError instanceof Error ? stripeError.message : String(stripeError),
+        customerId 
+      });
+      
+      // If customer portal is not enabled, provide helpful error
+      if (stripeError instanceof Error && stripeError.message.includes('portal')) {
+        throw new Error("Customer portal is not enabled in your Stripe account. Please enable it in your Stripe dashboard under Settings > Billing > Customer portal.");
+      }
+      
+      throw stripeError;
+    }
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     logStep("ERROR in customer-portal", { message: errorMessage });
