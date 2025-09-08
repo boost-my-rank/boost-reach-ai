@@ -7,6 +7,31 @@ import { useToast } from "@/hooks/use-toast";
 import { CheckCircle, Check } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
 
+// Utility function to determine redirect URL based on origin
+const getRedirectUrl = (onSuccessRedirect: string) => {
+  const origin = window.location.origin;
+  console.log('🔍 Current origin:', origin);
+  console.log('🔍 Target redirect:', onSuccessRedirect);
+  
+  if (origin.includes('localhost')) {
+    const redirectUrl = `http://localhost:8080${onSuccessRedirect}`;
+    console.log('✅ Localhost detected, redirecting to:', redirectUrl);
+    return redirectUrl;
+  } else if (origin.includes('boostmyrank.co')) {
+    const redirectUrl = `https://boostmyrank.co${onSuccessRedirect}`;
+    console.log('✅ Boostmyrank.co detected, redirecting to:', redirectUrl);
+    return redirectUrl;
+  } else if (origin.includes('lovable.app')) {
+    const redirectUrl = `https://preview--boost-reach-ai.lovable.app${onSuccessRedirect}`;
+    console.log('✅ Lovable.app detected, redirecting to:', redirectUrl);
+    return redirectUrl;
+  }
+  // Fallback to current origin
+  const fallbackUrl = `${origin}${onSuccessRedirect}`;
+  console.log('⚠️ Fallback redirect to:', fallbackUrl);
+  return fallbackUrl;
+};
+
 interface AuthFormProps {
   mode: "signup" | "signin";
   onSuccessRedirect?: string;
@@ -52,7 +77,7 @@ const AuthForm = ({
           email,
           password,
           options: {
-            emailRedirectTo: `${window.location.origin}${onSuccessRedirect}`
+            emailRedirectTo: getRedirectUrl(onSuccessRedirect)
           }
         });
 
@@ -84,7 +109,16 @@ const AuthForm = ({
         if (error) {
           setError(error.message);
         } else {
-          navigate(onSuccessRedirect);
+          // Use the same redirect logic for sign-in
+          const redirectUrl = getRedirectUrl(onSuccessRedirect);
+          console.log('🚀 Sign-in successful, redirecting to:', redirectUrl);
+          
+          // If it's a different domain, use window.location
+          if (redirectUrl !== `${window.location.origin}${onSuccessRedirect}`) {
+            window.location.href = redirectUrl;
+          } else {
+            navigate(onSuccessRedirect);
+          }
         }
       }
     } catch (error) {
@@ -98,10 +132,11 @@ const AuthForm = ({
   const handleGoogleAuth = async () => {
     try {
       setIsGoogleLoading(true);
+      
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}${onSuccessRedirect}`
+          redirectTo: getRedirectUrl(onSuccessRedirect)
         }
       });
 

@@ -34,8 +34,10 @@ serve(async (req) => {
     logStep("User authenticated", { userId: user.id, email: user.email });
 
     const { seats = 1, billingCycle = 'monthly' } = await req.json();
+
+    console.log("STRIPE_SECRET_KEY_TEST", Deno.env.get("STRIPE_SECRET_KEY_TEST"));
     
-    const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", { 
+    const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY_TEST") || "", { 
       apiVersion: "2023-10-16" 
     });
 
