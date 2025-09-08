@@ -10,6 +10,7 @@ import { UnifiedHeader } from "@/components/UnifiedHeader";
 import { useToast } from "@/hooks/use-toast";
 import { useClientTiles } from "@/hooks/useClientTiles";
 import { IncrementIndicator } from "@/components/IncrementIndicator";
+import { SubscriptionStatusCard } from "@/components/dashboard/SubscriptionStatusCard";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -152,6 +153,9 @@ const Dashboard = () => {
                   </div>
                 </div>
               </section>
+
+              {/* Subscription Status Card */}
+              <SubscriptionStatusCard />
 
               <div id="persona-config">
                 <PersonaConfiguration onSaveChanges={enableTile2Incrementing} />
