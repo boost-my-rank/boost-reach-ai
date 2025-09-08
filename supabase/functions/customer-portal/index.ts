@@ -58,7 +58,7 @@ serve(async (req) => {
     }
 
     const origin = req.headers.get("origin") || "http://localhost:3000";
-    const returnUrl = `${origin}/settings?billing=done`;
+    const returnUrl = `${origin}/dashboard/settings`;
 
     logStep("Creating customer portal session", { customerId, returnUrl });
 
