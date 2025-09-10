@@ -34,7 +34,7 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "grow-cycling-foundation",
+    slug: "loch-case-study",
     title: "Case Study: How Loch boosted organic traffic 68% in 90 days by improving its backlinking strategy",
     subtitle: "Learn how an online news site covering global market trends broke through page-one competition and established domain authority.",
     personName: "Prithvir Jhaveri",
@@ -66,7 +66,7 @@ export const caseStudies: CaseStudy[] = [
     }
   },
   {
-    slug: "truckee-chamber-commerce",
+    slug: "voicevalet-case-study",
     title: "Case Study: How VoiceValet increased organic traffic 150% in 6 months using BoostMyRank",
     subtitle: "Learn how an AI phone-answering service turned missed calls into inbound pipeline by building domain authority.",
     personName: "Aidan Mattrick",
@@ -98,7 +98,7 @@ export const caseStudies: CaseStudy[] = [
     }
   },
   {
-    slug: "medical-alley-association",
+    slug: "qt-marketing-case-study",
     title: "Case Study: How QT Marketing grew demo requests by 44% in 90 days by improving its backlinking strategy",
     subtitle: "Learn how a personal trainer marketing agency increased organic pipeline through strategic editorial placement and credibility building.",
     personName: "Quentin Thomassin",
