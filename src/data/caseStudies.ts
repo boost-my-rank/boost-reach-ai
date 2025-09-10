@@ -58,7 +58,7 @@ export const caseStudies: CaseStudy[] = [
       attribution: "Aidan Mattrick, CEO, VoiceValet"
     },
     impact: {
-      p1: "In 6 months, domain authority rose +12 points, organic sessions grew 150%, and demo requests increased 58%, while customer acquisition costs (CAC) decreased 22% due to stronger organic performance. Domain Authority: +12 in 6 months; referring domains: +45%. 19 priority keywords moved into top-10 (e.g., \"AI receptionist,\" \"24/7 phone answering,\" \"AI book appointments\").",
+      p1: "In 6 months, domain authority rose +12 points, organic sessions grew 150%, and demo requests increased 60%, while customer acquisition costs (CAC) decreased 22% due to stronger organic performance. Domain Authority: +12 in 6 months; referring domains: +45%. 19 priority keywords moved into top-10 (e.g., \"AI receptionist,\" \"24/7 phone answering,\" \"AI book appointments\").",
       p2: "Organic sessions: +150% over 6 months; demo requests: +58%; trial starts: +41%. New articles indexed faster and began ranking sooner due to stronger brand signals.",
       p3: "Paid CAC down 22% as organic took a larger share of conversions; SDRs reported shorter time-to-trust on discovery calls.",
       quote: "This program turned missed calls into a steady stream of qualified demos, and it did it without adding work to our team.",
@@ -115,7 +115,7 @@ export const caseStudies: CaseStudy[] = [
       attribution: "Prithvir Jhaveri, Founder, Loch"
     },
     solution: {
-      p1: "BoostMyRank ran a fully managed outreach program to earn editorial backlinks from respected business and finance publications. We positioned Loch editors as quotable experts, responded to journalist requests on timely topics, and delivered 3–5 DA30+ links per month.",
+      p1: "BoostMyRank ran a fully managed outreach program to earn editorial backlinks from respected business and finance publications. We positioned Loch editors as quotable experts, responded to journalist requests on timely topics, and delivered 3 or more backlinks per month.",
       p2: "This enabled them to create a simple \"As Seen In\" section and media badges for the homepage, article templates, and author bios to showcase credibility.",
       p3: "We provided a hands-off workflow: We sourced opportunities, drafted quotes in the Loch voice, handled submissions and follow-ups, and provided monthly reports on newspaper placements (URL, anchor, DA, status).",
       quote: "Being cited by well-known outlets changed the conversation for us as partners and readers suddenly starting taking us more seriously.",
@@ -124,7 +124,7 @@ export const caseStudies: CaseStudy[] = [
     impact: {
       p1: "In 90 days, Loch's Google domain authority increased by 9 points, organic sessions grew 68%, and 18 priority keywords moved into the top 10.",
       p2: "The site's newsletter signups rose 54%, which improved sponsorship interest and ad performance. New articles began indexing faster and earned visibility sooner because the brand now carried clear authority signals.",
-      p3: "Authority: DA +9 in 90 days; referring domains up 42%. Visibility: 18 target keywords entered top-10 positions; new posts started ranking sooner. Growth: Organic sessions +68% QoQ; newsletter signups +54%; more inbound sponsor interest.",
+      p3: "The improved domain authority and backlink profile led to faster content indexing, with new articles ranking within days instead of weeks. This accelerated content performance enabled Loch to capitalize on trending topics and maintain competitive advantage in the fast-paced news cycle.",
       quote: "This investment in our digital authority has transformed our business trajectory.",
       attribution: "Prithvir Jhaveri, Founder, Loch"
     }

@@ -14,7 +14,7 @@ const testimonials = [
     rating: 5
   },
   {
-    quote: "BoostMyRank generated us over thirty authoritative backlinks, which boosted our domain rating from 3 to 19 and our organic traffic by 300% in six months. Their team was super responsive to our questions and easy to work with. I highlyrecommend them.",
+    quote: "BoostMyRank generated us around thirty authoritative backlinks, which boosted our domain rating from 3 to 19 and our organic traffic by 300% in six months. Their team was super responsive to our questions and easy to work with. I highly recommend them.",
     author: "PJ Jhaveri",
     role: "Founder",
     company: "Loch Digital",
@@ -22,7 +22,7 @@ const testimonials = [
     rating: 5
   },
   {
-    quote: "We were trying to get featured in publications, but it took our head of media at least ten hours per week. BoostMyRank helped us do that with no work on our part and we started showing up in highly reputable publications. It was the growth boost we were missing.",
+    quote: "We were trying to get featured in high-authority publications, but the process was slow and we often weren't fast enough in responding within six hours. BoostMyRank helped us do that with no work on our part and within a month we started showing up in top news sites. It was the growth boost we were missing.",
     author: "Quentin Thomassin",
     role: "Founder",
     company: "QT Marketing",
