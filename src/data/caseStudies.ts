@@ -34,38 +34,6 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "loch-case-study",
-    title: "Case Study: How Loch boosted organic traffic 68% in 90 days by improving its backlinking strategy",
-    subtitle: "Learn how an online news site covering global market trends broke through page-one competition and established domain authority.",
-    personName: "Prithvir Jhaveri",
-    orgName: "Loch",
-    updatedAt: "Aug 26, 2024",
-    heroImage: "/placeholder.svg",
-    accentFrom: "#F6C343",
-    accentTo: "#F59E0B",
-    challenge: {
-      p1: "Loch is an online news site covering global market trends with a focus on US news, politics, and finance stories. Despite publishing on their blog consistently, they struggled to break into page-one results against bigger publishers.",
-      p2: "Referral traffic had leveled off, and the site lacked the domain authority signals Google uses to trust and rank content from newer brands.",
-      p3: "As a newer outlet competing with established media for the same headlines, Loch had great content but too few high-authority mentions pointing back to the site. The small team had no bandwidth for ongoing, white-hat outreach.",
-      quote: "We were publishing strong stories, but they stalled on page two. We needed clear proof of authority that search engines and readers recognize.",
-      attribution: "Prithvir Jhaveri, Founder, Loch"
-    },
-    solution: {
-      p1: "BoostMyRank ran a fully managed outreach program to earn editorial backlinks from respected business and finance publications. We positioned Loch editors as quotable experts, responded to journalist requests on timely topics, and delivered 3–5 DA30+ links per month.",
-      p2: "This enabled them to create a simple \"As Seen In\" section and media badges for the homepage, article templates, and author bios to showcase credibility.",
-      p3: "We provided a hands-off workflow: We sourced opportunities, drafted quotes in the Loch voice, handled submissions and follow-ups, and provided monthly reports on newspaper placements (URL, anchor, DA, status).",
-      quote: "Being cited by well-known outlets changed the conversation for us as partners and readers suddenly starting taking us more seriously.",
-      attribution: "Prithvir Jhaveri, Founder, Loch"
-    },
-    impact: {
-      p1: "In 90 days, Loch's Google domain authority increased by 9 points, organic sessions grew 68%, and 18 priority keywords moved into the top 10.",
-      p2: "The site's newsletter signups rose 54%, which improved sponsorship interest and ad performance. New articles began indexing faster and earned visibility sooner because the brand now carried clear authority signals.",
-      p3: "Authority: DA +9 in 90 days; referring domains up 42%. Visibility: 18 target keywords entered top-10 positions; new posts started ranking sooner. Growth: Organic sessions +68% QoQ; newsletter signups +54%; more inbound sponsor interest.",
-      quote: "This investment in our digital authority has transformed our business trajectory.",
-      attribution: "Prithvir Jhaveri, Founder, Loch"
-    }
-  },
-  {
     slug: "voicevalet-case-study",
     title: "Case Study: How VoiceValet increased organic traffic 150% in 6 months using BoostMyRank",
     subtitle: "Learn how an AI phone-answering service turned missed calls into inbound pipeline by building domain authority.",
@@ -77,7 +45,7 @@ export const caseStudies: CaseStudy[] = [
     accentTo: "#EC4899",
     challenge: {
       p1: "VoiceValet helps businesses answer every call with a smart AI that qualifies prospects, books appointments, and pushes clean data into the CRM, without adding human headcount. But the category is noisy and crowded.",
-      p2: "Larger vendors dominated the SERP with long-standing authority. Referral traffic had plateaued, and many top-funnel keywords lingered on page two.",
+      p2: "Larger vendors dominated the SERP with long-standing authority. Referral traffic had plateaued, and many of their top-funnel keywords lingered on page two.",
       p3: "The team was focused on shipping product and customer stories, not managing ongoing outreach.",
       quote: "We were missing out on high-intent organic traffic because our brand didn't yet have the authority signals that buyers and Google look for.",
       attribution: "Aidan Mattrick, CEO, VoiceValet"
@@ -94,7 +62,7 @@ export const caseStudies: CaseStudy[] = [
       p2: "Organic sessions: +150% over 6 months; demo requests: +58%; trial starts: +41%. New articles indexed faster and began ranking sooner due to stronger brand signals.",
       p3: "Paid CAC down 22% as organic took a larger share of conversions; SDRs reported shorter time-to-trust on discovery calls.",
       quote: "This program turned missed calls into a steady stream of qualified demos, and it did it without adding work to our team.",
-      attribution: "Avery Kim, CMO, VoiceValet"
+      attribution: "Aidan Mattrick, CEO, VoiceValet"
     }
   },
   {
@@ -115,7 +83,7 @@ export const caseStudies: CaseStudy[] = [
       attribution: "Quentin Thomassin, Founder, QT Marketing"
     },
     solution: {
-      p1: "BoostMyRank executed a hands-off, white-hat outreach program designed for busy growth teams.",
+      p1: "BoostMyRank executed a hands-off backlink outreach program to boost QT Marketing's domain authority.",
       p2: "Editorial backlinks (3–5/mo, DA30+): Consistent placements in business, marketing, and small-business outlets with no paid links or networks. Expert positioning: Rapid responses to journalist requests on lead generation, offer design, and follow-up scripting; concise quotes in QT's voice.",
       p3: "Clear reporting: Monthly CSV + summary (URL, anchor, DA, status) to keep track of all mentions and backlinks.",
       quote: "Once we started showing up in recognized publications, our organic traffic increased significantly. Plus, our prospects arrived already trusting us.",
@@ -128,7 +96,39 @@ export const caseStudies: CaseStudy[] = [
       quote: "The credibility boost didn't just help rankings, it also improved close rates. It's the compounder our paid engine was missing.",
       attribution: "Quentin Thomassin, Founder, QT Marketing"
     }
-  }
+  },
+  {
+    slug: "loch-case-study",
+    title: "Case Study: How Loch boosted organic traffic 68% in 90 days by improving its backlinking strategy",
+    subtitle: "Learn how an online news site covering global market trends broke through page-one competition and established domain authority.",
+    personName: "Prithvir Jhaveri",
+    orgName: "Loch",
+    updatedAt: "Aug 26, 2024",
+    heroImage: "/placeholder.svg",
+    accentFrom: "#F6C343",
+    accentTo: "#F59E0B",
+    challenge: {
+      p1: "Loch is an online news site covering global market trends with a focus on US news, politics, and finance stories. Despite publishing on their blog consistently, they struggled to break into page-one results against bigger publishers.",
+      p2: "Referral traffic had leveled off, and the site lacked the domain authority signals Google uses to trust and rank content from newer brands.",
+      p3: "As a newer outlet competing with established media for the same headlines, Loch had great content but too few high-authority mentions pointing back to the site. The small team had no bandwidth for ongoing, white-hat outreach.",
+      quote: "We were publishing strong content, but they stalled on page two. We needed clear proof of authority that search engines and readers recognize.",
+      attribution: "Prithvir Jhaveri, Founder, Loch"
+    },
+    solution: {
+      p1: "BoostMyRank ran a fully managed outreach program to earn editorial backlinks from respected business and finance publications. We positioned Loch editors as quotable experts, responded to journalist requests on timely topics, and delivered 3–5 DA30+ links per month.",
+      p2: "This enabled them to create a simple \"As Seen In\" section and media badges for the homepage, article templates, and author bios to showcase credibility.",
+      p3: "We provided a hands-off workflow: We sourced opportunities, drafted quotes in the Loch voice, handled submissions and follow-ups, and provided monthly reports on newspaper placements (URL, anchor, DA, status).",
+      quote: "Being cited by well-known outlets changed the conversation for us as partners and readers suddenly starting taking us more seriously.",
+      attribution: "Prithvir Jhaveri, Founder, Loch"
+    },
+    impact: {
+      p1: "In 90 days, Loch's Google domain authority increased by 9 points, organic sessions grew 68%, and 18 priority keywords moved into the top 10.",
+      p2: "The site's newsletter signups rose 54%, which improved sponsorship interest and ad performance. New articles began indexing faster and earned visibility sooner because the brand now carried clear authority signals.",
+      p3: "Authority: DA +9 in 90 days; referring domains up 42%. Visibility: 18 target keywords entered top-10 positions; new posts started ranking sooner. Growth: Organic sessions +68% QoQ; newsletter signups +54%; more inbound sponsor interest.",
+      quote: "This investment in our digital authority has transformed our business trajectory.",
+      attribution: "Prithvir Jhaveri, Founder, Loch"
+    }
+  },
 ];
 
 export function getCaseStudyBySlug(slug: string): CaseStudy | undefined {
