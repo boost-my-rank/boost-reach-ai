@@ -126,7 +126,7 @@ export const caseStudies: CaseStudy[] = [
       p2: "The site's newsletter signups rose 54%, which improved sponsorship interest and ad performance. New articles began indexing faster and earned visibility sooner because the brand now carried clear authority signals.",
       p3: "The improved domain authority and backlink profile led to faster content indexing, with new posts ranking within days instead of weeks.",
       quote: "This investment in our digital authority has transformed our business trajectory.",
-      attribution: "Prithvir Jhaveri, Founder, Loch"
+      attribution: "Prithvir Jhaveri, Founder, Loch "
     }
   },
 ];
