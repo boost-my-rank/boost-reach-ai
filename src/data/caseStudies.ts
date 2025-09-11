@@ -44,25 +44,25 @@ export const caseStudies: CaseStudy[] = [
     accentFrom: "#F59E0B",
     accentTo: "#EC4899",
     challenge: {
-      p1: "<a href='https://govoicevalet.com/' target='_blank' rel='noopener noreferrer' className='text-blue-600 hover:text-blue-800 underline'>VoiceValet</a> helps businesses answer every call with a smart AI that qualifies prospects, books appointments, and pushes clean data into the CRM, without adding human headcount. But the category is noisy and crowded.",
+      p1: "VoiceValet helps businesses answer every call with a smart AI that qualifies prospects, books appointments, and pushes clean data into the CRM, without adding human headcount. But the category is noisy and crowded.",
       p2: "Larger vendors dominated the SERP with long-standing authority. Referral traffic had plateaued, and many of their top-funnel keywords lingered on page two.",
       p3: "The team was focused on shipping product and customer stories, not managing ongoing outreach.",
       quote: "We were missing out on high-intent organic traffic because our brand didn't yet have the authority signals that buyers and Google look for.",
-      attribution: "Aidan Mattrick, CEO, <a href='https://govoicevalet.com/' target='_blank' rel='noopener noreferrer' className='text-blue-600 hover:text-blue-800 underline'>VoiceValet</a>"
+      attribution: "Aidan Mattrick, CEO, <a href='https://govoicevalet.com/' target='_blank' rel='noopener noreferrer' style='color: #2563eb; text-decoration: underline;'>VoiceValet</a>"
     },
     solution: {
-      p1: "BoostMyRank executed an automated editorial outreach program that matched <a href='https://govoicevalet.com/' target='_blank' rel='noopener noreferrer' className='text-blue-600 hover:text-blue-800 underline'>VoiceValet</a>'s CEO to journalist requests on their area of expertise.",
-      p2: "Over the course of three months,BoostMyRank delivered 15 backlinks (5 per month) from respected business and technology outlets, all in an automated way through matching <a href='https://govoicevalet.com/' target='_blank' rel='noopener noreferrer' className='text-blue-600 hover:text-blue-800 underline'>VoiceValet</a> to journalist requests.",
-      p3: "Every month, we provided <a href='https://govoicevalet.com/' target='_blank' rel='noopener noreferrer' className='text-blue-600 hover:text-blue-800 underline'>VoiceValet</a> with a report with all the backlinks we secured, including the URL, anchor, DA, status, and impact highlights thir team could share in exec meetings.",
+      p1: "BoostMyRank executed an automated editorial outreach program that matched <a href='https://govoicevalet.com/' target='_blank' rel='noopener noreferrer' style='color: #2563eb; text-decoration: underline;'>VoiceValet</a>'s CEO to journalist requests on their area of expertise.",
+      p2: "Over the course of three months,BoostMyRank delivered 15 backlinks (5 per month) from respected business and technology outlets, all in an automated way through matching <a href='https://govoicevalet.com/' target='_blank' rel='noopener noreferrer' style='color: #2563eb; text-decoration: underline;'>VoiceValet</a> to journalist requests.",
+      p3: "Every month, we provided <a href='https://govoicevalet.com/' target='_blank' rel='noopener noreferrer' style='color: #2563eb; text-decoration: underline;'>VoiceValet</a> with a report with all the backlinks we secured, including the URL, anchor, DA, status, and impact highlights thir team could share in exec meetings.",
       quote: "Once we started appearing in well-known publications, sales conversations moved faster. Prospects came in already trusting the brand.",
-      attribution: "Aidan Mattrick, CEO, <a href='https://govoicevalet.com/' target='_blank' rel='noopener noreferrer' className='text-blue-600 hover:text-blue-800 underline'>VoiceValet</a>"
+      attribution: "Aidan Mattrick, CEO, <a href='https://govoicevalet.com/' target='_blank' rel='noopener noreferrer' style='color: #2563eb; text-decoration: underline;'>VoiceValet</a>"
     },
     impact: {
-      p1: "In 6 months, <a href='https://govoicevalet.com/' target='_blank' rel='noopener noreferrer' className='text-blue-600 hover:text-blue-800 underline'>VoiceValet</a>'s domain authority rose 12 points, organic sessions grew 150%, and demo requests increased 60%, while customer acquisition costs (CAC) decreased 22% due to stronger organic performance.",
-      p2: "At the same time, <a href='https://govoicevalet.com/' target='_blank' rel='noopener noreferrer' className='text-blue-600 hover:text-blue-800 underline'>VoiceValet</a> was able to create an \"As Seen In\" section and media badges for the homepage to increase their social proof.",
+      p1: "In 6 months, <a href='https://govoicevalet.com/' target='_blank' rel='noopener noreferrer' style='color: #2563eb; text-decoration: underline;'>VoiceValet</a>'s domain authority rose 12 points, organic sessions grew 150%, and demo requests increased 60%, while customer acquisition costs (CAC) decreased 22% due to stronger organic performance.",
+      p2: "At the same time, <a href='https://govoicevalet.com/' target='_blank' rel='noopener noreferrer' style='color: #2563eb; text-decoration: underline;'>VoiceValet</a> was able to create an \"As Seen In\" section and media badges for the homepage to increase their social proof.",
       p3: "This allowed them to increase their close rate on demo calls by nearly 50% with their SDRs reporting shorter time-to-trust on discovery calls.",
       quote: "BoostMyRank's backlink-building strategy helped us convert more of our organic traffic into customer demos, and it did it without adding work to our team.",
-      attribution: "Aidan Mattrick, CEO, <a href='https://govoicevalet.com/' target='_blank' rel='noopener noreferrer' className='text-blue-600 hover:text-blue-800 underline'>VoiceValet</a>"
+      attribution: "Aidan Mattrick, CEO, <a href='https://govoicevalet.com/' target='_blank' rel='noopener noreferrer' style='color: #2563eb; text-decoration: underline;'>VoiceValet</a>"
     }
   },
   {
