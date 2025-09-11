@@ -48,14 +48,14 @@ export const caseStudies: CaseStudy[] = [
       p2: "Larger agencies and directories dominated the SERP with long-standing authority. Referral traffic plateaued; many priority keywords sat on page two or three.",
       p3: "The team was focused on campaign execution, not ongoing PR or press outreach.",
       quote: "We were winning in paid, but our brand signals didn't match our results. We needed credible mentions that search engines, and skeptical prospects, could recognize.",
-      attribution: "<a href='https://quentinthomassin.com/' target='_blank' rel='noopener noreferrer' style='color: #2563eb; text-decoration: underline;'>Quentin Thomassin</a>, Founder, <a href='https://quentinthomassin.com/' target='_blank' rel='noopener noreferrer' style='color: #2563eb; text-decoration: underline;'>QT Marketing</a>"
+      attribution: "<a href='https://quentinthomassin.com/' target='_blank' rel='noopener noreferrer' style='color: #2563eb; text-decoration: underline;'>Quentin Thomassin</a>, Founder, <a href='https://www.linkedin.com/in/quentin-thomassin-bbb048141/' target='_blank' rel='noopener noreferrer' style='color: #2563eb; text-decoration: underline;'>QT Marketing</a>"
     },
     solution: {
       p1: "BoostMyRank executed a hands-off backlink outreach program to top publications in their space to boost QT Marketing's domain authority.",
       p2: "Over the course of 3 months, <a href='https://quentinthomassin.com/' target='_blank' rel='noopener noreferrer' style='color: #2563eb; text-decoration: underline;'>QT Marketing</a> received consistent placements in business, marketing, and small-business outlets with no paid links or networks, that were targeted to their area of expertise.",
       p3: "<a href='https://quentinthomassin.com/' target='_blank' rel='noopener noreferrer' style='color: #2563eb; text-decoration: underline;'>QTMarketing</a> received a monthly results reports with URL's, anchor, DA, status to keep track of all mentions and backlinks.",
       quote: "Once we started showing up in recognized publications, our organic traffic increased significantly. Plus, our prospects arrived already trusting us.",
-      attribution: "<a href='https://quentinthomassin.com/' target='_blank' rel='noopener noreferrer' style='color: #2563eb; text-decoration: underline;'>Quentin Thomassin</a>, Founder, <a href='https://quentinthomassin.com/' target='_blank' rel='noopener noreferrer' style='color: #2563eb; text-decoration: underline;'>QT Marketing</a>"
+      attribution: "<a href='https://quentinthomassin.com/' target='_blank' rel='noopener noreferrer' style='color: #2563eb; text-decoration: underline;'>Quentin Thomassin</a>, Founder, <a href='https://www.linkedin.com/in/quentin-thomassin-bbb048141/' target='_blank' rel='noopener noreferrer' style='color: #2563eb; text-decoration: underline;'>QT Marketing</a>"
     },
     impact: {
       p1: "In 90 days, domain authority rose +8 points, organic sessions grew 62%, and inbound demo requests increased 44%. 15 priority keywords moved into the top-10 (e.g., \"find clients as a personal trainer,\" \"fitness coach marketing,\" \"Facebook ads for trainers\").",
