@@ -101,16 +101,15 @@ export default function CaseStudyDetail() {
           <section className="mb-16">
             <h2 className="mt-12 mb-6 text-3xl font-extrabold text-gray-900">Challenge</h2>
             <div className="prose prose-lg max-w-none">
-              <p className="mb-6 text-gray-700 leading-relaxed">{caseStudy.challenge.p1}</p>
-              <p className="mb-6 text-gray-700 leading-relaxed">{caseStudy.challenge.p2}</p>
-              <p className="mb-6 text-gray-700 leading-relaxed">{caseStudy.challenge.p3}</p>
+              <p className="mb-6 text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: caseStudy.challenge.p1 }}></p>
+              <p className="mb-6 text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: caseStudy.challenge.p2 }}></p>
+              <p className="mb-6 text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: caseStudy.challenge.p3 }}></p>
             </div>
             
             <blockquote className="mt-8 mb-12 border-l-4 border-gray-900 pl-6 italic text-xl leading-relaxed text-gray-800 bg-gray-50 py-4 rounded-r-lg">
               "{caseStudy.challenge.quote}"
               {caseStudy.challenge.attribution && (
-                <footer className="text-sm text-muted-foreground mt-2 not-italic">
-                  — {caseStudy.challenge.attribution}
+                <footer className="text-sm text-muted-foreground mt-2 not-italic" dangerouslySetInnerHTML={{ __html: `— ${caseStudy.challenge.attribution}` }}>
                 </footer>
               )}
             </blockquote>
@@ -120,16 +119,15 @@ export default function CaseStudyDetail() {
           <section className="mb-16">
             <h2 className="mt-12 mb-6 text-3xl font-extrabold text-gray-900">Solution</h2>
             <div className="prose prose-lg max-w-none">
-              <p className="mb-6 text-gray-700 leading-relaxed">{caseStudy.solution.p1}</p>
-              <p className="mb-6 text-gray-700 leading-relaxed">{caseStudy.solution.p2}</p>
-              <p className="mb-6 text-gray-700 leading-relaxed">{caseStudy.solution.p3}</p>
+              <p className="mb-6 text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: caseStudy.solution.p1 }}></p>
+              <p className="mb-6 text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: caseStudy.solution.p2 }}></p>
+              <p className="mb-6 text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: caseStudy.solution.p3 }}></p>
             </div>
             
             <blockquote className="mt-8 mb-12 border-l-4 border-gray-900 pl-6 italic text-xl leading-relaxed text-gray-800 bg-gray-50 py-4 rounded-r-lg">
               "{caseStudy.solution.quote}"
               {caseStudy.solution.attribution && (
-                <footer className="text-sm text-muted-foreground mt-2 not-italic">
-                  — {caseStudy.solution.attribution}
+                <footer className="text-sm text-muted-foreground mt-2 not-italic" dangerouslySetInnerHTML={{ __html: `— ${caseStudy.solution.attribution}` }}>
                 </footer>
               )}
             </blockquote>
@@ -139,16 +137,15 @@ export default function CaseStudyDetail() {
           <section className="mb-16">
             <h2 className="mt-12 mb-6 text-3xl font-extrabold text-gray-900">Impact</h2>
             <div className="prose prose-lg max-w-none">
-              <p className="mb-6 text-gray-700 leading-relaxed">{caseStudy.impact.p1}</p>
-              <p className="mb-6 text-gray-700 leading-relaxed">{caseStudy.impact.p2}</p>
-              <p className="mb-6 text-gray-700 leading-relaxed">{caseStudy.impact.p3}</p>
+              <p className="mb-6 text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: caseStudy.impact.p1 }}></p>
+              <p className="mb-6 text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: caseStudy.impact.p2 }}></p>
+              <p className="mb-6 text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: caseStudy.impact.p3 }}></p>
             </div>
             
             <blockquote className="mt-8 mb-12 border-l-4 border-gray-900 pl-6 italic text-xl leading-relaxed text-gray-800 bg-gray-50 py-4 rounded-r-lg">
               "{caseStudy.impact.quote}"
               {caseStudy.impact.attribution && (
-                <footer className="text-sm text-muted-foreground mt-2 not-italic">
-                  — {caseStudy.impact.attribution}
+                <footer className="text-sm text-muted-foreground mt-2 not-italic" dangerouslySetInnerHTML={{ __html: `— ${caseStudy.impact.attribution}` }}>
                 </footer>
               )}
             </blockquote>
