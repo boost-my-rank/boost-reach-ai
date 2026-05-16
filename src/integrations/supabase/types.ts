@@ -10,7 +10,7 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "13.0.4"
+    PostgrestVersion: "14.5"
   }
   public: {
     Tables: {
@@ -95,6 +95,42 @@ export type Database = {
         }
         Relationships: []
       }
+      knowledge_files: {
+        Row: {
+          created_at: string
+          id: string
+          mime_type: string
+          original_name: string
+          sha256: string | null
+          size_bytes: number
+          status: string
+          storage_path: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          mime_type: string
+          original_name: string
+          sha256?: string | null
+          size_bytes: number
+          status?: string
+          storage_path: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          mime_type?: string
+          original_name?: string
+          sha256?: string | null
+          size_bytes?: number
+          status?: string
+          storage_path?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       leads: {
         Row: {
           company: string | null
@@ -169,6 +205,71 @@ export type Database = {
           },
         ]
       }
+      response_file_links: {
+        Row: {
+          created_at: string
+          file_id: string
+          id: string
+          response_id: string
+        }
+        Insert: {
+          created_at?: string
+          file_id: string
+          id?: string
+          response_id: string
+        }
+        Update: {
+          created_at?: string
+          file_id?: string
+          id?: string
+          response_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "response_file_links_file_id_fkey"
+            columns: ["file_id"]
+            isOneToOne: false
+            referencedRelation: "knowledge_files"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      subscriptions: {
+        Row: {
+          created_at: string
+          current_period_end: string | null
+          id: string
+          price_id: string | null
+          status: string | null
+          stripe_customer_id: string
+          stripe_subscription_id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          current_period_end?: string | null
+          id?: string
+          price_id?: string | null
+          status?: string | null
+          stripe_customer_id: string
+          stripe_subscription_id: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          current_period_end?: string | null
+          id?: string
+          price_id?: string | null
+          status?: string | null
+          stripe_customer_id?: string
+          stripe_subscription_id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_info: {
         Row: {
           company_name: string | null
@@ -181,6 +282,7 @@ export type Database = {
           payment_status: string
           professional_bio: string | null
           reviewed_at: string | null
+          stripe_customer_id: string | null
           updated_at: string
           user_id: string
         }
@@ -195,6 +297,7 @@ export type Database = {
           payment_status?: string
           professional_bio?: string | null
           reviewed_at?: string | null
+          stripe_customer_id?: string | null
           updated_at?: string
           user_id: string
         }
@@ -209,6 +312,7 @@ export type Database = {
           payment_status?: string
           professional_bio?: string | null
           reviewed_at?: string | null
+          stripe_customer_id?: string | null
           updated_at?: string
           user_id?: string
         }
@@ -243,20 +347,14 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      cancel_upload: {
-        Args: { file_id: string }
-        Returns: boolean
-      }
-      complete_upload: {
-        Args: { file_id: string }
-        Returns: boolean
-      }
+      cancel_upload: { Args: { file_id: string }; Returns: boolean }
+      complete_upload: { Args: { file_id: string }; Returns: boolean }
       create_upload_url: {
         Args: { file_name: string; file_size: number; mime_type: string }
         Returns: Json
       }
       dashboard_metrics_today: {
-        Args: Record<PropertyKey, never>
+        Args: never
         Returns: {
           journalists_today: number
           my_pitches_today: number
@@ -264,7 +362,7 @@ export type Database = {
         }[]
       }
       get_user_knowledge_files: {
-        Args: Record<PropertyKey, never>
+        Args: never
         Returns: {
           created_at: string
           id: string
@@ -281,10 +379,7 @@ export type Database = {
         }
         Returns: boolean
       }
-      is_admin: {
-        Args: Record<PropertyKey, never>
-        Returns: boolean
-      }
+      is_admin: { Args: never; Returns: boolean }
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
